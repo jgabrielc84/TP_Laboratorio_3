@@ -33,6 +33,7 @@ public class AdministradorPedidos {
         try {
             validarPedido(pedido);
             this.pedidosValidados.add(pedido);
+
         }
         catch (PedidoInvalidoException e){
             //TODO: manejar la respuesta de excepcion
