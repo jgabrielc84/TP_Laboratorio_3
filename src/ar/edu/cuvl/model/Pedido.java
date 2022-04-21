@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 public class Pedido {
 
+    private int numeroPedido;
     private TipoLimpieza tipoLimpieza;
     private boolean ordenamiento;
     private ArrayList <TipoSuperficie> superficies;

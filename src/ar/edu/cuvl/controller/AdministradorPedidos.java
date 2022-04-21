@@ -1,18 +1,22 @@
 package ar.edu.cuvl.controller;
 
+import ar.edu.cuvl.exception.PedidoInvalidoException;
+import ar.edu.cuvl.model.Pedido;
+import ar.edu.cuvl.validator.ValidadorPedido;
+
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class AdministradorPedidos {
 
-    private ArrayList<Pedido> pedidosValidados;
+    private HashMap<Pedido,ArrayList<Robot>> pedidosValidados;
     private ArrayList<Pedido> pedidosRechazados;
 
-
-    public ArrayList<Pedido> getPedidosValidados() {
+    public HashMap<Pedido, ArrayList<Robot>> getPedidosValidados() {
         return pedidosValidados;
     }
 
-    public void setPedidosValidados(ArrayList<Pedido> pedidosValidados) {
+    public void setPedidosValidados(HashMap<Pedido, ArrayList<Robot>> pedidosValidados) {
         this.pedidosValidados = pedidosValidados;
     }
 
@@ -24,16 +28,11 @@ public class AdministradorPedidos {
         this.pedidosRechazados = pedidosRechazados;
     }
 
-    private void validarPedido(){
-
-    }
-
     public void ingresarPedido(Pedido pedido){
 
         try {
             validarPedido(pedido);
             this.pedidosValidados.add(pedido);
-
         }
         catch (PedidoInvalidoException e){
             //TODO: manejar la respuesta de excepcion
@@ -41,6 +40,8 @@ public class AdministradorPedidos {
         }
         catch (NoSePuedeAgregarAListaException e){
             //se guarda el error
+        }
+        catch (Exception e){
         }
     }
 
