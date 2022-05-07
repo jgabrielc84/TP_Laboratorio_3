@@ -1,80 +1,51 @@
 package ar.edu.cuvl.model;
 
+import ar.edu.cuvl.controller.AdministradorClientes;
 import ar.edu.cuvl.controller.AdministradorPedidos;
+import ar.edu.cuvl.controller.AdministradorRobots;
+import ar.edu.cuvl.model.type.Limpieza;
 import ar.edu.cuvl.validator.ValidadorPedido;
 
+import java.security.cert.CertPathValidatorResult;
 import java.util.ArrayList;
-import java.util.Collection;
 
 public class Empresa {
 
-    private ArrayList<Cliente> clientes;
-    private ArrayList<Robot> robots;
-    private AdministradorPedidos administradorPedidos;
-    private ValidadorPedido validadorPedido = new ValidadorPedido();
+    private final AdministradorRobots administradorRobots = new AdministradorRobots();
+    private final AdministradorClientes administradorClientes = new AdministradorClientes();
+    private final AdministradorPedidos administradorPedidos = new AdministradorPedidos();
+    private final ValidadorPedido validadorPedido = new ValidadorPedido();
+
+    public static void main(String[] args) {
+
+        //Crear Clientes
+        Cliente cliente1 = new Cliente();
 
 
-    public ArrayList<Cliente> getClientes() {
-        return clientes;
-    }
 
-    public void setClientes(ArrayList<Cliente> clientes) {
-        this.clientes = clientes;
-    }
+        //Pruebas
+        Cliente cliente = this.administradorClientes.getCliente();
+        boolean ordenamiento = true
+        ArrayList <TipoSuperficie > tipoSuperficie = { Superficie.PISO, };
 
-    public ArrayList<Robot> getRobots() {
-        return robots;
-    }
+        Pedido pedido = new Pedido(1, Limpieza.COMPLEJA,   ordenamiento, Collection < > tipoSuperficie, Cliente, direccion);
 
-    public void setRobots(ArrayList<Robot> robots) {
-        this.robots = robots;
-    }
-
-    public AdministradorPedidos getAdministradorPedidos() {
-        return administradorPedidos;
-    }
-
-    public void setAdministradorPedidos(AdministradorPedidos administradorPedidos) {
-        this.administradorPedidos = administradorPedidos;
-    }
-
-    public Cliente crearCliente(){
+        try {
+            validarPedido(Pedido);
+            this.administradorPedidos.ingresarPedido(pedido);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
     }
 
-    public ValidadorPedido getValidadorPedido() {
-        return validadorPedido;
+    public void validarPedido(Pedido pedido){
+
+        try{
+            this.validadorPedido.validarEsPedido(pedido);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
     }
-
-    public void setValidadorPedido(ValidadorPedido validadorPedido) {
-        this.validadorPedido = validadorPedido;
-    }
-
-    private void validarPedido(Pedido pedido){
-        this.validadorPedido(pedido);
-    }
-
-
-
-    Pedido pedido = new Pedido(numeroPedido, ripoLimpieza, ordenamiento, Collection<> tipoSuperficie, Cliente, direccion);
-
-    try{
-        validaroPedido(Pedido);
-        administradorPedido.evaluarPedido();
-    }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 }
