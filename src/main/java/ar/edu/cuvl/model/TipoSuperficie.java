@@ -2,16 +2,15 @@ package ar.edu.cuvl.model;
 import ar.edu.cuvl.model.type.Servicio;
 
 public abstract class TipoSuperficie {
-    private  Superficie tipo;
+    private Superficie tipoSuperficie;
 
 
     public Superficie getTipo() {
-        return tipo;
+        return tipoSuperficie;
     }
 
-    public void setTipo(Servicio tipo) {
-        this.tipo = tipo;
+    public void setTipo(Superficie tipo) {
+        this.tipoSuperficie = tipo;
     }
-
 
 }
