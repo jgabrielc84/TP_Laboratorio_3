@@ -12,9 +12,51 @@ public class Pedido {
     private ArrayList <TipoSuperficie> superficies;
 
 
+    public int getNumeroPedido() {
+        return numeroPedido;
+    }
 
+    public void setNumeroPedido(int numeroPedido) {
+        this.numeroPedido = numeroPedido;
+    }
 
+    public int getNumeroCliente() {
+        return numeroCliente;
+    }
 
+    public void setNumeroCliente(int numeroCliente) {
+        this.numeroCliente = numeroCliente;
+    }
 
+    public String getDireccion() {
+        return direccion;
+    }
 
+    public void setDireccion(String direccion) {
+        this.direccion = direccion;
+    }
+
+    public TipoLimpieza getTipoLimpieza() {
+        return tipoLimpieza;
+    }
+
+    public void setTipoLimpieza(TipoLimpieza tipoLimpieza) {
+        this.tipoLimpieza = tipoLimpieza;
+    }
+
+    public boolean isOrdenamiento() {
+        return ordenamiento;
+    }
+
+    public void setOrdenamiento(boolean ordenamiento) {
+        this.ordenamiento = ordenamiento;
+    }
+
+    public ArrayList<TipoSuperficie> getSuperficies() {
+        return superficies;
+    }
+
+    public void setSuperficies(ArrayList<TipoSuperficie> superficies) {
+        this.superficies = superficies;
+    }
 }
