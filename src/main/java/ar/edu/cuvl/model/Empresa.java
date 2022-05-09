@@ -18,17 +18,17 @@ public class Empresa {
 
     public static void main(String[] args) {
 
-        //Crear Clientes
+        //Crear Clientes en AdministradorClientes
         Cliente cliente1 = new Cliente();
 
 
+        //Prueba Caso 1
+        Cliente cliente = this.administradorClientes.getCliente(1);
+        boolean ordenamiento = true;
+        ArrayList <TipoSuperficie > tipoSuperficies = new Superficie[Superficie.PISO, Superficie.MUEBLE];
+        String direccion = "Cordoba 1501";
 
-        //Pruebas
-        Cliente cliente = this.administradorClientes.getCliente();
-        boolean ordenamiento = true
-        ArrayList <TipoSuperficie > tipoSuperficie = { Superficie.PISO, };
-
-        Pedido pedido = new Pedido(1, Limpieza.COMPLEJA,   ordenamiento, Collection < > tipoSuperficie, Cliente, direccion);
+        Pedido pedido = new Pedido(1, Limpieza.COMPLEJA, ordenamiento, tipoSuperficies, cliente, direccion);
 
         try {
             validarPedido(Pedido);

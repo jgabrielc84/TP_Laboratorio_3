@@ -1,14 +1,11 @@
 package ar.edu.cuvl.model;
 
-public class LimpiezaCompleja {
+import ar.edu.cuvl.model.type.Limpieza;
 
-    private String name;
+public class LimpiezaCompleja extends TipoLimpieza{
 
-    public String getName() {
-        return name;
+    public LimpiezaCompleja() {
+        super(Limpieza.COMPLEJA);
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
 }
