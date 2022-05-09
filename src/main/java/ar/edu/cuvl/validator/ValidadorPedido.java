@@ -7,14 +7,14 @@ public class ValidadorPedido {
 
     public void validarEsPedido(Pedido pedido) throws PedidoInvalidoException {
 
-        if(true){
+        if(true){ //TODO Validar que sea un pedido
            throw new PedidoInvalidoException("Pedido invalidado");
         }
     }
 
     public void validarPedido(Pedido pedido) throws PedidoInvalidoException {
 
-        if(true){
+        if(true){ //TODO Validar que el pedido se puede procesar
             throw new PedidoInvalidoException("Pedido invalidado");
         }
 
