@@ -12,9 +12,27 @@ public class Pedido {
     private ArrayList <TipoSuperficie> superficies;
 
 
+    public int getNumeroPedido() {
+        return numeroPedido;
+    }
 
+    public int getNumeroCliente() {
+        return numeroCliente;
+    }
 
+    public String getDireccion() {
+        return direccion;
+    }
 
+    public TipoLimpieza getTipoLimpieza() {
+        return tipoLimpieza;
+    }
 
+    public boolean isOrdenamiento() {
+        return ordenamiento;
+    }
 
+    public ArrayList<TipoSuperficie> getSuperficies() {
+        return superficies;
+    }
 }
