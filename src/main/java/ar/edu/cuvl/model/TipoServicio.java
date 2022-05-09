@@ -6,6 +6,10 @@ public abstract class TipoServicio {
     private Servicio tipo;
     private int deudaMaxima;
 
+    public TipoServicio(Servicio tipo, int deudaMaxima) {
+        this.tipo = tipo;
+        this.deudaMaxima = deudaMaxima;
+    }
 
     public Servicio getTipo() {
         return tipo;

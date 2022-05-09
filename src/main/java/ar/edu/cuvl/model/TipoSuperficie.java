@@ -1,5 +1,5 @@
 package ar.edu.cuvl.model;
-import ar.edu.cuvl.model.type.Servicio;
+import ar.edu.cuvl.model.type.Superficie;
 
 public abstract class TipoSuperficie {
     private Superficie tipoSuperficie;

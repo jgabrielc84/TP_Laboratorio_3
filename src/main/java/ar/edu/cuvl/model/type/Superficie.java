@@ -1,4 +1,4 @@
-package ar.edu.cuvl.model;
+package ar.edu.cuvl.model.type;
 
 public enum Superficie {
     PISO, MUEBLE
