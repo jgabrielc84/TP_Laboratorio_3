@@ -1,5 +1,7 @@
 package ar.edu.cuvl.model;
 
+import ar.edu.cuvl.model.type.Limpieza;
+
 import java.util.ArrayList;
 
 public class Pedido {
@@ -10,6 +12,10 @@ public class Pedido {
     private TipoLimpieza tipoLimpieza;
     private boolean ordenamiento;
     private ArrayList <TipoSuperficie> superficies;
+
+    public Pedido(int i, Limpieza compleja, boolean ordenamiento, ArrayList<TipoSuperficie> tipoSuperficies, Cliente cliente, String direccion) {
+        this.
+    }
 
 
 

@@ -1,5 +1,7 @@
 package ar.edu.cuvl.controller;
 
+import ar.edu.cuvl.exception.NoPuedeArmarListaRobotException;
+import ar.edu.cuvl.exception.NoSePuedeAgregarAListaException;
 import ar.edu.cuvl.exception.PedidoInvalidoException;
 import ar.edu.cuvl.model.AsignadorRobot;
 import ar.edu.cuvl.model.Pedido;
