@@ -13,11 +13,14 @@ public class Pedido {
     private boolean ordenamiento;
     private ArrayList <TipoSuperficie> superficies;
 
-    public Pedido(int i, Limpieza compleja, boolean ordenamiento, ArrayList<TipoSuperficie> tipoSuperficies, Cliente cliente, String direccion) {
-        this.
+    public Pedido(int numeroPedido, int numeroCliente, String direccion, TipoLimpieza tipoLimpieza, boolean ordenamiento, ArrayList<TipoSuperficie> superficies) {
+        this.numeroPedido = numeroPedido;
+        this.numeroCliente = numeroCliente;
+        this.direccion = direccion;
+        this.tipoLimpieza = tipoLimpieza;
+        this.ordenamiento = ordenamiento;
+        this.superficies = superficies;
     }
-
-
 
     public int getNumeroPedido() {
         return numeroPedido;
