@@ -4,7 +4,7 @@ import ar.edu.cuvl.model.type.Servicio;
 
 public class Economic extends TipoServicio{
 
-    public Economic(int deudaMaxima) {
-        super(Servicio.ECONOMIC, deudaMaxima);
+    public Economic() {
+        super(Servicio.ECONOMIC, 0);
     }
 }
