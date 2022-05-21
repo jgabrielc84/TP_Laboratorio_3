@@ -1,6 +1,6 @@
 package ar.edu.cuvl.controller;
 
-import ar.edu.cuvl.exception.existeClienteException;
+import ar.edu.cuvl.exception.ExisteClienteException;
 import ar.edu.cuvl.model.Cliente;
 
 import java.util.HashSet;
@@ -14,15 +14,15 @@ public class AdministradorClientes {
 
         try {
             agrearCLiente(cliente);
-        }catch (existeClienteException e)
-
+        }catch (ExisteClienteException e){
+            e.printStackTrace();
         }
     }
 
-    private void agrearCLiente(Cliente cliente) throws existeClienteException {
+    private void agrearCLiente(Cliente cliente) throws ExisteClienteException {
 
-        if(this.clientes.add(cliente)){
-           throw existeClienteException("Ya es Cliente");
+        if(!this.clientes.add(cliente)){
+           throw new ExisteClienteException("Ya es Cliente");
         }
     }
 
