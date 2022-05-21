@@ -22,37 +22,29 @@ public class AdministradorPedidos {
         return pedidosValidados;
     }
 
-    public void setPedidosValidados(HashMap<Pedido, ArrayList<Robot>> pedidosValidados) {
-        this.pedidosValidados = pedidosValidados;
-    }
-
     public ArrayList<Pedido> getPedidosRechazados() {
         return pedidosRechazados;
     }
 
-    public void setPedidosRechazados(ArrayList<Pedido> pedidosRechazados) {
-        this.pedidosRechazados = pedidosRechazados;
-    }
-
-    public void ingresarPedido(Pedido pedido){
+    public void ingresarPedido(Pedido pedido, AdministradorRobots administradorRobots){
 
         try {
             this.validadorPedido.validarPedido(pedido);
-            ArrayList<Robot> robots = this.asignadorRobot.armameLaListaDeRobotPorFa(pedido);
+            ArrayList<Robot> robots = this.asignadorRobot.armameLaListaDeRobotPorFa(pedido, administradorRobots);
             this.pedidosValidados.put(pedido, robots);
         }
         catch (PedidoInvalidoException e){
             //TODO: manejar la respuesta de excepcion
             this.pedidosRechazados.add(pedido);
         }
-        catch (NoPuedeArmarListaRobotException e){
-            this.pedidosRechazados.add(pedido);
-            //se guarda el error
-        }
-        catch (NoSePuedeAgregarAListaException e){
-            this.pedidosRechazados.add(pedido);
-            //se guarda el error
-        }
+//        catch (NoPuedeArmarListaRobotException e){
+//            this.pedidosRechazados.add(pedido);
+//            //se guarda el error
+//        }
+//        catch (NoSePuedeAgregarAListaException e){
+//            this.pedidosRechazados.add(pedido);
+//            //se guarda el error
+//        }
         catch (Exception e){
         }
     }

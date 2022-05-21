@@ -13,15 +13,21 @@ import java.util.ArrayList;
 
 public class Empresa {
 
-    AdministradorRobots administradorRobots = new AdministradorRobots();
-    AdministradorClientes administradorClientes = new AdministradorClientes();
-    AdministradorPedidos administradorPedidos = new AdministradorPedidos();
-    ValidadorPedido validadorPedido = new ValidadorPedido();
+    AdministradorRobots administradorRobots;
+    AdministradorClientes administradorClientes;
+    AdministradorPedidos administradorPedidos;
+    ValidadorPedido validadorPedido;
 
+    public Empresa() {
+        this.administradorRobots = new AdministradorRobots();
+        this.administradorClientes = new AdministradorClientes();
+        this.administradorPedidos = new AdministradorPedidos();
+        this.validadorPedido = new ValidadorPedido();
+    }
 
-    public void validarPedido(Pedido pedido){
+    public void validarPedido(Pedido pedido) {
 
-        try{
+        try {
             this.validadorPedido.validarEsPedido(pedido);
         } catch (PedidoInvalidoException e) {
             e.printStackTrace();
@@ -30,20 +36,36 @@ public class Empresa {
         }
     }
 
-    public void ingresarPedido(Pedido pedido){
+    public void ingresarPedido(Pedido pedido) {
 
-        try{
-            this.administradorPedidos.ingresarPedido(pedido);
-        } catch (Exception e){
+        try {
+            this.administradorPedidos.ingresarPedido(pedido,administradorRobots);
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
-    public void ingresarCliente(Cliente cliente){
-        try{
+    public void ingresarCliente(Cliente cliente) {
+        try {
             administradorClientes.ingresarCliente(cliente);
-        } catch (Exception e){ //TODO atrapar cualquier error que tire el administrador de cliente al crear Cliente
+        } catch (Exception e) { //TODO atrapar cualquier error que tire el administrador de cliente al crear Cliente
             e.printStackTrace();
         }
+    }
+
+    public AdministradorRobots getAdministradorRobots() {
+        return administradorRobots;
+    }
+
+    public AdministradorClientes getAdministradorClientes() {
+        return administradorClientes;
+    }
+
+    public AdministradorPedidos getAdministradorPedidos() {
+        return administradorPedidos;
+    }
+
+    public ValidadorPedido getValidadorPedido() {
+        return validadorPedido;
     }
 }

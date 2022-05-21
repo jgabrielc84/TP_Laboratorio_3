@@ -1,5 +1,6 @@
 package ar.edu.cuvl;
 
+import ar.edu.cuvl.controller.AdministradorRobots;
 import ar.edu.cuvl.model.*;
 import ar.edu.cuvl.model.robot.K311YA;
 import ar.edu.cuvl.model.type.Limpieza;
@@ -23,21 +24,24 @@ public class Main {
 
         //Prueba Caso 1
         //Datos de Pedido
-        Cliente cliente = administradorClientes.buscarCliente(1);
+        Cliente cliente = empresa.getAdministradorClientes().buscarCliente(1);
         boolean ordenamiento = true;
-        ArrayList <Superficie> tipoSuperficies = new ArrayList<>();
-        tipoSuperficies.add(Superficie.PISO);
-        tipoSuperficies.add(Superficie.MUEBLE);
+        ArrayList <TipoSuperficie> tipoSuperficies = new ArrayList<>();
+        TipoSuperficie piso = new Piso();
+        TipoSuperficie mueble = new Mueble();
+        tipoSuperficies.add(piso);
+        tipoSuperficies.add(mueble);
         String direccion = "Cordoba 1501";
+        TipoLimpieza tipoLimpieza = new LimpiezaCompleja();
 
         //Creo
-        Pedido pedido = new Pedido(1, cliente.getDni(), direccion, Limpieza.COMPLEJA, ordenamiento, tipoSuperficies, cliente, );
+        Pedido pedido = new Pedido(1, cliente.getDni(), direccion, tipoLimpieza, ordenamiento, tipoSuperficies);
         //public Pedido(int numeroPedido, int numeroCliente, String direccion, TipoLimpieza tipoLimpieza, boolean ordenamiento, ArrayList<TipoSuperficie> superficies) {
-
+        AdministradorRobots administradorRobots = new AdministradorRobots();
 
         try {
-            empresa.validarPedido(Pedido);
-            empresa.administradorPedidos.ingresarPedido(pedido);
+            empresa.validarPedido(pedido);
+            empresa.getAdministradorPedidos().ingresarPedido(pedido, administradorRobots);
         } catch (Exception e) {
             e.printStackTrace();
         }
