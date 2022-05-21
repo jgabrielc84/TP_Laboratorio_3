@@ -9,6 +9,9 @@ public class AdministradorClientes {
 
     private HashSet<Cliente> clientes;
 
+    public AdministradorClientes() {
+        this.clientes = new HashSet<>();
+    }
 
     public void ingresarCliente(Cliente cliente){
 
