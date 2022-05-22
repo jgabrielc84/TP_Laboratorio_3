@@ -13,10 +13,10 @@ import java.util.ArrayList;
 
 public class Empresa {
 
-    AdministradorRobots administradorRobots;
-    AdministradorClientes administradorClientes;
-    AdministradorPedidos administradorPedidos;
-    ValidadorPedido validadorPedido;
+    private AdministradorRobots administradorRobots;
+    private AdministradorClientes administradorClientes;
+    private AdministradorPedidos administradorPedidos;
+    private ValidadorPedido validadorPedido;
 
     public Empresa() {
         this.administradorRobots = new AdministradorRobots();
@@ -25,14 +25,17 @@ public class Empresa {
         this.validadorPedido = new ValidadorPedido();
     }
 
-    public void validarPedido(Pedido pedido) {
+    public void validarPedido(Pedido pedido) throws PedidoInvalidoException{
 
         try {
             this.validadorPedido.validarEsPedido(pedido);
+            System.out.println("Validacion Pedido OK");
         } catch (PedidoInvalidoException e) {
+            System.err.println(e.getMessage());
             e.printStackTrace();
         } catch (Exception e) {
             e.printStackTrace();
+            throw new PedidoInvalidoException(e.getMessage());
         }
     }
 

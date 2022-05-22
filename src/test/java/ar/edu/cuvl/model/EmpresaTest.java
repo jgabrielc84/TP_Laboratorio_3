@@ -2,7 +2,9 @@ package ar.edu.cuvl.model;
 
 import ar.edu.cuvl.controller.AdministradorRobots;
 import ar.edu.cuvl.exception.PedidoInvalidoException;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
@@ -13,8 +15,8 @@ class EmpresaTest {
 
     Empresa empresa;
 
-    @BeforeAll
-    void inicialaizer(){
+    @BeforeEach
+    void setUp(){
         empresa = new Empresa();
 
     }
@@ -45,13 +47,10 @@ class EmpresaTest {
 
 
         //Creo
-        Pedido pedido = new Pedido(1, cliente.getDni(), direccion, tipoLimpieza, ordenamiento, tipoSuperficies);
+        Pedido pedido = new Pedido(0, cliente.getDni(), direccion, tipoLimpieza, ordenamiento, tipoSuperficies);
         //public Pedido(int numeroPedido, int numeroCliente, String direccion, TipoLimpieza tipoLimpieza, boolean ordenamiento, ArrayList<TipoSuperficie> superficies) {
-        AdministradorRobots administradorRobots = new AdministradorRobots();
 
-        assertThrows(PedidoInvalidoException.class, () -> {
-            empresa.validarPedido(pedido);
-        });
+        assertThrows(PedidoInvalidoException.class, () -> empresa.validarPedido(pedido));
 
     }
 
