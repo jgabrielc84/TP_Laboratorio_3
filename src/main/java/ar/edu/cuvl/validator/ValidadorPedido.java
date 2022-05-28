@@ -5,6 +5,7 @@ import ar.edu.cuvl.model.Pedido;
 import ar.edu.cuvl.model.TipoLimpieza;
 import ar.edu.cuvl.model.TipoSuperficie;
 import ar.edu.cuvl.model.type.Limpieza;
+import ar.edu.cuvl.model.type.Superficie;
 
 import java.util.ArrayList;
 
@@ -27,8 +28,8 @@ public class ValidadorPedido {
     }
 
     public void validarPedido(Pedido pedido) throws PedidoInvalidoException {
-
-        if(true){ //TODO Validar que el pedido se puede procesar
+        //TODO Validar que el pedido pueda ser llevado a cabo segun cliente
+        if(false){
             throw new PedidoInvalidoException("Pedido invalidado");
         }
     }
@@ -74,6 +75,15 @@ public class ValidadorPedido {
     }
 
     private void validarSuperficies(Pedido pedido) throws Exception{
-        //TODO ver como validar una Direccion
+
+        for (TipoSuperficie tipoSuperficie: pedido.getSuperficies()) {
+            if(!tipoSuperficie.getTipo().equals(Superficie.PISO) ||
+               !tipoSuperficie.getTipo().equals(Superficie.MUEBLE) ||
+               !tipoSuperficie.getTipo().equals(null)){
+                this.mensaje = "Superficie invalida";
+                throw new Exception();
+            }
+        }
     }
+
 }

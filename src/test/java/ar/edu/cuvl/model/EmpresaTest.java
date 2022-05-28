@@ -14,10 +14,19 @@ import static org.junit.jupiter.api.Assertions.*;
 class EmpresaTest {
 
     Empresa empresa;
+    Cliente cliente;
 
     @BeforeEach
     void setUp(){
         empresa = new Empresa();
+        TipoServicio tipoServicio = new Economic();
+        Cliente cliente1 = new Cliente(12345678,tipoServicio);
+
+        empresa.ingresarCliente(cliente1);
+
+        //Datos de Pedido
+        this.cliente = empresa.getAdministradorClientes().buscarCliente(12345678);
+
 
     }
 
@@ -27,15 +36,7 @@ class EmpresaTest {
     }
 
     @Test
-    void testValidarPedidoError() {
-        TipoServicio tipoServicio = new Economic();
-        Cliente cliente1 = new Cliente(11111111,tipoServicio);
-
-        empresa.ingresarCliente(cliente1);
-
-        //Prueba Caso 1
-        //Datos de Pedido
-        Cliente cliente = empresa.getAdministradorClientes().buscarCliente(1);
+    void testNumeroPedidoError() {
         boolean ordenamiento = true;
         ArrayList<TipoSuperficie> tipoSuperficies = new ArrayList<>();
         TipoSuperficie piso = new Piso();
@@ -44,7 +45,6 @@ class EmpresaTest {
         tipoSuperficies.add(mueble);
         String direccion = "Cordoba 1501";
         TipoLimpieza tipoLimpieza = new LimpiezaCompleja();
-
 
         //Creo
         Pedido pedido = new Pedido(0, cliente.getDni(), direccion, tipoLimpieza, ordenamiento, tipoSuperficies);

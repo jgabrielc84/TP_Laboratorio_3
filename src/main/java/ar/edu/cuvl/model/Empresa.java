@@ -25,19 +25,19 @@ public class Empresa {
         this.validadorPedido = new ValidadorPedido();
     }
 
-    public void validarPedido(Pedido pedido) throws PedidoInvalidoException{
-
-        try {
-            this.validadorPedido.validarEsPedido(pedido);
-            System.out.println("Validacion Pedido OK");
-        } catch (PedidoInvalidoException e) {
-            System.err.println(e.getMessage());
-            e.printStackTrace();
-        } catch (Exception e) {
-            e.printStackTrace();
-            throw new PedidoInvalidoException(e.getMessage());
-        }
-    }
+//    public void validarPedido(Pedido pedido) throws PedidoInvalidoException{
+//
+//        try {
+//            this.validadorPedido.validarEsPedido(pedido);
+//            System.out.println("Validacion Pedido: OK");
+//        } catch (PedidoInvalidoException e) {
+//            //administradorPedidos.getPedidosRechazados().add(pedido);
+//            throw new PedidoInvalidoException(e.getMessage());
+//        } catch (Exception e) {
+//            //e.printStackTrace();
+//            //throw new PedidoInvalidoException(e.getMessage());
+//        }
+//    }
 
     public void ingresarPedido(Pedido pedido) {
 
