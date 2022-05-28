@@ -32,9 +32,9 @@ public class AdministradorClientes {
     public Cliente buscarCliente(int dniCliente) {
         Cliente clienteResultado = new Cliente();
 
-        for(Cliente c: this.clientes){
-            if( c.getDni() == dniCliente ){
-                clienteResultado = c;
+        for(Cliente cliente : this.clientes){
+            if( cliente.getDni() == dniCliente ){
+                clienteResultado = cliente;
             }
         }
 

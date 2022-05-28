@@ -30,7 +30,8 @@ public class AdministradorPedidos {
 
         try {
             this.validadorPedido.validarPedido(pedido);
-            ArrayList<Robot> robots = this.asignadorRobot.armameLaListaDeRobotPorFa(pedido, administradorRobots);
+
+            //*esto no va* //ArrayList<Robot> robots = this.asignadorRobot.armameLaListaDeRobotPorFa(pedido, administradorRobots);
             this.pedidosValidados.put(pedido, robots);
         }
         catch (PedidoInvalidoException e){
