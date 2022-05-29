@@ -17,7 +17,7 @@ public class Empresa {
     private AdministradorClientes administradorClientes;
     private AdministradorPedidos administradorPedidos;
     private ValidadorPedido validadorPedido;
-
+    private String message;
     public Empresa() {
         this.administradorRobots = new AdministradorRobots();
         this.administradorClientes = new AdministradorClientes();
@@ -39,13 +39,14 @@ public class Empresa {
 //        }
 //    }
 
-    public void ingresarPedido(Pedido pedido) {
+    public String ingresarPedido(Pedido pedido) {
 
         try {
             this.administradorPedidos.ingresarPedido(pedido,administradorRobots);
         } catch (Exception e) {
-            e.printStackTrace();
+            message=e.getMessage();
         }
+        return message;
     }
 
     public void ingresarCliente(Cliente cliente) {

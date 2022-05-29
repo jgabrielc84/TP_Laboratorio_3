@@ -10,6 +10,7 @@ import ar.edu.cuvl.validator.ValidadorPedido;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 public class AdministradorPedidos {
 
@@ -17,6 +18,7 @@ public class AdministradorPedidos {
     private ArrayList<Pedido> pedidosRechazados;
     private ValidadorPedido validadorPedido;
     private AsignadorRobot asignadorRobot;
+    private ArrayList<Robot> robots=new ArrayList<>();
 
     public HashMap<Pedido, ArrayList<Robot>> getPedidosValidados() {
         return pedidosValidados;
@@ -32,7 +34,7 @@ public class AdministradorPedidos {
             this.validadorPedido.validarPedido(pedido);
 
             //*esto no va* //ArrayList<Robot> robots = this.asignadorRobot.armameLaListaDeRobotPorFa(pedido, administradorRobots);
-            this.pedidosValidados.put(pedido, robots);
+            this.pedidosValidados.put(pedido,robots);
         }
         catch (PedidoInvalidoException e){
             //TODO: manejar la respuesta de excepcion

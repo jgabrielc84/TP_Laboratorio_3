@@ -2,6 +2,7 @@ package ar.edu.cuvl.model;
 
 import ar.edu.cuvl.controller.AdministradorRobots;
 import ar.edu.cuvl.exception.PedidoInvalidoException;
+import ar.edu.cuvl.validator.ValidadorPedido;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
@@ -15,6 +16,10 @@ class EmpresaTest {
 
     Empresa empresa;
     Cliente cliente;
+    Pedido pedido;
+    LimpiezaCompleja limpiezaCompleja=new LimpiezaCompleja();
+    ArrayList<TipoSuperficie> tipoSuperficies;
+    ValidadorPedido validadorPedido=new ValidadorPedido();
 
     @BeforeEach
     void setUp(){
@@ -23,6 +28,10 @@ class EmpresaTest {
         Cliente cliente1 = new Cliente(12345678,tipoServicio);
 
         empresa.ingresarCliente(cliente1);
+        tipoSuperficies=new ArrayList<>();
+
+
+
 
         //Datos de Pedido
         this.cliente = empresa.getAdministradorClientes().buscarCliente(12345678);
@@ -36,21 +45,10 @@ class EmpresaTest {
     }
 
     @Test
-    void testNumeroPedidoError() {
-        boolean ordenamiento = true;
-        ArrayList<TipoSuperficie> tipoSuperficies = new ArrayList<>();
-        TipoSuperficie piso = new Piso();
-        TipoSuperficie mueble = new Mueble();
-        tipoSuperficies.add(piso);
-        tipoSuperficies.add(mueble);
-        String direccion = "Cordoba 1501";
-        TipoLimpieza tipoLimpieza = new LimpiezaCompleja();
+    void economicNoPuedeOrdenar() {
+        pedido=new Pedido(5,6655,"asas",limpiezaCompleja,true,tipoSuperficies);
+        assertThrows(PedidoInvalidoException.class , ()->this.validadorPedido.validarPedido(pedido));
 
-        //Creo
-        Pedido pedido = new Pedido(0, cliente.getDni(), direccion, tipoLimpieza, ordenamiento, tipoSuperficies);
-        //public Pedido(int numeroPedido, int numeroCliente, String direccion, TipoLimpieza tipoLimpieza, boolean ordenamiento, ArrayList<TipoSuperficie> superficies) {
-
-        assertThrows(PedidoInvalidoException.class, () -> empresa.validarPedido(pedido));
 
     }
 
