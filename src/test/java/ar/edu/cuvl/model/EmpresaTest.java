@@ -2,6 +2,8 @@ package ar.edu.cuvl.model;
 
 import ar.edu.cuvl.controller.AdministradorRobots;
 import ar.edu.cuvl.exception.PedidoInvalidoException;
+import ar.edu.cuvl.model.type.Limpieza;
+import ar.edu.cuvl.validator.ValidadorPedido;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
@@ -15,12 +17,17 @@ class EmpresaTest {
 
     Empresa empresa;
     Cliente cliente;
+    Pedido pedido;
+    LimpiezaCompleja limpiezaCompleja;
+    ArrayList<TipoSuperficie> tipoSuperficies;
+    ValidadorPedido validadorPedido;
 
     @BeforeEach
     void setUp(){
         empresa = new Empresa();
         TipoServicio tipoServicio = new Economic();
         Cliente cliente1 = new Cliente(12345678,tipoServicio);
+
 
         empresa.ingresarCliente(cliente1);
 
@@ -52,10 +59,15 @@ class EmpresaTest {
 
         assertThrows(PedidoInvalidoException.class, () -> empresa.validarPedido(pedido));
 
+
     }
 
     @Test
-    void ingresarPedido() {
+    void EconomicNoPuedeOrdenar() {
+        validadorPedido=new ValidadorPedido();
+        pedido=new Pedido(4,44,"asas",limpiezaCompleja,true,tipoSuperficies);
+        assertThrows(PedidoInvalidoException.class,()->this.validadorPedido.validarPedido(pedido));
+
     }
 
     @Test
