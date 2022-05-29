@@ -1,5 +1,9 @@
 package ar.edu.cuvl.model;
 
-public class Piso extends TipoSuperficie{
+import ar.edu.cuvl.model.type.Superficie;
 
+public class Piso extends TipoSuperficie{
+    public Piso() {
+        super(Superficie.PISO);
+    }
 }

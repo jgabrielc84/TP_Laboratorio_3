@@ -1,9 +1,7 @@
 package ar.edu.cuvl.model;
 
-import ar.edu.cuvl.controller.AdministradorRobots;
 import ar.edu.cuvl.exception.PedidoInvalidoException;
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.BeforeAll;
+import ar.edu.cuvl.model.tipoLimpieza.LimpiezaCompleja;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -32,7 +30,7 @@ class EmpresaTest {
 
     @Test
     void testValidarPedidoOk() {
-
+        assertTrue();
     }
 
     @Test
