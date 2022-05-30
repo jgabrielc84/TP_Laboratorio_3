@@ -2,12 +2,9 @@ package ar.edu.cuvl;
 
 import ar.edu.cuvl.controller.AdministradorRobots;
 import ar.edu.cuvl.model.*;
-import ar.edu.cuvl.model.robot.K311YA;
-import ar.edu.cuvl.model.type.Limpieza;
-import ar.edu.cuvl.model.type.Superficie;
+import ar.edu.cuvl.model.tipoLimpieza.LimpiezaCompleja;
 
 import java.util.ArrayList;
-import java.util.stream.Collectors;
 
 public class Main {
 
@@ -40,12 +37,14 @@ public class Main {
         AdministradorRobots administradorRobots = new AdministradorRobots();
 
         try {
-
+            empresa.validarPedido(pedido);
             empresa.getAdministradorPedidos().ingresarPedido(pedido, administradorRobots);
         } catch (Exception e) {
             e.printStackTrace();
         }
 
+
+        
 
     }
 }

@@ -4,6 +4,9 @@ import ar.edu.cuvl.model.type.Superficie;
 public abstract class TipoSuperficie {
     private Superficie tipoSuperficie;
 
+    public TipoSuperficie(Superficie tipoSuperficie) {
+        this.tipoSuperficie = tipoSuperficie;
+    }
 
     public Superficie getTipo() {
         return tipoSuperficie;

@@ -1,6 +1,7 @@
 package ar.edu.cuvl.controller;
 
 import ar.edu.cuvl.exception.ExisteClienteException;
+import ar.edu.cuvl.exception.NoSeEncontroClienteException;
 import ar.edu.cuvl.model.Cliente;
 
 import java.util.HashSet;
@@ -29,16 +30,16 @@ public class AdministradorClientes {
         }
     }
 
-    public Cliente buscarCliente(int dniCliente) {
-        Cliente clienteResultado = new Cliente();
+    public Cliente buscarCliente(int dniCliente) throws NoSeEncontroClienteException {
 
-        for(Cliente cliente : this.clientes){
-            if( cliente.getDni() == dniCliente ){
-                clienteResultado = cliente;
+
+            for (Cliente cliente : this.clientes) {
+                if (cliente.getDni() == dniCliente) {
+                    return cliente;
+                }
             }
-        }
 
-        return clienteResultado;
+        throw new NoSeEncontroClienteException("No se encontro el cliente");
     }
 
 }
