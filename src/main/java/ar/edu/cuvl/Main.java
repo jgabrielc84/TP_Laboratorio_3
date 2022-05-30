@@ -21,7 +21,7 @@ public class Main {
 
         //Prueba Caso 1
         //Datos de Pedido
-        Cliente cliente = empresa.getAdministradorClientes().buscarCliente(1);
+       // Cliente cliente = empresa.getAdministradorClientes().buscarCliente(1);
         boolean ordenamiento = true;
         ArrayList <TipoSuperficie> tipoSuperficies = new ArrayList<>();
         TipoSuperficie piso = new Piso();
@@ -32,13 +32,13 @@ public class Main {
         TipoLimpieza tipoLimpieza = new LimpiezaCompleja();
 
         //Creo
-        Pedido pedido = new Pedido(1, cliente.getDni(), direccion, tipoLimpieza, ordenamiento, tipoSuperficies);
+        //Pedido pedido = new Pedido(1, cliente.getDni(), direccion, tipoLimpieza, ordenamiento, tipoSuperficies);
         //public Pedido(int numeroPedido, int numeroCliente, String direccion, TipoLimpieza tipoLimpieza, boolean ordenamiento, ArrayList<TipoSuperficie> superficies) {
         AdministradorRobots administradorRobots = new AdministradorRobots();
 
         try {
-            empresa.validarPedido(pedido);
-            empresa.getAdministradorPedidos().ingresarPedido(pedido, administradorRobots);
+           // empresa.validarPedido(pedido);
+          //  empresa.getAdministradorPedidos().ingresarPedido(pedido, administradorRobots);
         } catch (Exception e) {
             e.printStackTrace();
         }

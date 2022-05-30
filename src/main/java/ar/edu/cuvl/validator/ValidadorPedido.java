@@ -29,9 +29,10 @@ public class ValidadorPedido {
 
     public void validarPedido(Pedido pedido) throws PedidoInvalidoException {
         //TODO Validar que el pedido pueda ser llevado a cabo segun cliente
-        if(false){
+        if(true) {
             throw new PedidoInvalidoException("Pedido invalidado");
         }
+
     }
 
     private void validarNumeroPedido(Pedido pedido) throws Exception {
