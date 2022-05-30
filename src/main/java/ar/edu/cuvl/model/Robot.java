@@ -1,6 +1,7 @@
 package ar.edu.cuvl.model;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 
 public abstract class Robot {
 
@@ -8,7 +9,10 @@ public abstract class Robot {
     private float costoHora;
     private boolean ordena;
     private ArrayList<TipoSuperficie> superficies;
-    private TipoLimpieza tipoLimpieza;
+
+    HashSet<Pedido> pedidos;
+
+
 
     public int getId() {
         return id;
@@ -42,11 +46,4 @@ public abstract class Robot {
         this.superficies = superficies;
     }
 
-    public TipoLimpieza getTipoLimpieza() {
-        return tipoLimpieza;
-    }
-
-    public void setTipoLimpieza(TipoLimpieza tipoLimpieza) {
-        this.tipoLimpieza = tipoLimpieza;
-    }
 }

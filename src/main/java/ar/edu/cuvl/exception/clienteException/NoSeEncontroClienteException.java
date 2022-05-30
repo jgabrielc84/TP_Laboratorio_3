@@ -1,4 +1,4 @@
-package ar.edu.cuvl.exception;
+package ar.edu.cuvl.exception.clienteException;
 
 public class NoSeEncontroClienteException extends Exception {
 

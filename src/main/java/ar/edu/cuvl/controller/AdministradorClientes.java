@@ -1,7 +1,7 @@
 package ar.edu.cuvl.controller;
 
-import ar.edu.cuvl.exception.ExisteClienteException;
-import ar.edu.cuvl.exception.NoSeEncontroClienteException;
+import ar.edu.cuvl.exception.clienteException.ExisteClienteException;
+import ar.edu.cuvl.exception.clienteException.NoSeEncontroClienteException;
 import ar.edu.cuvl.model.Cliente;
 
 import java.util.HashSet;
