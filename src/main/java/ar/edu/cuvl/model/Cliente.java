@@ -1,11 +1,32 @@
 package ar.edu.cuvl.model;
 
+import java.time.LocalDate;
 import java.util.Objects;
 
 public class Cliente {
 
     private int dni;
     private TipoServicio tipoServicio;
+
+    private float saldo;
+
+    private LocalDate fechaUltimaLimpieza;
+
+    public float getSaldo() {
+        return saldo;
+    }
+
+    public void setSaldo(float saldo) {
+        this.saldo = saldo;
+    }
+
+    public LocalDate getFechaUltimaLimpieza() {
+        return fechaUltimaLimpieza;
+    }
+
+    public void setFechaUltimaLimpieza(LocalDate fechaUltimaLimpieza) {
+        this.fechaUltimaLimpieza = fechaUltimaLimpieza;
+    }
 
     public Cliente() {
     }

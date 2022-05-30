@@ -1,13 +1,10 @@
 package ar.edu.cuvl.validator;
 
-import ar.edu.cuvl.exception.PedidoInvalidoException;
+import ar.edu.cuvl.exception.pedidoException.PedidoInvalidoException;
 import ar.edu.cuvl.model.Pedido;
-import ar.edu.cuvl.model.TipoLimpieza;
 import ar.edu.cuvl.model.TipoSuperficie;
 import ar.edu.cuvl.model.type.Limpieza;
 import ar.edu.cuvl.model.type.Superficie;
-
-import java.util.ArrayList;
 
 public class ValidadorPedido {
 

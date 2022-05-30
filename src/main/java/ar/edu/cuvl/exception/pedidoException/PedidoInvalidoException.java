@@ -1,4 +1,4 @@
-package ar.edu.cuvl.exception;
+package ar.edu.cuvl.exception.pedidoException;
 
 public class PedidoInvalidoException extends Exception{
 
