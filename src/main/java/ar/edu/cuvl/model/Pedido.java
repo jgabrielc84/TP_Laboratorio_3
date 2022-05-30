@@ -1,6 +1,7 @@
 package ar.edu.cuvl.model;
 
-import ar.edu.cuvl.model.type.Limpieza;
+import ar.edu.cuvl.interfaces.TipoLimpieza;
+import ar.edu.cuvl.interfaces.TipoSuperficie;
 
 import java.util.ArrayList;
 

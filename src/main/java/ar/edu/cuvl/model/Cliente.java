@@ -1,7 +1,8 @@
 package ar.edu.cuvl.model;
 
+import ar.edu.cuvl.interfaces.TipoServicio;
+
 import java.time.LocalDate;
-import java.util.Objects;
 
 public class Cliente {
 

@@ -1,13 +1,18 @@
 package ar.edu.cuvl.model;
 
-import ar.edu.cuvl.exception.PedidoInvalidoException;
+import ar.edu.cuvl.exception.pedidoException.PedidoInvalidoException;
+import ar.edu.cuvl.interfaces.TipoLimpieza;
+import ar.edu.cuvl.interfaces.TipoServicio;
+import ar.edu.cuvl.interfaces.TipoSuperficie;
+import ar.edu.cuvl.model.tipoCliente.Economic;
 import ar.edu.cuvl.model.tipoLimpieza.LimpiezaCompleja;
+import ar.edu.cuvl.model.tipoSuerficie.Mueble;
+import ar.edu.cuvl.model.tipoSuerficie.Piso;
 import ar.edu.cuvl.validator.ValidadorPedido;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -25,7 +30,7 @@ class EmpresaTest {
         Cliente cliente1 = new Cliente(12345678,tipoServicio);
 
         LimpiezaCompleja limpiezaCompleja=new LimpiezaCompleja();
-        empresa.ingresarCliente(cliente1);
+//        empresa.ingresarCliente(cliente1);
         ArrayList<TipoSuperficie> tipoSuperficies=new ArrayList<>();
         pedido=new Pedido(5,6655,"asas",limpiezaCompleja,true,tipoSuperficies);
         validadorPedido=new ValidadorPedido();
@@ -63,10 +68,7 @@ class EmpresaTest {
 
     @Test
     void economicNoPuedeOrdenar() {
-
         assertThrows(PedidoInvalidoException.class , ()->this.validadorPedido.validarPedido(pedido));
-
-
     }
 
     @Test

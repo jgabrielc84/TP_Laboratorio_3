@@ -2,7 +2,7 @@ package ar.edu.cuvl.validator;
 
 import ar.edu.cuvl.exception.pedidoException.PedidoInvalidoException;
 import ar.edu.cuvl.model.Pedido;
-import ar.edu.cuvl.model.TipoSuperficie;
+import ar.edu.cuvl.interfaces.TipoSuperficie;
 import ar.edu.cuvl.model.type.Limpieza;
 import ar.edu.cuvl.model.type.Superficie;
 
