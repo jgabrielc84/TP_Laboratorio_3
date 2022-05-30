@@ -1,5 +1,7 @@
 package ar.edu.cuvl.model;
 
+import ar.edu.cuvl.exception.ClienteMorosoException;
+
 import java.util.Objects;
 
 public class Cliente {
@@ -46,5 +48,9 @@ public class Cliente {
     @Override
     public int hashCode() {
         return this.dni;
+    }
+
+    void calcularMora() throws ClienteMorosoException {
+        throw new ClienteMorosoException();
     }
 }

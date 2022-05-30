@@ -1,6 +1,7 @@
 package ar.edu.cuvl.model;
 
 import ar.edu.cuvl.controller.AdministradorRobots;
+import ar.edu.cuvl.exception.ClienteMorosoException;
 import ar.edu.cuvl.exception.PedidoInvalidoException;
 import ar.edu.cuvl.model.type.Limpieza;
 import ar.edu.cuvl.validator.ValidadorPedido;
@@ -21,6 +22,7 @@ class EmpresaTest {
     LimpiezaCompleja limpiezaCompleja;
     ArrayList<TipoSuperficie> tipoSuperficies;
     ValidadorPedido validadorPedido;
+    Classic classic;
 
     @BeforeEach
     void setUp(){
@@ -71,7 +73,11 @@ class EmpresaTest {
     }
 
     @Test
-    void ingresarCliente() {
+    void ClienteEsMoroso() {
+        classic=new Classic();
+        assertThrows(ClienteMorosoException.class,()->cliente.calcularMora());
+
+
     }
 
     @Test
