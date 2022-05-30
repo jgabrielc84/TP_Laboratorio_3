@@ -40,7 +40,7 @@ public class Main {
         AdministradorRobots administradorRobots = new AdministradorRobots();
 
         try {
-            empresa.validarPedido(pedido);
+
             empresa.getAdministradorPedidos().ingresarPedido(pedido, administradorRobots);
         } catch (Exception e) {
             e.printStackTrace();
