@@ -1,8 +1,14 @@
 package ar.edu.cuvl;
 
 import ar.edu.cuvl.controller.AdministradorRobots;
+import ar.edu.cuvl.interfaces.TipoLimpieza;
+import ar.edu.cuvl.interfaces.TipoServicio;
+import ar.edu.cuvl.interfaces.TipoSuperficie;
 import ar.edu.cuvl.model.*;
+import ar.edu.cuvl.model.tipoCliente.Economic;
 import ar.edu.cuvl.model.tipoLimpieza.LimpiezaCompleja;
+import ar.edu.cuvl.model.tipoSuerficie.Mueble;
+import ar.edu.cuvl.model.tipoSuerficie.Piso;
 
 import java.util.ArrayList;
 
@@ -14,9 +20,9 @@ public class Main {
 
         //Crear Clientes en AdministradorClientes
         TipoServicio tipoServicio = new Economic();
-        Cliente cliente1 = new Cliente(11111111,tipoServicio);
+//        Cliente cliente1 = new Cliente(11111111,tipoServicio);
 
-        empresa.ingresarCliente(cliente1);
+//        empresa.ingresarCliente(cliente1);
 
 
         //Prueba Caso 1
