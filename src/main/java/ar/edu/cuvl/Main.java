@@ -20,7 +20,7 @@ public class Main {
 
         //Crear Clientes en AdministradorClientes
         TipoServicio tipoServicio = new Economic();
-        Cliente cliente1 = new Cliente(11111111,tipoServicio);
+//        Cliente cliente1 = new Cliente(11111111,tipoServicio);
 
 //        empresa.ingresarCliente(cliente1);
 

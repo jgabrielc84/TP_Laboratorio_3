@@ -1,5 +1,6 @@
 package ar.edu.cuvl.model;
 
+import ar.edu.cuvl.exception.clienteException.ClienteMorosoException;
 import ar.edu.cuvl.interfaces.TipoServicio;
 
 import java.time.LocalDate;
@@ -32,9 +33,11 @@ public class Cliente {
     public Cliente() {
     }
 
-    public Cliente(int dni, TipoServicio tipoServicio) {
+    public Cliente(int dni, TipoServicio tipoServicio, float saldo, LocalDate fechaUltimaLimpieza) {
         this.dni = dni;
         this.tipoServicio = tipoServicio;
+        this.saldo = saldo;
+        this.fechaUltimaLimpieza = fechaUltimaLimpieza;
     }
 
     public int getDni() {
@@ -69,4 +72,6 @@ public class Cliente {
     public int hashCode() {
         return this.dni;
     }
+
+
 }
