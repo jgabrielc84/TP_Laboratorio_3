@@ -6,15 +6,18 @@ public abstract class TipoReparacion {
 
     private Reparacion tipoServicioReparacion;
 
-    public TipoReparacion(Reparacion tipoServicioReparacion) {
+    private float precio;
+
+    public TipoReparacion(Reparacion tipoServicioReparacion, float precio) {
         this.tipoServicioReparacion = tipoServicioReparacion;
+        this.precio = precio;
     }
 
     public Reparacion getTipoServicioReparacion() {
         return tipoServicioReparacion;
     }
 
-    public void setTipoServicioReparacion(Reparacion tipoServicioReparacion) {
-        this.tipoServicioReparacion = tipoServicioReparacion;
+    public float getPrecio() {
+        return precio;
     }
 }

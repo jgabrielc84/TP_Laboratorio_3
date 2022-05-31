@@ -8,12 +8,9 @@ public class ServicioReparacion {
 
     private int complejidad;
 
-    private float precio;
-
-    public ServicioReparacion(TipoReparacion tipoReparacion, int complejidad, float precio) {
+    public ServicioReparacion(TipoReparacion tipoReparacion, int complejidad) {
         this.tipoReparacion = tipoReparacion;
         this.complejidad = complejidad;
-        this.precio = precio;
     }
 
     public TipoReparacion getTipoReparacion() {
@@ -32,11 +29,4 @@ public class ServicioReparacion {
         this.complejidad = complejidad;
     }
 
-    public float getPrecio() {
-        return precio;
-    }
-
-    public void setPrecio(float precio) {
-        this.precio = precio;
-    }
 }

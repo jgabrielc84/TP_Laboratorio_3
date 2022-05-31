@@ -5,7 +5,7 @@ import ar.edu.cuvl.model.type.Reparacion;
 
 public class Gas extends TipoReparacion {
 
-    public Gas() {
-        super(Reparacion.GAS);
+    public Gas(float precio) {
+        super(Reparacion.GAS, precio);
     }
 }
