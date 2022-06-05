@@ -34,7 +34,7 @@ public class AbstractFactoryTipoReparacion {
                 }
                 break;
             default:
-//                TODO throws Exception;
+//                TODO throws Exception con mensaje de complejidad invalida;
         }
 
     }
