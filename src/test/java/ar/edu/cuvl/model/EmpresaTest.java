@@ -6,7 +6,8 @@ import ar.edu.cuvl.interfaces.TipoServicio;
 import ar.edu.cuvl.interfaces.TipoSuperficie;
 import ar.edu.cuvl.model.tipoCliente.Classic;
 import ar.edu.cuvl.model.tipoCliente.Economic;
-import ar.edu.cuvl.model.tipoLimpieza.LimpiezaCompleja;
+import ar.edu.cuvl.model.tipoTarea.TareaCompleja;
+import ar.edu.cuvl.validator.ValidadorCliente;
 import ar.edu.cuvl.validator.ValidadorPedido;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -21,8 +22,9 @@ class EmpresaTest {
     Empresa empresa;
     Cliente cliente;
     Pedido pedido;
-    LimpiezaCompleja limpiezaCompleja;
+    TareaCompleja limpiezaCompleja;
     ArrayList<TipoSuperficie> tipoSuperficies;
+    ValidadorCliente validadorCliente;
     ValidadorPedido validadorPedido;
     Classic classic;
 
@@ -31,7 +33,7 @@ class EmpresaTest {
         empresa = new Empresa();
         TipoServicio tipoServicio = new Economic();
         cliente = new Cliente(12345678,tipoServicio, 200F, LocalDate.now().minusDays(2));
-        LimpiezaCompleja limpiezaCompleja=new LimpiezaCompleja();
+        TareaCompleja limpiezaCompleja=new TareaCompleja();
         ArrayList<TipoSuperficie> tipoSuperficies=new ArrayList<>();
 //        pedido=new Pedido(5,6655,"asas",limpiezaCompleja,true,tipoSuperficies);
         validadorPedido=new ValidadorPedido();
@@ -45,7 +47,7 @@ class EmpresaTest {
     void ClienteEsMoroso() {
         classic = new Classic();
         cliente.setTipoServicio(classic);
-        assertThrows(ClienteMorosoException.class,()->this.validadorPedido.esMoroso(cliente));
+        assertThrows(ClienteMorosoException.class,()->this.validadorCliente.esMoroso(cliente));
     }
 
     @Test

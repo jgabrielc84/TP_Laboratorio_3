@@ -1,5 +1,8 @@
 package ar.edu.cuvl.interfaces;
 
+import ar.edu.cuvl.exception.pedidoException.NoPuedeLimpiarException;
+import ar.edu.cuvl.exception.pedidoException.NoPuedeOrdenarException;
+import ar.edu.cuvl.model.Pedido;
 import ar.edu.cuvl.model.type.Servicio;
 
 public abstract class TipoServicio {
@@ -26,4 +29,8 @@ public abstract class TipoServicio {
     public void setDeudaMaxima(int deudaMaxima) {
         this.deudaMaxima = deudaMaxima;
     }
+
+
+   abstract public void puedeLimpiar(Pedido pedido) throws NoPuedeLimpiarException;
+    abstract public void puedeOrdenar(Pedido pedido) throws NoPuedeOrdenarException;
 }
