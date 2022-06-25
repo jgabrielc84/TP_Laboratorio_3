@@ -28,6 +28,5 @@ public abstract class TipoLimpieza {
 
     public abstract int calcularCostoRobots(List<Robot> robots, LimpiezaOrdenamiento tarea);
 
-    public abstract int calcularCostoEmpleados(List<ServicioReparacion> servicioReparacions);
-    //public abstract int sumarCostos(Pedido pedido);}
+
 }

@@ -8,31 +8,9 @@ import ar.edu.cuvl.model.type.LimpiezaOrdenamiento;
 
 import java.util.List;
 
-public class SimpleTipo extends TipoLimpieza {
-
-    public SimpleTipo() {
-        super(Limpieza.SIMPLE);
-    }
+public class SimpleTipo extends TipoComplejidadReparacion {
 
 
-    @Override
-    public int calcularCostoRobots(List<Robot> robots, LimpiezaOrdenamiento tarea){
-        int suma=0;
-        for (Robot robot: robots){
-            suma+=robot.getCostoHora()*tarea.getHorasTarea();
-        }
-
-        return suma;
-    }
-    public int calcularCostoEmpleados(List<ServicioReparacion> servicioReparacions){
-        int suma=0;
-
-        for (ServicioReparacion s: servicioReparacions) {
-            int complejidadTarea=s.getComplejidad();
-            suma += (s.getEmpleado().getSueldoBase() / 160) * complejidadTarea;
-        }
-        return suma;
-    }
 
 
     //
