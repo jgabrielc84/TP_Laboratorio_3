@@ -1,17 +1,12 @@
 package ar.edu.cuvl.model.tipoTarea;
 
 import ar.edu.cuvl.interfaces.Robot;
-import ar.edu.cuvl.interfaces.TipoLimpieza;
-import ar.edu.cuvl.model.type.Limpieza;
+import ar.edu.cuvl.interfaces.TipoComplejidadLimpieza;
 import ar.edu.cuvl.model.type.LimpiezaOrdenamiento;
 
 import java.util.List;
 
-public class LimpiezaCompleja extends TipoLimpieza {
-
-    public LimpiezaCompleja() {
-        super(Limpieza.COMPLEJA);
-    }
+public class LimpiezaCompleja extends TipoComplejidadLimpieza {
     private final float factorAjuste=1000;
 
 

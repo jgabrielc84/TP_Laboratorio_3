@@ -22,9 +22,9 @@ public class AsignadorComplejidad {
 
              if(validadorComplejidad.esLimpiezaSimple(l)) {
 
-              l.setTipoLimpieza(new LimpiezaSimple());
+              l.setTipoComplejidadLimpieza(new LimpiezaSimple());
           } else {
-                 l.setTipoLimpieza(new LimpiezaCompleja());
+                 l.setTipoComplejidadLimpieza(new LimpiezaCompleja());
              }
         }
 

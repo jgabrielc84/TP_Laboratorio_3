@@ -9,9 +9,7 @@ public class Cliente {
 
     private int dni;
     private TipoServicio tipoServicio;
-
     private float saldo;
-
     private LocalDate fechaUltimaLimpieza;
     private int cantidadOrdenamientos;
     private int cantidadLimpiezas;
