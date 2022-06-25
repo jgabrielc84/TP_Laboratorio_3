@@ -5,12 +5,14 @@ import ar.edu.cuvl.model.tipoTarea.TareaCompleja;
 import ar.edu.cuvl.model.tipoTarea.TareaSimple;
 import ar.edu.cuvl.model.type.LimpiezaOrdenamiento;
 import ar.edu.cuvl.validator.ValidadorComplejidad;
+import com.sun.source.tree.InstanceOfTree;
 
 import java.util.List;
 
 public class AsignadorComplejidad {
 
     ValidadorComplejidad validadorComplejidad;
+
 
 
 
@@ -21,6 +23,7 @@ public class AsignadorComplejidad {
              if(validadorComplejidad.esLimpiezaSimple(l)) {
 
               l.setTipoLimpieza(new TareaSimple());
+
           } else {
                  l.setTipoLimpieza(new TareaCompleja());
              }
