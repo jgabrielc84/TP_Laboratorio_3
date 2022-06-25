@@ -1,19 +1,17 @@
 package ar.edu.cuvl.model;
 
-import ar.edu.cuvl.interfaces.TipoLimpieza;
-import ar.edu.cuvl.interfaces.TipoResiduo;
-import ar.edu.cuvl.interfaces.TipoSuperficie;
+import ar.edu.cuvl.interfaces.Robot;
+import ar.edu.cuvl.model.type.LimpiezaOrdenamiento;
 
-import java.util.ArrayList;
+import java.util.List;
 
 public abstract class Pedido {
 
     private int numeroPedido;
     private Cliente cliente;
-    private Domicilio domicilio;
-    private boolean ordenamiento;
-    private TipoResiduo tipoResiduo;
-    private ArrayList <TipoSuperficie> superficies;
+    private String direccion;
+    private List<ServicioReparacion> servicioReparacions;
+    private  List<LimpiezaOrdenamiento> limpiezaOrdenamientos;
 
 
 
@@ -25,21 +23,6 @@ public abstract class Pedido {
         this.numeroPedido = numeroPedido;
     }
 
-    public boolean isOrdenamiento() {
-        return ordenamiento;
-    }
-
-    public void setOrdenamiento(boolean ordenamiento) {
-        this.ordenamiento = ordenamiento;
-    }
-
-    public ArrayList<TipoSuperficie> getSuperficies() {
-        return superficies;
-    }
-
-    public void setSuperficies(ArrayList<TipoSuperficie> superficies) {
-        this.superficies = superficies;
-    }
 
     public Cliente getCliente() {
         return cliente;
@@ -49,19 +32,29 @@ public abstract class Pedido {
         this.cliente = cliente;
     }
 
-    public Domicilio getDomicilio() {
-        return domicilio;
+
+    public List<ServicioReparacion> getServicioReparacions() {
+        return servicioReparacions;
     }
 
-    public void setDomicilio(Domicilio domicilio) {
-        this.domicilio = domicilio;
+    public void setServicioReparacions(List<ServicioReparacion> servicioReparacions) {
+        this.servicioReparacions = servicioReparacions;
     }
 
-    public TipoResiduo getTipoResiduo() {
-        return tipoResiduo;
+    public List<LimpiezaOrdenamiento> getLimpiezaOrdenamientos() {
+        return limpiezaOrdenamientos;
     }
 
-    public void setTipoResiduo(TipoResiduo tipoResiduo) {
-        this.tipoResiduo = tipoResiduo;
+    public void setLimpiezaOrdenamientos(List<LimpiezaOrdenamiento> limpiezaOrdenamientos) {
+        this.limpiezaOrdenamientos = limpiezaOrdenamientos;
     }
+
+    public String getDireccion() {
+        return direccion;
+    }
+
+    public void setDireccion(String direccion) {
+        this.direccion = direccion;
+    }
+
 }
