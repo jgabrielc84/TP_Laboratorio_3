@@ -1,31 +1,28 @@
 package ar.edu.cuvl.model.tipoTarea;
 
 
-import ar.edu.cuvl.interfaces.ComplejidadTarea;
-import ar.edu.cuvl.model.Empleado;
-import ar.edu.cuvl.model.Pedido;
+import ar.edu.cuvl.interfaces.TipoLimpieza;
 import ar.edu.cuvl.model.ServicioReparacion;
 import ar.edu.cuvl.model.type.Limpieza;
 import ar.edu.cuvl.interfaces.Robot;
 import ar.edu.cuvl.model.type.LimpiezaOrdenamiento;
-import ar.edu.cuvl.model.type.Servicio;
 
 import java.util.List;
 
 
-public class TareaCompleja extends ComplejidadTarea {
+public class ComplejaTipo extends TipoLimpieza {
 
-    public TareaCompleja() {
+    public ComplejaTipo() {
         super(Limpieza.COMPLEJA);
     }
     private final float factorAjuste=1000;
 
 
     @Override
-    public int calcularCostoRobots(List<Robot> robots) {
+    public int calcularCostoRobots(List<Robot> robots, LimpiezaOrdenamiento tarea) {
         int suma=0;
             for (Robot robot: robots){
-                suma+=robot.getCostoHora()*robot.getHorasTarea()*factorAjuste;
+                suma+=robot.getCostoHora()*tarea.getHorasTarea()*factorAjuste;
             }
 
 

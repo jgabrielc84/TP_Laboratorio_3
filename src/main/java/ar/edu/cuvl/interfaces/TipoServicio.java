@@ -33,4 +33,5 @@ public abstract class TipoServicio {
 
    abstract public void puedeLimpiar(Pedido pedido) throws NoPuedeLimpiarException;
     abstract public void puedeOrdenar(Pedido pedido) throws NoPuedeOrdenarException;
+
 }
