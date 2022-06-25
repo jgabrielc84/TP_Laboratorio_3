@@ -7,7 +7,6 @@ import ar.edu.cuvl.interfaces.TipoReparacion;
 public class ServicioReparacion implements Calculable {
 
     private TipoReparacion tipoReparacion;
-
     private int complejidad;
     private ComplejidadTarea complejidadTarea;
     private Empleado empleado;

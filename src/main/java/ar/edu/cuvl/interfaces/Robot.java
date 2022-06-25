@@ -13,7 +13,7 @@ public abstract class Robot {
     private ArrayList<TipoSuperficie> superficies;
     private int horasTarea;
 
-    HashSet<Pedido> pedidos;
+    ArrayList<Pedido> pedidos;
 
 
 
@@ -49,11 +49,4 @@ public abstract class Robot {
         this.superficies = superficies;
     }
 
-    public int getHorasTarea() {
-        return horasTarea;
-    }
-
-    public void setHorasTarea(int horasTarea) {
-        this.horasTarea = horasTarea;
-    }
 }
