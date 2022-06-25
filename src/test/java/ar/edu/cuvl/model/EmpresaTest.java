@@ -6,7 +6,7 @@ import ar.edu.cuvl.interfaces.TipoServicio;
 import ar.edu.cuvl.interfaces.TipoSuperficie;
 import ar.edu.cuvl.model.tipoCliente.Classic;
 import ar.edu.cuvl.model.tipoCliente.Economic;
-import ar.edu.cuvl.model.tipoTarea.TareaCompleja;
+import ar.edu.cuvl.model.tipoTarea.ComplejaTipo;
 import ar.edu.cuvl.validator.ValidadorCliente;
 import ar.edu.cuvl.validator.ValidadorPedido;
 import org.junit.jupiter.api.BeforeEach;
@@ -22,7 +22,7 @@ class EmpresaTest {
     Empresa empresa;
     Cliente cliente;
     Pedido pedido;
-    TareaCompleja limpiezaCompleja;
+    ComplejaTipo limpiezaCompleja;
     ArrayList<TipoSuperficie> tipoSuperficies;
     ValidadorCliente validadorCliente;
     ValidadorPedido validadorPedido;
@@ -33,7 +33,7 @@ class EmpresaTest {
         empresa = new Empresa();
         TipoServicio tipoServicio = new Economic();
         cliente = new Cliente(12345678,tipoServicio, 200F, LocalDate.now().minusDays(2));
-        TareaCompleja limpiezaCompleja=new TareaCompleja();
+        ComplejaTipo limpiezaCompleja=new ComplejaTipo();
         ArrayList<TipoSuperficie> tipoSuperficies=new ArrayList<>();
 //        pedido=new Pedido(5,6655,"asas",limpiezaCompleja,true,tipoSuperficies);
         validadorPedido=new ValidadorPedido();

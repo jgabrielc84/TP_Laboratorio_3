@@ -1,6 +1,6 @@
 package ar.edu.cuvl.model.type;
 
-import ar.edu.cuvl.interfaces.ComplejidadTarea;
+import ar.edu.cuvl.interfaces.TipoLimpieza;
 import ar.edu.cuvl.interfaces.Robot;
 import ar.edu.cuvl.interfaces.TipoResiduo;
 import ar.edu.cuvl.interfaces.TipoSuperficie;
@@ -12,12 +12,21 @@ public class LimpiezaOrdenamiento {
 
 private List<TipoSuperficie> tipoSuperficies;
 private TipoResiduo tipoResiduo;
-private ComplejidadTarea tipoLimpieza;
+private TipoLimpieza tipoLimpieza;
 private boolean ordenamiento;
 private int fecha;
 private int cantidadMascotas;
 private List<Robot> robot;
 
+private int horasTarea;
+
+    public int getHorasTarea() {
+        return horasTarea;
+    }
+
+    public void setHorasTarea(int horasTarea) {
+        this.horasTarea = horasTarea;
+    }
 
     public List<TipoSuperficie> getTipoSuperficies() {
         return tipoSuperficies;
@@ -43,11 +52,11 @@ private List<Robot> robot;
         this.ordenamiento = ordenamiento;
     }
 
-    public ComplejidadTarea getTipoLimpieza() {
+    public TipoLimpieza getTipoLimpieza() {
         return tipoLimpieza;
     }
 
-    public void setTipoLimpieza(ComplejidadTarea tipoLimpieza) {
+    public void setTipoLimpieza(TipoLimpieza tipoLimpieza) {
         this.tipoLimpieza = tipoLimpieza;
     }
 

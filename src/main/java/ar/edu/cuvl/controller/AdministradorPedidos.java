@@ -2,7 +2,6 @@ package ar.edu.cuvl.controller;
 
 import ar.edu.cuvl.exception.pedidoException.PedidoInvalidoException;
 import ar.edu.cuvl.model.Pedido;
-import ar.edu.cuvl.interfaces.ComplejidadTarea;
 import ar.edu.cuvl.validator.ValidadorPedido;
 
 import java.util.ArrayList;
