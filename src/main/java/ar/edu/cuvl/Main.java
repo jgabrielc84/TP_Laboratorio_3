@@ -1,7 +1,6 @@
 package ar.edu.cuvl;
 
 import ar.edu.cuvl.controller.AdministradorRobots;
-import ar.edu.cuvl.interfaces.TipoLimpieza;
 import ar.edu.cuvl.interfaces.TipoServicio;
 import ar.edu.cuvl.interfaces.TipoSuperficie;
 import ar.edu.cuvl.model.*;
@@ -34,7 +33,7 @@ public class Main {
       //  tipoSuperficies.add(piso);
        // tipoSuperficies.add(mueble);
         String direccion = "Cordoba 1501";
-        TipoLimpieza tipoLimpieza = new ComplejaTipo();
+//        TipoLimpieza tipoLimpieza = new ComplejaTipo();
 
         //Creo
        // Pedido pedido = new Pedido(1, cliente.getDni(), direccion, tipoLimpieza, ordenamiento, tipoSuperficies);

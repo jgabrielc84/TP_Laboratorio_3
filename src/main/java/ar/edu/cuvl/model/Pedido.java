@@ -3,16 +3,16 @@ package ar.edu.cuvl.model;
 import ar.edu.cuvl.interfaces.Robot;
 import ar.edu.cuvl.model.type.LimpiezaOrdenamiento;
 
+import java.util.ArrayList;
 import java.util.List;
 
-public abstract class Pedido {
+public class Pedido {
 
     private int numeroPedido;
     private Cliente cliente;
     private String direccion;
-    private List<ServicioReparacion> servicioReparacions;
-    private  List<LimpiezaOrdenamiento> limpiezaOrdenamientos;
-
+    private ArrayList<ServicioReparacion> servicioReparacions;
+    private ArrayList<LimpiezaOrdenamiento> limpiezaOrdenamientos;
 
 
     public int getNumeroPedido() {
@@ -33,19 +33,19 @@ public abstract class Pedido {
     }
 
 
-    public List<ServicioReparacion> getServicioReparacions() {
+    public ArrayList<ServicioReparacion> getServicioReparacions() {
         return servicioReparacions;
     }
 
-    public void setServicioReparacions(List<ServicioReparacion> servicioReparacions) {
+    public void setServicioReparacions(ArrayList<ServicioReparacion> servicioReparacions) {
         this.servicioReparacions = servicioReparacions;
     }
 
-    public List<LimpiezaOrdenamiento> getLimpiezaOrdenamientos() {
+    public ArrayList<LimpiezaOrdenamiento> getLimpiezaOrdenamientos() {
         return limpiezaOrdenamientos;
     }
 
-    public void setLimpiezaOrdenamientos(List<LimpiezaOrdenamiento> limpiezaOrdenamientos) {
+    public void setLimpiezaOrdenamientos(ArrayList<LimpiezaOrdenamiento> limpiezaOrdenamientos) {
         this.limpiezaOrdenamientos = limpiezaOrdenamientos;
     }
 
@@ -57,16 +57,24 @@ public abstract class Pedido {
         this.direccion = direccion;
     }
 
-    public float costoTotal(){
-        return sumarServicioReparacion() + sumarLimpiezaOrdenamientos;
+    public float costoTotal() {
+        return sumarServicioReparacion(this.servicioReparacions) + sumarLimpiezaOrdenamientos(this.limpiezaOrdenamientos);
     }
 
-    private float sumarServicioReparacion(){
+    private float sumarServicioReparacion(ArrayList<ServicioReparacion> servicioReparacion) {
         float total = 0;
-        for(ServicioReparacion tarea : this.servicioReparacions){
-            total = total + tarea.getTipoReparacion().);
+        for (ServicioReparacion tarea : servicioReparacion) {
+            total = total + tarea.getTipoComplejidadReparacion().calcularCostoEmpleados(tarea.getEmpleado(),tarea.getComplejidad());
         }
+        return total;
     }
 
+    private float sumarLimpiezaOrdenamientos(ArrayList<LimpiezaOrdenamiento> limpiezaOrdenamientos){
+        float total = 0;
+        for(LimpiezaOrdenamiento tarea : limpiezaOrdenamientos){
+            total = total + tarea.getTipoComplejidadLimpieza().calcularCostoRobots(tarea.getRobot(),tarea);
+        }
+        return total;
+    }
 
 }
