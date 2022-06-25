@@ -10,24 +10,9 @@ import ar.edu.cuvl.model.type.LimpiezaOrdenamiento;
 import java.util.List;
 
 
-public class ComplejaTipo extends TipoLimpieza {
-
-    public ComplejaTipo() {
-        super(Limpieza.COMPLEJA);
-    }
-    private final float factorAjuste=1000;
+public class ComplejaTipo extends TipoComplejidadReparacion {
 
 
-    @Override
-    public int calcularCostoRobots(List<Robot> robots, LimpiezaOrdenamiento tarea) {
-        int suma=0;
-            for (Robot robot: robots){
-                suma+=robot.getCostoHora()*tarea.getHorasTarea()*factorAjuste;
-            }
-
-
-        return suma;
-    }
 
     @Override
     public int calcularCostoEmpleados(List<ServicioReparacion> servicioReparacions) {
