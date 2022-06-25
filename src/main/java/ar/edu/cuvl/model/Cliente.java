@@ -1,20 +1,43 @@
 package ar.edu.cuvl.model;
 
-import ar.edu.cuvl.exception.ClienteMorosoException;
+import ar.edu.cuvl.exception.clienteException.ClienteMorosoException;
+import ar.edu.cuvl.interfaces.TipoServicio;
 
-import java.util.Objects;
+import java.time.LocalDate;
 
 public class Cliente {
 
     private int dni;
     private TipoServicio tipoServicio;
 
+    private float saldo;
+
+    private LocalDate fechaUltimaLimpieza;
+
+    public float getSaldo() {
+        return saldo;
+    }
+
+    public void setSaldo(float saldo) {
+        this.saldo = saldo;
+    }
+
+    public LocalDate getFechaUltimaLimpieza() {
+        return fechaUltimaLimpieza;
+    }
+
+    public void setFechaUltimaLimpieza(LocalDate fechaUltimaLimpieza) {
+        this.fechaUltimaLimpieza = fechaUltimaLimpieza;
+    }
+
     public Cliente() {
     }
 
-    public Cliente(int dni, TipoServicio tipoServicio) {
+    public Cliente(int dni, TipoServicio tipoServicio, float saldo, LocalDate fechaUltimaLimpieza) {
         this.dni = dni;
         this.tipoServicio = tipoServicio;
+        this.saldo = saldo;
+        this.fechaUltimaLimpieza = fechaUltimaLimpieza;
     }
 
     public int getDni() {
@@ -50,7 +73,5 @@ public class Cliente {
         return this.dni;
     }
 
-    void calcularMora() throws ClienteMorosoException {
-        throw new ClienteMorosoException();
-    }
+
 }
