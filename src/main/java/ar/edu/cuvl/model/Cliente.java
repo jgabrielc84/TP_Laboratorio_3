@@ -13,6 +13,8 @@ public class Cliente {
     private float saldo;
 
     private LocalDate fechaUltimaLimpieza;
+    private int cantidadOrdenamientos;
+    private int cantidadLimpiezas;
 
     public float getSaldo() {
         return saldo;
@@ -73,5 +75,19 @@ public class Cliente {
         return this.dni;
     }
 
+    public int getCantidadOrdenamientos() {
+        return cantidadOrdenamientos;
+    }
 
+    public void setCantidadOrdenamientos(int cantidadOrdenamientos) {
+        this.cantidadOrdenamientos = cantidadOrdenamientos;
+    }
+
+    public int getCantidadLimpiezas() {
+        return cantidadLimpiezas;
+    }
+
+    public void setCantidadLimpiezas(int cantidadLimpiezas) {
+        this.cantidadLimpiezas = cantidadLimpiezas;
+    }
 }

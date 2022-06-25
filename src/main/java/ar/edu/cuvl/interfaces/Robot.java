@@ -11,6 +11,7 @@ public abstract class Robot {
     private float costoHora;
     private boolean ordena;
     private ArrayList<TipoSuperficie> superficies;
+    private int horasTarea;
 
     HashSet<Pedido> pedidos;
 
@@ -48,4 +49,11 @@ public abstract class Robot {
         this.superficies = superficies;
     }
 
+    public int getHorasTarea() {
+        return horasTarea;
+    }
+
+    public void setHorasTarea(int horasTarea) {
+        this.horasTarea = horasTarea;
+    }
 }

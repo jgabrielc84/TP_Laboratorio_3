@@ -17,13 +17,14 @@ public class AdministradorClientes {
     public void ingresarCliente(Cliente cliente){
 
         try {
-            agrearCLiente(cliente);
+            agregarCLiente(cliente);
         }catch (ExisteClienteException e){
             e.printStackTrace();
         }
     }
 
-    private void agrearCLiente(Cliente cliente) throws ExisteClienteException {
+    private void agregarCLiente(Cliente cliente) throws ExisteClienteException {
+
 
         if(!this.clientes.add(cliente)){
            throw new ExisteClienteException("Ya es Cliente");
