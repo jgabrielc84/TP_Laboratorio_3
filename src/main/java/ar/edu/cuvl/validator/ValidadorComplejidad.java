@@ -39,11 +39,7 @@ public class ValidadorComplejidad {
 
 
     public boolean tareaEsSimple(ServicioReparacion servicioReparacion)  {
-        if (servicioReparacion.getComplejidad()>1 && servicioReparacion.getComplejidad()<=4){
-                return true;
-        }
-        return false;
-
+        return (servicioReparacion.getComplejidad()>=1 && servicioReparacion.getComplejidad()<5);
     }
 
 }

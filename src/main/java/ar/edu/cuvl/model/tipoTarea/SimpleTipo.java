@@ -1,27 +1,25 @@
 package ar.edu.cuvl.model.tipoTarea;
 
-import ar.edu.cuvl.interfaces.ComplejidadTarea;
+import ar.edu.cuvl.interfaces.TipoLimpieza;
 import ar.edu.cuvl.interfaces.Robot;
-import ar.edu.cuvl.model.Empleado;
-import ar.edu.cuvl.model.Pedido;
 import ar.edu.cuvl.model.ServicioReparacion;
 import ar.edu.cuvl.model.type.Limpieza;
 import ar.edu.cuvl.model.type.LimpiezaOrdenamiento;
 
 import java.util.List;
 
-public class TareaSimple extends ComplejidadTarea {
+public class SimpleTipo extends TipoLimpieza {
 
-    public TareaSimple() {
+    public SimpleTipo() {
         super(Limpieza.SIMPLE);
     }
 
 
     @Override
-    public int calcularCostoRobots(List<Robot> robots){
+    public int calcularCostoRobots(List<Robot> robots, LimpiezaOrdenamiento tarea){
         int suma=0;
         for (Robot robot: robots){
-            suma+=robot.getCostoHora()*robot.getHorasTarea();
+            suma+=robot.getCostoHora()*tarea.getHorasTarea();
         }
 
         return suma;

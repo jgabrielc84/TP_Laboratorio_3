@@ -1,6 +1,7 @@
 package ar.edu.cuvl.interfaces;
 
 import ar.edu.cuvl.model.Pedido;
+import ar.edu.cuvl.model.type.LimpiezaOrdenamiento;
 
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -10,12 +11,25 @@ public abstract class Robot {
     private int id;
     private float costoHora;
     private boolean ordena;
+    private boolean lustra;
     private ArrayList<TipoSuperficie> superficies;
-    private int horasTarea;
+    private ArrayList<Pedido> pedidos;
 
-    ArrayList<Pedido> pedidos;
+    public boolean isLustra() {
+        return lustra;
+    }
 
+    public void setLustra(boolean lustra) {
+        this.lustra = lustra;
+    }
 
+    public ArrayList<Pedido> getPedidos() {
+        return pedidos;
+    }
+
+    public void setPedidos(ArrayList<Pedido> pedidos) {
+        this.pedidos = pedidos;
+    }
 
     public int getId() {
         return id;
@@ -48,5 +62,24 @@ public abstract class Robot {
     public void setSuperficies(ArrayList<TipoSuperficie> superficies) {
         this.superficies = superficies;
     }
+
+    public int pedidosPendientes(Pedido pedido){
+        return pedido.getLimpiezaOrdenamientos().size();
+    }
+
+    public void procesarPedido(Pedido pedido){
+        for(LimpiezaOrdenamiento tarea : pedido.getLimpiezaOrdenamientos()){
+            // TODO ver si el robot puede hacer la tarea
+            System.out.println("TAREA TERMINADA");
+        }
+    }
+
+    private void finalizarPedido(Pedido pedido){
+        if(pedido.getLimpiezaOrdenamientos().isEmpty()){
+            System.out.println("PEDIDO COMPLETADO");
+        }
+    }
+
+
 
 }

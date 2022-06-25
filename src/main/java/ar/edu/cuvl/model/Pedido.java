@@ -57,4 +57,16 @@ public abstract class Pedido {
         this.direccion = direccion;
     }
 
+    public float costoTotal(){
+        return sumarServicioReparacion() + sumarLimpiezaOrdenamientos;
+    }
+
+    private float sumarServicioReparacion(){
+        float total = 0;
+        for(ServicioReparacion tarea : this.servicioReparacions){
+            total = total + tarea.getTipoReparacion().);
+        }
+    }
+
+
 }

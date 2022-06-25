@@ -1,8 +1,8 @@
 package ar.edu.cuvl.asignador;
 
 import ar.edu.cuvl.model.ServicioReparacion;
-import ar.edu.cuvl.model.tipoTarea.TareaCompleja;
-import ar.edu.cuvl.model.tipoTarea.TareaSimple;
+import ar.edu.cuvl.model.tipoTarea.ComplejaTipo;
+import ar.edu.cuvl.model.tipoTarea.SimpleTipo;
 import ar.edu.cuvl.model.type.LimpiezaOrdenamiento;
 import ar.edu.cuvl.validator.ValidadorComplejidad;
 
@@ -20,9 +20,9 @@ public class AsignadorComplejidad {
 
              if(validadorComplejidad.esLimpiezaSimple(l)) {
 
-              l.setTipoLimpieza(new TareaSimple());
+              l.setTipoLimpieza(new SimpleTipo());
           } else {
-                 l.setTipoLimpieza(new TareaCompleja());
+                 l.setTipoLimpieza(new ComplejaTipo());
              }
         }
 
@@ -33,9 +33,9 @@ public class AsignadorComplejidad {
         for (ServicioReparacion s: servicioReparacions) {
 
               if(validadorComplejidad.tareaEsSimple(s)){
-                s.setComplejidadTarea(new TareaSimple());
+                s.setComplejidadTarea(new SimpleTipo());
             } else {
-                s.setComplejidadTarea(new TareaCompleja());
+                s.setComplejidadTarea(new ComplejaTipo());
             }
         }
     }
