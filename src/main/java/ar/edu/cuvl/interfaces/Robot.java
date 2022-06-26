@@ -15,6 +15,8 @@ public abstract class Robot {
     private ArrayList<TipoSuperficie> superficies;
     private ArrayList<Pedido> pedidos;
 
+
+
     public boolean isLustra() {
         return lustra;
     }
