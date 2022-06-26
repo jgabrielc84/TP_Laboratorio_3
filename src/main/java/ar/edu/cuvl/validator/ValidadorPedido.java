@@ -29,13 +29,7 @@ public class ValidadorPedido {
                 //asignar robots
                 //asignar tipo de limpieza
             }
-
-
-        } catch (NoPuedeOrdenarException e) {
-            mensaje=e.getMessage();
-        } catch (NoPuedeLimpiarException e) {
-            mensaje=e.getMessage();
-        } catch (ClienteMorosoException e) {
+        } catch (NoPuedeOrdenarException | NoPuedeLimpiarException | ClienteMorosoException e) {
             mensaje=e.getMessage();
         }
 

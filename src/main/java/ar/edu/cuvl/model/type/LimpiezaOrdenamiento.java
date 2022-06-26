@@ -1,10 +1,11 @@
 package ar.edu.cuvl.model.type;
 
-import ar.edu.cuvl.interfaces.TipoLimpieza;
+import ar.edu.cuvl.interfaces.TipoComplejidadLimpieza;
 import ar.edu.cuvl.interfaces.Robot;
 import ar.edu.cuvl.interfaces.TipoResiduo;
 import ar.edu.cuvl.interfaces.TipoSuperficie;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 public class LimpiezaOrdenamiento {
@@ -12,9 +13,9 @@ public class LimpiezaOrdenamiento {
 
 private List<TipoSuperficie> tipoSuperficies;
 private TipoResiduo tipoResiduo;
-private TipoLimpieza tipoLimpieza;
+private TipoComplejidadLimpieza tipoComplejidadLimpieza;
 private boolean ordenamiento;
-private int fecha;
+private LocalDateTime fecha;
 private int cantidadMascotas;
 private List<Robot> robot;
 
@@ -52,19 +53,19 @@ private int horasTarea;
         this.ordenamiento = ordenamiento;
     }
 
-    public TipoLimpieza getTipoLimpieza() {
-        return tipoLimpieza;
+    public TipoComplejidadLimpieza getTipoComplejidadLimpieza() {
+        return tipoComplejidadLimpieza;
     }
 
-    public void setTipoLimpieza(TipoLimpieza tipoLimpieza) {
-        this.tipoLimpieza = tipoLimpieza;
+    public void setTipoComplejidadLimpieza(TipoComplejidadLimpieza tipoComplejidadLimpieza) {
+        this.tipoComplejidadLimpieza = tipoComplejidadLimpieza;
     }
 
-    public int getFecha() {
+    public LocalDateTime getFecha() {
         return fecha;
     }
 
-    public void setFecha(int fecha) {
+    public void setFecha(LocalDateTime fecha) {
         this.fecha = fecha;
     }
 

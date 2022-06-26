@@ -7,6 +7,9 @@ import ar.edu.cuvl.model.type.LimpiezaOrdenamiento;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.time.LocalDateTime;
+
+import static java.time.temporal.ChronoUnit.DAYS;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
@@ -38,5 +41,14 @@ class ValidadorComplejidadTest {
         servicioReparacion=new ServicioReparacion(new Electricidad(),8);
 
        assertEquals(true,true);
+    }
+
+    @Test
+    void verificarFecha() {
+        LocalDateTime fecha = LocalDateTime.now().minusDays(10);
+        LocalDateTime fechaComparar = LocalDateTime.now();
+        System.out.println(fecha);
+        System.out.println(fechaComparar);
+        System.out.println(DAYS.between(fecha,fechaComparar));
     }
 }

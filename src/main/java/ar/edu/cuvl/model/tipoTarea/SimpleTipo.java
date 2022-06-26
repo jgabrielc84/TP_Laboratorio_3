@@ -1,12 +1,6 @@
 package ar.edu.cuvl.model.tipoTarea;
 
-import ar.edu.cuvl.interfaces.TipoLimpieza;
-import ar.edu.cuvl.interfaces.Robot;
-import ar.edu.cuvl.model.ServicioReparacion;
-import ar.edu.cuvl.model.type.Limpieza;
-import ar.edu.cuvl.model.type.LimpiezaOrdenamiento;
-
-import java.util.List;
+import ar.edu.cuvl.interfaces.TipoComplejidadReparacion;
 
 public class SimpleTipo extends TipoComplejidadReparacion {
 
