@@ -34,8 +34,10 @@ public class AdministradorPedidos {
 
         try {
             this.validadorPedido.validarPedido(pedido);
-            this.pedidosValidados.add(pedido);
             pedido.getCliente().getTipoServicio().getAsignadorRobot().asignarRobots(pedido, robotsDisponibles);
+            //TODO:
+
+            this.pedidosValidados.add(pedido);
         } catch (PedidoInvalidoException e) {
             throw new PedidoInvalidoException(e.getMessage());
         } catch (Exception e) {
