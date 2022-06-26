@@ -1,9 +1,7 @@
 package ar.edu.cuvl.model;
 
-import ar.edu.cuvl.exception.clienteException.ClienteMorosoException;
 import ar.edu.cuvl.exception.pedidoException.PedidoInvalidoException;
 import ar.edu.cuvl.interfaces.TipoServicio;
-import ar.edu.cuvl.interfaces.TipoSuperficie;
 import ar.edu.cuvl.model.tipoCliente.Classic;
 import ar.edu.cuvl.model.tipoCliente.Economic;
 import ar.edu.cuvl.model.tipoTarea.ComplejaTipo;

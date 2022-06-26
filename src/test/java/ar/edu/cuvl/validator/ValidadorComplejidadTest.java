@@ -1,9 +1,9 @@
 package ar.edu.cuvl.validator;
 
-import ar.edu.cuvl.interfaces.TipoResiduo;
+import ar.edu.cuvl.model.type.TipoResiduo;
 import ar.edu.cuvl.model.ServicioReparacion;
 import ar.edu.cuvl.model.tipoReparacion.Electricidad;
-import ar.edu.cuvl.model.type.LimpiezaOrdenamiento;
+import ar.edu.cuvl.model.LimpiezaOrdenamiento;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 

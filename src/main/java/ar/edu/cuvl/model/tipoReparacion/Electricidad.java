@@ -1,10 +1,8 @@
 package ar.edu.cuvl.model.tipoReparacion;
 
 import ar.edu.cuvl.interfaces.TipoReparacion;
-import ar.edu.cuvl.model.ServicioReparacion;
-import ar.edu.cuvl.model.type.Reparacion;
 
-public class Electricidad extends TipoReparacion {
+public class Electricidad implements TipoReparacion {
 
 
 
