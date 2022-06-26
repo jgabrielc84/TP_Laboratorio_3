@@ -1,10 +1,9 @@
 package ar.edu.cuvl.interfaces;
 
 import ar.edu.cuvl.model.Pedido;
-import ar.edu.cuvl.model.type.LimpiezaOrdenamiento;
+import ar.edu.cuvl.model.LimpiezaOrdenamiento;
+import ar.edu.cuvl.model.TipoSuperficie;
 
-import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
 
 public abstract class Robot {

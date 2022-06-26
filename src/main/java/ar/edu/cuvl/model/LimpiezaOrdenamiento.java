@@ -1,9 +1,8 @@
-package ar.edu.cuvl.model.type;
+package ar.edu.cuvl.model;
 
 import ar.edu.cuvl.interfaces.TipoComplejidadLimpieza;
 import ar.edu.cuvl.interfaces.Robot;
-import ar.edu.cuvl.interfaces.TipoResiduo;
-import ar.edu.cuvl.interfaces.TipoSuperficie;
+import ar.edu.cuvl.model.type.TipoResiduo;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -16,25 +15,14 @@ private TipoResiduo tipoResiduo;
 private TipoComplejidadLimpieza tipoComplejidadLimpieza;
 private boolean ordenamiento;
 private LocalDateTime fecha;
-private int cantidadMascotas;
 private List<Robot> robot;
 
 private int horasTarea;
 
-    public LimpiezaOrdenamiento(List<TipoSuperficie> tipoSuperficies, TipoResiduo tipoResiduo, boolean ordenamiento, int cantidadMascotas, int horasTarea) {
+    public LimpiezaOrdenamiento(List<TipoSuperficie> tipoSuperficies, TipoResiduo tipoResiduo, boolean ordenamiento) {
         this.tipoSuperficies = tipoSuperficies;
         this.tipoResiduo = tipoResiduo;
         this.ordenamiento = ordenamiento;
-        this.cantidadMascotas = cantidadMascotas;
-        this.horasTarea = horasTarea;
-    }
-
-    public int getHorasTarea() {
-        return horasTarea;
-    }
-
-    public void setHorasTarea(int horasTarea) {
-        this.horasTarea = horasTarea;
     }
 
     public List<TipoSuperficie> getTipoSuperficies() {
@@ -53,20 +41,20 @@ private int horasTarea;
         this.tipoResiduo = tipoResiduo;
     }
 
-    public boolean isOrdenamiento() {
-        return ordenamiento;
-    }
-
-    public void setOrdenamiento(boolean ordenamiento) {
-        this.ordenamiento = ordenamiento;
-    }
-
     public TipoComplejidadLimpieza getTipoComplejidadLimpieza() {
         return tipoComplejidadLimpieza;
     }
 
     public void setTipoComplejidadLimpieza(TipoComplejidadLimpieza tipoComplejidadLimpieza) {
         this.tipoComplejidadLimpieza = tipoComplejidadLimpieza;
+    }
+
+    public boolean isOrdenamiento() {
+        return ordenamiento;
+    }
+
+    public void setOrdenamiento(boolean ordenamiento) {
+        this.ordenamiento = ordenamiento;
     }
 
     public LocalDateTime getFecha() {
@@ -77,19 +65,19 @@ private int horasTarea;
         this.fecha = fecha;
     }
 
-    public int getCantidadMascotas() {
-        return cantidadMascotas;
-    }
-
-    public void setCantidadMascotas(int cantidadMascotas) {
-        this.cantidadMascotas = cantidadMascotas;
-    }
-
     public List<Robot> getRobot() {
         return robot;
     }
 
     public void setRobot(List<Robot> robot) {
         this.robot = robot;
+    }
+
+    public int getHorasTarea() {
+        return horasTarea;
+    }
+
+    public void setHorasTarea(int horasTarea) {
+        this.horasTarea = horasTarea;
     }
 }

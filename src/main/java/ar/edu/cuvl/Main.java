@@ -1,7 +1,7 @@
 package ar.edu.cuvl;
 
 import ar.edu.cuvl.interfaces.TipoServicio;
-import ar.edu.cuvl.interfaces.TipoSuperficie;
+import ar.edu.cuvl.model.TipoSuperficie;
 import ar.edu.cuvl.model.*;
 import ar.edu.cuvl.model.tipoCliente.Economic;
 
@@ -36,7 +36,6 @@ public class Main {
         //Creo
        // Pedido pedido = new Pedido(1, cliente.getDni(), direccion, tipoLimpieza, ordenamiento, tipoSuperficies);
         //public Pedido(int numeroPedido, int numeroCliente, String direccion, TipoLimpieza tipoLimpieza, boolean ordenamiento, ArrayList<TipoSuperficie> superficies) {
-        AdministradorRobots administradorRobots = new AdministradorRobots();
 
         try {
            // empresa.validarPedido(pedido);

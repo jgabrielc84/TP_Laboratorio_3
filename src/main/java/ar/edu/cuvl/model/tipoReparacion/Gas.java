@@ -1,10 +1,8 @@
 package ar.edu.cuvl.model.tipoReparacion;
 
 import ar.edu.cuvl.interfaces.TipoReparacion;
-import ar.edu.cuvl.model.ServicioReparacion;
-import ar.edu.cuvl.model.type.Reparacion;
 
-public class Gas extends TipoReparacion {
+public class Gas implements TipoReparacion {
 
     @Override
     public float costoSegunComplejidad(int complejidad) {

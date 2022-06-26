@@ -1,12 +1,13 @@
 package ar.edu.cuvl.controller;
 
+import ar.edu.cuvl.asignador.AsignadorComplejidad;
 import ar.edu.cuvl.exception.pedidoException.PedidoInvalidoException;
 import ar.edu.cuvl.interfaces.Robot;
 import ar.edu.cuvl.model.Cliente;
 import ar.edu.cuvl.model.Pedido;
 import ar.edu.cuvl.model.tipoTarea.LimpiezaCompleja;
 import ar.edu.cuvl.model.tipoTarea.LimpiezaSimple;
-import ar.edu.cuvl.model.type.LimpiezaOrdenamiento;
+import ar.edu.cuvl.model.LimpiezaOrdenamiento;
 import ar.edu.cuvl.validator.ValidadorPedido;
 
 import java.util.ArrayList;
@@ -31,19 +32,22 @@ public class AdministradorPedidos {
     }
 
     public void ingresarPedido(Pedido pedido, HashSet<Robot> robotsDisponibles) throws PedidoInvalidoException {
+        AsignadorComplejidad asignadorComplejidad = new AsignadorComplejidad();
 
         try {
-            this.validadorPedido.validarPedido(pedido);
-            pedido.getCliente().getTipoServicio().getAsignadorRobot().asignarRobots(pedido, robotsDisponibles);
-            //TODO:
 
+            this.validadorPedido.validarPedido(pedido);
+            asignadorComplejidad.asignarComplejidad(pedido);
+            pedido.getCliente().getTipoServicio().getAsignadorRobot().asignarRobots(pedido, robotsDisponibles);
             this.pedidosValidados.add(pedido);
+
         } catch (PedidoInvalidoException e) {
             throw new PedidoInvalidoException(e.getMessage());
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
+
     public int cantidadLimpiezaSimple(){
         int total = 0;
         for(Pedido pedido : pedidosValidados){
@@ -55,6 +59,7 @@ public class AdministradorPedidos {
         }
         return total;
     }
+
     public int cantidadLimpiezaCompleja(){
         int total = 0;
         for(Pedido pedido : pedidosValidados){
@@ -66,6 +71,7 @@ public class AdministradorPedidos {
         }
         return total;
     }
+
     public float costoTotal(Cliente cliente){
         float total=0;
         ArrayList<Pedido> ArrayCliente = this.pedidosValidados.stream().filter(e->e.getCliente().getDni()==cliente.getDni()).collect(Collectors.toCollection(ArrayList::new));

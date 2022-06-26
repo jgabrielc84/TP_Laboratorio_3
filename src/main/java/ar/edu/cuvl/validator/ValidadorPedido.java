@@ -4,12 +4,8 @@ import ar.edu.cuvl.exception.clienteException.ClienteMorosoException;
 import ar.edu.cuvl.exception.pedidoException.NoPuedeLimpiarException;
 import ar.edu.cuvl.exception.pedidoException.NoPuedeOrdenarException;
 import ar.edu.cuvl.exception.pedidoException.PedidoInvalidoException;
-import ar.edu.cuvl.model.Cliente;
-import ar.edu.cuvl.model.ModuloPago;
 import ar.edu.cuvl.model.Pedido;
-import ar.edu.cuvl.interfaces.TipoSuperficie;
-import ar.edu.cuvl.model.type.LimpiezaOrdenamiento;
-import ar.edu.cuvl.model.type.Superficie;
+import ar.edu.cuvl.model.LimpiezaOrdenamiento;
 
 public class ValidadorPedido {
 
