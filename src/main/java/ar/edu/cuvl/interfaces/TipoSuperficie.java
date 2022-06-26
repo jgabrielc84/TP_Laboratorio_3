@@ -1,7 +1,7 @@
 package ar.edu.cuvl.interfaces;
 import ar.edu.cuvl.model.type.Superficie;
 
-public abstract class TipoSuperficie {
+public class TipoSuperficie {
     private Superficie tipoSuperficie;
 
     public TipoSuperficie(Superficie tipoSuperficie) {

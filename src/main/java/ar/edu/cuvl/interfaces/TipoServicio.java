@@ -8,10 +8,12 @@ import ar.edu.cuvl.model.type.Servicio;
 public abstract class TipoServicio {
     private Servicio tipo;
     private int deudaMaxima;
+    private AsignadorRobot asignadorRobot;
 
-    public TipoServicio(Servicio tipo, int deudaMaxima) {
+    public TipoServicio(Servicio tipo, int deudaMaxima, AsignadorRobot asignadorRobot) {
         this.tipo = tipo;
         this.deudaMaxima = deudaMaxima;
+        this.asignadorRobot = asignadorRobot;
     }
 
     public Servicio getTipo() {
@@ -30,8 +32,11 @@ public abstract class TipoServicio {
         this.deudaMaxima = deudaMaxima;
     }
 
+    public AsignadorRobot getAsignadorRobot() {
+        return asignadorRobot;
+    }
 
-   abstract public void puedeLimpiar(Pedido pedido) throws NoPuedeLimpiarException;
+    abstract public void puedeLimpiar(Pedido pedido) throws NoPuedeLimpiarException;
     abstract public void puedeOrdenar(Pedido pedido) throws NoPuedeOrdenarException;
 
 }

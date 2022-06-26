@@ -1,16 +1,16 @@
 package ar.edu.cuvl.controller;
 
 import ar.edu.cuvl.exception.pedidoException.PedidoInvalidoException;
+import ar.edu.cuvl.interfaces.Robot;
 import ar.edu.cuvl.model.Cliente;
 import ar.edu.cuvl.model.Pedido;
-import ar.edu.cuvl.model.ServicioReparacion;
 import ar.edu.cuvl.model.tipoTarea.LimpiezaCompleja;
 import ar.edu.cuvl.model.tipoTarea.LimpiezaSimple;
 import ar.edu.cuvl.model.type.LimpiezaOrdenamiento;
 import ar.edu.cuvl.validator.ValidadorPedido;
 
 import java.util.ArrayList;
-import java.util.List;
+import java.util.HashSet;
 import java.util.stream.Collectors;
 
 public class AdministradorPedidos {
@@ -30,15 +30,15 @@ public class AdministradorPedidos {
         this.validadorPedido = validadorPedido;
     }
 
-    public void ingresarPedido(Pedido pedido, AdministradorRobots administradorRobots) throws PedidoInvalidoException {
+    public void ingresarPedido(Pedido pedido, HashSet<Robot> robotsDisponibles) throws PedidoInvalidoException {
 
         try {
             this.validadorPedido.validarPedido(pedido);
             this.pedidosValidados.add(pedido);
+            pedido.getCliente().getTipoServicio().getAsignadorRobot().asignarRobots(pedido, robotsDisponibles);
         } catch (PedidoInvalidoException e) {
             throw new PedidoInvalidoException(e.getMessage());
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
