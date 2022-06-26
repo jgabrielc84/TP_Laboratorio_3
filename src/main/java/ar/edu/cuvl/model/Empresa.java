@@ -3,6 +3,7 @@ package ar.edu.cuvl.model;
 import ar.edu.cuvl.controller.AdministradorEmpleados;
 import ar.edu.cuvl.controller.AdministradorPedidos;
 import ar.edu.cuvl.controller.AdministradorRobots;
+import ar.edu.cuvl.model.tipoCliente.Classic;
 import ar.edu.cuvl.validator.ValidadorPedido;
 
 import java.util.HashSet;
