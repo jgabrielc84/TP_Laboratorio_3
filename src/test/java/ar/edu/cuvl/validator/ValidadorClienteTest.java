@@ -13,7 +13,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class ValidadorClienteTest {
 
     Cliente cliente;
-    ValidadorCliente validadorCliente
+    ValidadorCliente validadorCliente;
 
 
     @BeforeEach

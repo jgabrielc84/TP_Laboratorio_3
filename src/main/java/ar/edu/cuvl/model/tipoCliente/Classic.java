@@ -20,7 +20,7 @@ public class Classic extends TipoServicio {
     @Override
     public void puedeOrdenar(Pedido pedido) throws NoPuedeOrdenarException {
                 if(pedido.getCliente().getCantidadOrdenamientos()>3){
-                    throw new NoPuedeOrdenarException("No hay mas ordenamientodisponibles este mes");
+                    throw new NoPuedeOrdenarException("No hay mas ordenamiento disponibles este mes");
                 }
     }
 }

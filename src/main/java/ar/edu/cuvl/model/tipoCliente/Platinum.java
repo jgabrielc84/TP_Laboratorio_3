@@ -20,4 +20,10 @@ public class Platinum extends TipoServicio {
     public void puedeOrdenar(Pedido pedido) {
 
     }
+
+    public void asignar(){
+
+    }
+
+
 }
