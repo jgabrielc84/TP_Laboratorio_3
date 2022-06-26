@@ -11,7 +11,7 @@ import java.util.HashSet;
 
 public class AsignadorRobotPlatinum implements AsignadorRobot {
 
-    public ArrayList<Robot> asignarRobots(Pedido pedido, HashSet<Robot> robotsDisponibles){
+    public void asignarRobots(Pedido pedido, HashSet<Robot> robotsDisponibles){
 
         //TODO: filtrar de la lista de pedidos las tareas de limpiezaOrdenamiento
         for (LimpiezaOrdenamiento limpiezaOrdenamiento : pedido.getLimpiezaOrdenamientos() ) {
