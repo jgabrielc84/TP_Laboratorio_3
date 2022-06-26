@@ -1,10 +1,9 @@
 package ar.edu.cuvl.interfaces;
 
 import ar.edu.cuvl.model.Pedido;
-import ar.edu.cuvl.model.type.LimpiezaOrdenamiento;
+import ar.edu.cuvl.model.LimpiezaOrdenamiento;
+import ar.edu.cuvl.model.TipoSuperficie;
 
-import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
 
 public abstract class Robot {
@@ -72,14 +71,17 @@ public abstract class Robot {
 
     public void procesarPedido(Pedido pedido){
         for(LimpiezaOrdenamiento tarea : pedido.getLimpiezaOrdenamientos()){
-            // TODO ver si el robot puede hacer la tarea
-            System.out.println("TAREA TERMINADA");
+            if(tarea.getRobot().equals(this)){
+                pedido.getLimpiezaOrdenamientos().remove(tarea);
+                System.out.println("TAREA TERMINADA");
+            }
+            finalizarPedido(pedido);
         }
     }
 
     private void finalizarPedido(Pedido pedido){
         if(pedido.getLimpiezaOrdenamientos().isEmpty()){
-            System.out.println("PEDIDO COMPLETADO");
+            System.out.println("PEDIDO COMPLETO");
         }
     }
 

@@ -2,7 +2,7 @@ package ar.edu.cuvl.model.tipoTarea;
 
 import ar.edu.cuvl.interfaces.Robot;
 import ar.edu.cuvl.interfaces.TipoComplejidadLimpieza;
-import ar.edu.cuvl.model.type.LimpiezaOrdenamiento;
+import ar.edu.cuvl.model.LimpiezaOrdenamiento;
 
 import java.util.List;
 

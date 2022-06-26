@@ -1,28 +1,21 @@
 package ar.edu.cuvl.model;
 
-import ar.edu.cuvl.controller.AdministradorEmpleados;
 import ar.edu.cuvl.controller.AdministradorPedidos;
-import ar.edu.cuvl.controller.AdministradorRobots;
-import ar.edu.cuvl.model.tipoCliente.Classic;
 import ar.edu.cuvl.validator.ValidadorPedido;
 
 import java.util.HashSet;
 
 public class Empresa {
 
-    private AdministradorRobots administradorRobots;
     private AdministradorPedidos administradorPedidos;
     private ValidadorPedido validadorPedido;
-    private AdministradorEmpleados administradorEmpleados;
 
 
     HashSet<Cliente> clientes;
 
     public Empresa() {
-        this.administradorRobots = new AdministradorRobots();
         this.administradorPedidos = new AdministradorPedidos();
         this.validadorPedido = new ValidadorPedido();
-        this.administradorEmpleados = new AdministradorEmpleados();
     }
 
 //    public void validarPedido(Pedido pedido) throws PedidoInvalidoException{
@@ -57,9 +50,7 @@ public class Empresa {
 //        }
 //    }
 
-    public AdministradorRobots getAdministradorRobots() {
-        return administradorRobots;
-    }
+
 
     public AdministradorPedidos getAdministradorPedidos() {
         return administradorPedidos;
