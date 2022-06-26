@@ -8,9 +8,8 @@ import ar.edu.cuvl.model.type.Servicio;
 
 public class Platinum extends TipoServicio {
 
-    public Platinum( ) {
-        AsignadorRobot asignadorRobot = new AsignadorRobotPlatinum();
-        super(Servicio.PLATINUM, 20000, asignadorRobot);
+    public Platinum() {
+        super(Servicio.PLATINUM, 20000, new AsignadorRobotPlatinum());
     }
 
 

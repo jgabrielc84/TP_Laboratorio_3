@@ -5,9 +5,12 @@ import ar.edu.cuvl.interfaces.Robot;
 import ar.edu.cuvl.interfaces.TipoSuperficie;
 import ar.edu.cuvl.model.Pedido;
 import ar.edu.cuvl.model.type.LimpiezaOrdenamiento;
+import ar.edu.cuvl.model.type.Superficie;
 
 import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
+import java.util.stream.Collectors;
 
 public class AsignadorRobotPlatinum implements AsignadorRobot {
 
@@ -21,10 +24,8 @@ public class AsignadorRobotPlatinum implements AsignadorRobot {
             //TODO: Segun tipo asigna los robots correspondientes a limpiezaOrdenamiento
             limpiezaOrdenamiento.setRobot(robots);
         }
-
         //asigno robots de acuerdo al enunciado
     }
-
     private HashSet<Robot> filtrarRobotsQueCumplenConLaTarea(LimpiezaOrdenamiento limpiezaOrdenamiento, HashSet<Robot> robotsDisponibles){
         HashSet<Robot> listaRobotsQueCumplenConLaTarea = new HashSet<>();
 
@@ -33,10 +34,12 @@ public class AsignadorRobotPlatinum implements AsignadorRobot {
         for (TipoSuperficie tipoSuperficie : limpiezaOrdenamiento.getTipoSuperficies()){
 
         }
-
-
-
         return listaRobotsQueCumplenConLaTarea;
+    }
+    private Robot robotsPisosSuperficies(HashSet<Robot> robotsDisponibles,Superficie superficie,Pedido pedido){
+        Robot robot;
+        List<Robot> robots = robotsDisponibles.stream().filter(x->x.getSuperficies().contains(superficie)).collect(Collectors.toList());
+        return robot;
     }
 
 }

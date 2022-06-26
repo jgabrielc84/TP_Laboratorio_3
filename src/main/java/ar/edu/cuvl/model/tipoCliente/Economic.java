@@ -11,10 +11,8 @@ import ar.edu.cuvl.model.type.Servicio;
 public class Economic extends TipoServicio {
 
     public Economic() {
-        AsignadorRobot asignadorRobot = new AsignadorRobotEconomic();
-        super(Servicio.ECONOMIC, 0, asignadorRobot);
+        super(Servicio.ECONOMIC, 0, new AsignadorRobotEconomic());
     }
-
 
     @Override
     public void puedeLimpiar(Pedido pedido) throws NoPuedeLimpiarException {

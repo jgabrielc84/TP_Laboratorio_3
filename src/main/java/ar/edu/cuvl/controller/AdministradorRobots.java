@@ -8,5 +8,4 @@ public class AdministradorRobots {
 
     HashSet<Robot> robots;
 
-
 }

@@ -2,7 +2,6 @@ package ar.edu.cuvl.model.tipoCliente;
 
 import ar.edu.cuvl.asignador.AsignadorRobotClassic;
 import ar.edu.cuvl.exception.pedidoException.NoPuedeOrdenarException;
-import ar.edu.cuvl.interfaces.AsignadorRobot;
 import ar.edu.cuvl.interfaces.TipoServicio;
 import ar.edu.cuvl.model.Pedido;
 import ar.edu.cuvl.model.type.Servicio;
@@ -10,14 +9,10 @@ import ar.edu.cuvl.model.type.Servicio;
 public class Classic extends TipoServicio {
 
     public Classic() {
-        AsignadorRobot asignadorRobot = new AsignadorRobotClassic();
-        super(Servicio.CLASSIC, 2000, asignadorRobot);
+        super(Servicio.CLASSIC, 2000, new AsignadorRobotClassic());
     }
-
-
     @Override
     public void puedeLimpiar(Pedido pedido) {
-
     }
 
     @Override

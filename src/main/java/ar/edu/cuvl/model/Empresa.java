@@ -3,6 +3,7 @@ package ar.edu.cuvl.model;
 import ar.edu.cuvl.controller.AdministradorEmpleados;
 import ar.edu.cuvl.controller.AdministradorPedidos;
 import ar.edu.cuvl.controller.AdministradorRobots;
+import ar.edu.cuvl.interfaces.Robot;
 import ar.edu.cuvl.model.tipoCliente.Classic;
 import ar.edu.cuvl.validator.ValidadorPedido;
 
@@ -14,6 +15,8 @@ public class Empresa {
     private AdministradorPedidos administradorPedidos;
     private ValidadorPedido validadorPedido;
     private AdministradorEmpleados administradorEmpleados;
+
+    private HashSet<Robot> robots;
 
 
     HashSet<Cliente> clientes;
@@ -43,7 +46,7 @@ public class Empresa {
     public void ingresarPedido(Pedido pedido) {
 
         try {
-            this.administradorPedidos.ingresarPedido(pedido,administradorRobots);
+            this.administradorPedidos.ingresarPedido(pedido,robots);
         } catch (Exception e) {
             e.printStackTrace();
         }

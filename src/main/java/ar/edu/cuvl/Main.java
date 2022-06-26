@@ -4,8 +4,10 @@ import ar.edu.cuvl.controller.AdministradorRobots;
 import ar.edu.cuvl.interfaces.TipoServicio;
 import ar.edu.cuvl.interfaces.TipoSuperficie;
 import ar.edu.cuvl.model.*;
+import ar.edu.cuvl.model.tipoCliente.Classic;
 import ar.edu.cuvl.model.tipoCliente.Economic;
 import ar.edu.cuvl.model.tipoTarea.ComplejaTipo;
+import ar.edu.cuvl.model.type.Servicio;
 
 
 import java.util.ArrayList;
@@ -15,7 +17,7 @@ public class Main {
     public static void main(String[] args) {
 
         Empresa empresa = new Empresa();
-
+        Classic classic = new Classic();
         //Crear Clientes en AdministradorClientes
         TipoServicio tipoServicio = new Economic();
 //        Cliente cliente1 = new Cliente(11111111,tipoServicio);
