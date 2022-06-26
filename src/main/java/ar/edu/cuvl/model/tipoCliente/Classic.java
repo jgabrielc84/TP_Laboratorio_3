@@ -9,9 +9,11 @@ import ar.edu.cuvl.model.type.Servicio;
 
 public class Classic extends TipoServicio {
 
+
+    private AsignadorRobot asignadorRobot ;
     public Classic() {
-        AsignadorRobot asignadorRobot = new AsignadorRobotClassic();
-        super(Servicio.CLASSIC, 2000, asignadorRobot);
+
+        super(Servicio.CLASSIC, 2000, new AsignadorRobotClassic());
     }
 
 
@@ -25,5 +27,10 @@ public class Classic extends TipoServicio {
                 if(pedido.getCliente().getCantidadOrdenamientos()>3){
                     throw new NoPuedeOrdenarException("No hay mas ordenamiento disponibles este mes");
                 }
+    }
+
+    @Override
+    public AsignadorRobot getAsignadorRobot() {
+        return asignadorRobot;
     }
 }

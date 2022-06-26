@@ -43,7 +43,7 @@ public class Empresa {
     public void ingresarPedido(Pedido pedido) {
 
         try {
-            this.administradorPedidos.ingresarPedido(pedido,administradorRobots);
+           // this.administradorPedidos.ingresarPedido(pedido,administradorRobots);
         } catch (Exception e) {
             e.printStackTrace();
         }
