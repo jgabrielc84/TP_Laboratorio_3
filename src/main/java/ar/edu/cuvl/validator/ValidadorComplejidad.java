@@ -4,37 +4,30 @@ import ar.edu.cuvl.interfaces.TipoResiduo;
 import ar.edu.cuvl.model.ServicioReparacion;
 import ar.edu.cuvl.model.type.LimpiezaOrdenamiento;
 
+import java.time.LocalDateTime;
+
 import static ar.edu.cuvl.interfaces.TipoResiduo.BARRO;
+import static java.time.temporal.ChronoUnit.DAYS;
 
 public class ValidadorComplejidad {
 
     public boolean esLimpiezaSimple(LimpiezaOrdenamiento limpiezaOrdenamiento) {
-        boolean sucess=false;
-        if (!verificarResiduo(limpiezaOrdenamiento.getTipoResiduo())
-                && !verificarMascotas(limpiezaOrdenamiento.getCantidadMascotas())
-                && verificarFecha(limpiezaOrdenamiento.getFecha())){
-            sucess=true;
-        }
-        return sucess;
-
+        return verificarResiduo(limpiezaOrdenamiento.getTipoResiduo())
+                && verificarMascotas(limpiezaOrdenamiento.getCantidadMascotas())
+                && verificarFecha(limpiezaOrdenamiento.getFecha());
     }
 
     private boolean verificarMascotas(int cantidadMascotas){
-        if(cantidadMascotas>1){
-            return false;
-        }
-        return true;
+        return cantidadMascotas <= 1;
     }
 
     private boolean verificarResiduo(TipoResiduo tipoResiduo){
-        if(tipoResiduo.equals(BARRO)){
-            return false;
-        }
-        return true;}
+        return !tipoResiduo.equals(BARRO);
+    }
 
-    private boolean verificarFecha(int fecha){
-        //verficar fecha
-        return false;
+    private boolean verificarFecha(LocalDateTime fecha){
+        LocalDateTime fechaComparar = LocalDateTime.now();
+        return DAYS.between(fecha, fechaComparar) < 15;
     }
 
 

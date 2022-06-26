@@ -1,15 +1,14 @@
 package ar.edu.cuvl.model;
 
 import ar.edu.cuvl.interfaces.Calculable;
-import ar.edu.cuvl.interfaces.TipoLimpieza;
 import ar.edu.cuvl.interfaces.TipoReparacion;
+import ar.edu.cuvl.interfaces.TipoComplejidadReparacion;
 
 public class ServicioReparacion implements Calculable {
 
     private TipoReparacion tipoReparacion;
-
     private int complejidad;
-    private TipoLimpieza tipoComplejidad;
+    private TipoComplejidadReparacion tipoComplejidadReparacion;
     private Empleado empleado;
 
     public ServicioReparacion(TipoReparacion tipoReparacion, int complejidad) {
@@ -32,13 +31,12 @@ public class ServicioReparacion implements Calculable {
     public void setComplejidad(int complejidad) {
         this.complejidad = complejidad;
     }
-
-    public TipoLimpieza getComplejidadTarea() {
-        return tipoComplejidad;
+    public TipoComplejidadReparacion getTipoComplejidadReparacion() {
+        return tipoComplejidadReparacion;
     }
 
-    public void setComplejidadTarea(TipoLimpieza tipoComplejidad) {
-        this.tipoComplejidad = tipoComplejidad;
+    public void setTipoComplejidadReparacion(TipoComplejidadReparacion tipoComplejidadReparacion) {
+        this.tipoComplejidadReparacion = tipoComplejidadReparacion;
     }
 
     public Empleado getEmpleado() {

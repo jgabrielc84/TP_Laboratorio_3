@@ -1,15 +1,20 @@
 package ar.edu.cuvl.model.tipoCliente;
 
+import ar.edu.cuvl.asignador.AsignadorRobotEconomic;
 import ar.edu.cuvl.exception.pedidoException.NoPuedeLimpiarException;
 import ar.edu.cuvl.exception.pedidoException.NoPuedeOrdenarException;
+import ar.edu.cuvl.interfaces.AsignadorRobot;
 import ar.edu.cuvl.interfaces.TipoServicio;
 import ar.edu.cuvl.model.Pedido;
 import ar.edu.cuvl.model.type.Servicio;
 
 public class Economic extends TipoServicio {
 
+    private AsignadorRobot asignadorRobot;
+
     public Economic() {
-        super(Servicio.ECONOMIC, 0);
+
+        super(Servicio.ECONOMIC, 0,new AsignadorRobotEconomic());
     }
 
 
@@ -23,5 +28,10 @@ public class Economic extends TipoServicio {
     @Override
     public void puedeOrdenar(Pedido pedido) throws NoPuedeOrdenarException {
            throw new NoPuedeOrdenarException("Este tipo de servicio no admite ordenamiento");
+    }
+
+    @Override
+    public AsignadorRobot getAsignadorRobot() {
+        return asignadorRobot;
     }
 }

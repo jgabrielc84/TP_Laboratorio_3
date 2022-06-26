@@ -1,14 +1,19 @@
 package ar.edu.cuvl.model.tipoCliente;
 
+import ar.edu.cuvl.asignador.AsignadorRobotClassic;
 import ar.edu.cuvl.exception.pedidoException.NoPuedeOrdenarException;
+import ar.edu.cuvl.interfaces.AsignadorRobot;
 import ar.edu.cuvl.interfaces.TipoServicio;
 import ar.edu.cuvl.model.Pedido;
 import ar.edu.cuvl.model.type.Servicio;
 
 public class Classic extends TipoServicio {
 
+
+    private AsignadorRobot asignadorRobot ;
     public Classic() {
-        super(Servicio.CLASSIC, 2000);
+
+        super(Servicio.CLASSIC, 2000, new AsignadorRobotClassic());
     }
 
 
@@ -20,7 +25,12 @@ public class Classic extends TipoServicio {
     @Override
     public void puedeOrdenar(Pedido pedido) throws NoPuedeOrdenarException {
                 if(pedido.getCliente().getCantidadOrdenamientos()>3){
-                    throw new NoPuedeOrdenarException("No hay mas ordenamientodisponibles este mes");
+                    throw new NoPuedeOrdenarException("No hay mas ordenamiento disponibles este mes");
                 }
+    }
+
+    @Override
+    public AsignadorRobot getAsignadorRobot() {
+        return asignadorRobot;
     }
 }

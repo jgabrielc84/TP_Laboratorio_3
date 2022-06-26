@@ -13,6 +13,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -43,12 +44,6 @@ class EmpresaTest {
         assertThrows(PedidoInvalidoException.class , ()->this.validadorPedido.validarPedido(pedido));
     }
 
-    @Test
-    void ClienteEsMoroso() {
-        classic = new Classic();
-        cliente.setTipoServicio(classic);
-        assertThrows(ClienteMorosoException.class,()->this.validadorCliente.esMoroso(cliente));
-    }
 
     @Test
     void ingresarCliente(){
@@ -69,5 +64,9 @@ class EmpresaTest {
 
     @Test
     void getValidadorPedido() {
+    }
+    @Test
+    void getFecha(){
+        System.out.println(LocalDateTime.now().compareTo(LocalDateTime.now().minusDays(15)));
     }
 }
