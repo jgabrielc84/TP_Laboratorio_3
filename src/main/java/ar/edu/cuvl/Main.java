@@ -1,11 +1,9 @@
 package ar.edu.cuvl;
 
-import ar.edu.cuvl.controller.AdministradorRobots;
 import ar.edu.cuvl.interfaces.TipoServicio;
 import ar.edu.cuvl.interfaces.TipoSuperficie;
 import ar.edu.cuvl.model.*;
 import ar.edu.cuvl.model.tipoCliente.Economic;
-import ar.edu.cuvl.model.tipoTarea.ComplejaTipo;
 
 
 import java.util.ArrayList;
