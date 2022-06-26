@@ -7,9 +7,10 @@ import ar.edu.cuvl.model.Pedido;
 import ar.edu.cuvl.model.type.Servicio;
 
 public class Platinum extends TipoServicio {
+    private AsignadorRobot asignadorRobot ;
+    public Platinum( ) {
 
-    public Platinum() {
-        super(Servicio.PLATINUM, 20000, new AsignadorRobotPlatinum());
+        super(Servicio.PLATINUM, 20000,  new AsignadorRobotPlatinum());
     }
 
 
@@ -21,5 +22,10 @@ public class Platinum extends TipoServicio {
     @Override
     public void puedeOrdenar(Pedido pedido) {
 
+    }
+
+    @Override
+    public AsignadorRobot getAsignadorRobot() {
+        return asignadorRobot;
     }
 }

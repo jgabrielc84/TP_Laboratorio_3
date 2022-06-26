@@ -5,6 +5,7 @@ import ar.edu.cuvl.model.type.LimpiezaOrdenamiento;
 
 import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 
 public abstract class Robot {
 
@@ -12,8 +13,8 @@ public abstract class Robot {
     private float costoHora;
     private boolean ordena;
     private boolean lustra;
-    private ArrayList<TipoSuperficie> superficies;
-    private ArrayList<Pedido> pedidos;
+    private List<TipoSuperficie> superficies;
+    private List<Pedido> pedidos;
 
 
 
@@ -25,11 +26,11 @@ public abstract class Robot {
         this.lustra = lustra;
     }
 
-    public ArrayList<Pedido> getPedidos() {
+    public List<Pedido> getPedidos() {
         return pedidos;
     }
 
-    public void setPedidos(ArrayList<Pedido> pedidos) {
+    public void setPedidos(List<Pedido> pedidos) {
         this.pedidos = pedidos;
     }
 
@@ -57,16 +58,16 @@ public abstract class Robot {
         this.ordena = ordena;
     }
 
-    public ArrayList<TipoSuperficie> getSuperficies() {
+    public List<TipoSuperficie> getSuperficies() {
         return superficies;
     }
 
-    public void setSuperficies(ArrayList<TipoSuperficie> superficies) {
+    public void setSuperficies(List<TipoSuperficie> superficies) {
         this.superficies = superficies;
     }
 
-    public int pedidosPendientes(Pedido pedido){
-        return pedido.getLimpiezaOrdenamientos().size();
+    public int pedidosPendientes(){
+        return this.pedidos.size();
     }
 
     public void procesarPedido(Pedido pedido){

@@ -10,9 +10,13 @@ import ar.edu.cuvl.model.type.Servicio;
 
 public class Economic extends TipoServicio {
 
+    private AsignadorRobot asignadorRobot;
+
     public Economic() {
-        super(Servicio.ECONOMIC, 0, new AsignadorRobotEconomic());
+
+        super(Servicio.ECONOMIC, 0,new AsignadorRobotEconomic());
     }
+
 
     @Override
     public void puedeLimpiar(Pedido pedido) throws NoPuedeLimpiarException {
@@ -24,5 +28,10 @@ public class Economic extends TipoServicio {
     @Override
     public void puedeOrdenar(Pedido pedido) throws NoPuedeOrdenarException {
            throw new NoPuedeOrdenarException("Este tipo de servicio no admite ordenamiento");
+    }
+
+    @Override
+    public AsignadorRobot getAsignadorRobot() {
+        return asignadorRobot;
     }
 }
