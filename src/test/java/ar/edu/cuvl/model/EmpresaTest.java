@@ -43,12 +43,6 @@ class EmpresaTest {
         assertThrows(PedidoInvalidoException.class , ()->this.validadorPedido.validarPedido(pedido));
     }
 
-    @Test
-    void ClienteEsMoroso() {
-        classic = new Classic();
-        cliente.setTipoServicio(classic);
-        assertThrows(ClienteMorosoException.class,()->this.validadorCliente.esMoroso(cliente));
-    }
 
     @Test
     void ingresarCliente(){
