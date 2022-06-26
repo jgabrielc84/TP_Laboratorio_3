@@ -21,6 +21,14 @@ private List<Robot> robot;
 
 private int horasTarea;
 
+    public LimpiezaOrdenamiento(List<TipoSuperficie> tipoSuperficies, TipoResiduo tipoResiduo, boolean ordenamiento, int cantidadMascotas, int horasTarea) {
+        this.tipoSuperficies = tipoSuperficies;
+        this.tipoResiduo = tipoResiduo;
+        this.ordenamiento = ordenamiento;
+        this.cantidadMascotas = cantidadMascotas;
+        this.horasTarea = horasTarea;
+    }
+
     public int getHorasTarea() {
         return horasTarea;
     }

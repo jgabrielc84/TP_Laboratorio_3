@@ -72,14 +72,17 @@ public abstract class Robot {
 
     public void procesarPedido(Pedido pedido){
         for(LimpiezaOrdenamiento tarea : pedido.getLimpiezaOrdenamientos()){
-            // TODO ver si el robot puede hacer la tarea
-            System.out.println("TAREA TERMINADA");
+            if(tarea.getRobot().equals(this)){
+                pedido.getLimpiezaOrdenamientos().remove(tarea);
+                System.out.println("TAREA TERMINADA");
+            }
+            finalizarPedido(pedido);
         }
     }
 
     private void finalizarPedido(Pedido pedido){
         if(pedido.getLimpiezaOrdenamientos().isEmpty()){
-            System.out.println("PEDIDO COMPLETADO");
+            System.out.println("PEDIDO COMPLETO");
         }
     }
 

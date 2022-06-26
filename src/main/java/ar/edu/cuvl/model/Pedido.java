@@ -14,9 +14,12 @@ public class Pedido {
     private ArrayList<ServicioReparacion> servicioReparacions;
     private ArrayList<LimpiezaOrdenamiento> limpiezaOrdenamientos;
 
-
-    public int getNumeroPedido() {
-        return numeroPedido;
+    public Pedido(int numeroPedido, Cliente cliente, String direccion, ArrayList<ServicioReparacion> servicioReparacions, ArrayList<LimpiezaOrdenamiento> limpiezaOrdenamientos) {
+        this.numeroPedido = numeroPedido;
+        this.cliente = cliente;
+        this.direccion = direccion;
+        this.servicioReparacions = servicioReparacions;
+        this.limpiezaOrdenamientos = limpiezaOrdenamientos;
     }
 
     public void setNumeroPedido(int numeroPedido) {

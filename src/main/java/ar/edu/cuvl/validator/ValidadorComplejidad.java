@@ -1,6 +1,8 @@
 package ar.edu.cuvl.validator;
 
 import ar.edu.cuvl.interfaces.TipoResiduo;
+import ar.edu.cuvl.model.Cliente;
+import ar.edu.cuvl.model.Pedido;
 import ar.edu.cuvl.model.ServicioReparacion;
 import ar.edu.cuvl.model.type.LimpiezaOrdenamiento;
 
@@ -11,10 +13,11 @@ import static java.time.temporal.ChronoUnit.DAYS;
 
 public class ValidadorComplejidad {
 
-    public boolean esLimpiezaSimple(LimpiezaOrdenamiento limpiezaOrdenamiento) {
+
+    public boolean esLimpiezaSimple(LimpiezaOrdenamiento limpiezaOrdenamiento, Cliente cliente) {
         return verificarResiduo(limpiezaOrdenamiento.getTipoResiduo())
                 && verificarMascotas(limpiezaOrdenamiento.getCantidadMascotas())
-                && verificarFecha(limpiezaOrdenamiento.getFecha());
+                && verificarFecha(cliente.getFechaUltimaLimpieza());
     }
 
     private boolean verificarMascotas(int cantidadMascotas){
