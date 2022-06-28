@@ -6,24 +6,25 @@ import ar.edu.cuvl.interfaces.TipoComplejidadReparacion;
 
 public class ServicioReparacion implements Calculable {
 
-    private int id;
+    private int idReparacion;
     private TipoReparacion tipoReparacion;
     private int complejidad;
     private TipoComplejidadReparacion tipoComplejidadReparacion;
     private Empleado empleado;
 
 
-    public ServicioReparacion(TipoReparacion tipoReparacion, int complejidad) {
+    public ServicioReparacion(int idReparacion, TipoReparacion tipoReparacion, int complejidad) {
+        this.idReparacion = idReparacion;
         this.tipoReparacion = tipoReparacion;
         this.complejidad = complejidad;
     }
 
-    public int getId() {
-        return id;
+    public int getIdReparacion() {
+        return idReparacion;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setIdReparacion(int idReparacion) {
+        this.idReparacion = idReparacion;
     }
 
     public TipoReparacion getTipoReparacion() {

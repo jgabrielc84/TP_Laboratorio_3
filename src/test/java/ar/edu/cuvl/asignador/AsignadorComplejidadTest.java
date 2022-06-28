@@ -5,7 +5,6 @@ import ar.edu.cuvl.model.tipoReparacion.Electricidad;
 import ar.edu.cuvl.model.tipoReparacion.Gas;
 import ar.edu.cuvl.model.tipoTarea.ComplejaTipo;
 import ar.edu.cuvl.model.tipoTarea.LimpiezaCompleja;
-import ar.edu.cuvl.model.tipoTarea.SimpleTipo;
 import ar.edu.cuvl.model.type.Superficie;
 import ar.edu.cuvl.model.type.TipoResiduo;
 import ar.edu.cuvl.validator.ValidadorComplejidad;
@@ -21,9 +20,9 @@ import static org.junit.jupiter.api.Assertions.*;
 class AsignadorComplejidadTest {
 
     ValidadorComplejidad validadorComplejidad;
-    List<ServicioReparacion>servicioReparacions;
+    List<ServicioReparacion> servicioReparaciones;
     List<LimpiezaOrdenamiento> limpiezaOrdenamientos;
-    ServicioReparacion servicioReparacion;
+    ServicioReparacion servicioReparacion1;
     ServicioReparacion  servicioReparacion2;
     LimpiezaOrdenamiento limpiezaOrdenamiento1;
     LimpiezaOrdenamiento limpiezaOrdenamiento2;
@@ -35,19 +34,19 @@ class AsignadorComplejidadTest {
     @BeforeEach
     void setUp(){
         validadorComplejidad=new ValidadorComplejidad();
-        servicioReparacion=new ServicioReparacion(new Gas(),5);
+        servicioReparacion1 =new ServicioReparacion(1, new Gas(),5);
+        servicioReparacion2=new ServicioReparacion(2, new Electricidad(),1);
         limpiezaOrdenamiento1=new LimpiezaOrdenamiento(superficies, TipoResiduo.BARRO,true);
-        servicioReparacions=new ArrayList<>();
+        servicioReparaciones =new ArrayList<>();
         limpiezaOrdenamientos =new ArrayList<>();
-        servicioReparacion2=new ServicioReparacion(new Electricidad(),1);
         limpiezaOrdenamiento2=new LimpiezaOrdenamiento(superficies,TipoResiduo.POLVO,false);
         pedido=new Pedido();
         superficies=new ArrayList<>();
         superficies.add(new TipoSuperficie(Superficie.PISO));
         superficies.add(new TipoSuperficie(Superficie.MUEBLE));
         asignadorComplejidad=new AsignadorComplejidad();
-        servicioReparacions.add(servicioReparacion);
-        servicioReparacions.add(servicioReparacion2);
+        servicioReparaciones.add(servicioReparacion1);
+        servicioReparaciones.add(servicioReparacion2);
         limpiezaOrdenamientos.add(limpiezaOrdenamiento1);
         limpiezaOrdenamientos.add(limpiezaOrdenamiento2);
         pedido.setLimpiezaOrdenamientos(limpiezaOrdenamientos);
@@ -59,8 +58,8 @@ class AsignadorComplejidadTest {
 
     @Test
     void asignarComplejidadTarea() {
-        asignadorComplejidad.asignarComplejidadTarea(servicioReparacions);
-        assertInstanceOf(ComplejaTipo.class,servicioReparacion.getTipoComplejidadReparacion());
+        asignadorComplejidad.asignarComplejidadTarea(servicioReparaciones);
+        assertInstanceOf(ComplejaTipo.class, servicioReparacion1.getTipoComplejidadReparacion());
 
     }
 

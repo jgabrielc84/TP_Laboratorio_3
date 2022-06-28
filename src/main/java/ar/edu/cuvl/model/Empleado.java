@@ -8,6 +8,15 @@ public class Empleado {
 
     private ArrayList<Pedido> pedidos;
 
+    public Empleado(float sueldoBase) {
+        this.sueldoBase = sueldoBase;
+    }
+
+    public Empleado(float sueldoBase, ArrayList<Pedido> pedidos) {
+        this.sueldoBase = sueldoBase;
+        this.pedidos = pedidos;
+    }
+
     public float getSueldoBase() {
         return sueldoBase;
     }
