@@ -1,10 +1,9 @@
 package ar.edu.cuvl.model;
 
-import ar.edu.cuvl.interfaces.Calculable;
 import ar.edu.cuvl.interfaces.TipoReparacion;
 import ar.edu.cuvl.interfaces.TipoComplejidadReparacion;
 
-public class ServicioReparacion implements Calculable {
+public class ServicioReparacion  {
 
     private int idReparacion;
     private TipoReparacion tipoReparacion;
@@ -58,7 +57,6 @@ public class ServicioReparacion implements Calculable {
         this.empleado = empleado;
     }
 
-    @Override
     public float calcularPrecioFinal() {
      float costoReparacion=this.getTipoReparacion().costoSegunComplejidad(this.complejidad);
      float complejidad=this.complejidad;

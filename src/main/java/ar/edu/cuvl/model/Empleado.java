@@ -33,5 +33,9 @@ public class Empleado {
         this.pedidos = pedidos;
     }
 
+    public void procesarPedido(Pedido pedido){
+
+    }
+
 
 }
