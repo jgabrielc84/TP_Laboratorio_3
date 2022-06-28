@@ -21,6 +21,14 @@ public class Pedido {
         this.limpiezaOrdenamientos = limpiezaOrdenamientos;
     }
 
+    public Pedido() {
+
+    }
+
+    public void setCantidadMascotas(int cantidadMascotas) {
+        this.cantidadMascotas = cantidadMascotas;
+    }
+
     public void setNumeroPedido(int numeroPedido) {
         this.numeroPedido = numeroPedido;
     }

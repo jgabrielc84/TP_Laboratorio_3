@@ -14,7 +14,6 @@ public class ValidadorPedido {
 
 
     public void validarPedido(Pedido pedido) throws PedidoInvalidoException {
-        //TODO Validar que el pedido pueda ser llevado a cabo segun cliente
         try{
         validadorCliente.esMoroso(pedido.getCliente());
             for (LimpiezaOrdenamiento l: pedido.getLimpiezaOrdenamientos()) {
@@ -22,16 +21,13 @@ public class ValidadorPedido {
                     pedido.getCliente().getTipoServicio().puedeOrdenar(pedido);
                 }
                 pedido.getCliente().getTipoServicio().puedeLimpiar(pedido);
-                //asignar robots
-                //asignar tipo de limpieza
             }
         } catch (NoPuedeOrdenarException | NoPuedeLimpiarException | ClienteMorosoException e) {
             mensaje=e.getMessage();
+            throw new PedidoInvalidoException(mensaje+": pedido invalido");
         }
 
     }
-
-
 
 
 

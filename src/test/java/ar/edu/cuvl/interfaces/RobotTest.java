@@ -24,10 +24,4 @@ class RobotTest {
 
     }
 
-    @Test
-    void procesarPedido(pedido) {
-
-
-
-    }
 }

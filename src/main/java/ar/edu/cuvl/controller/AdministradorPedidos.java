@@ -18,6 +18,7 @@ public class AdministradorPedidos {
 
     private ArrayList<Pedido> pedidosValidados;
     private ValidadorPedido validadorPedido;
+    private String message;
 
     public void setPedidosValidados(ArrayList<Pedido> pedidosValidados) {
         this.pedidosValidados = pedidosValidados;
@@ -36,16 +37,15 @@ public class AdministradorPedidos {
 
         try {
 
-            this.validadorPedido.validarPedido(pedido);
+           this.validadorPedido.validarPedido(pedido);
             asignadorComplejidad.asignarComplejidad(pedido);
             pedido.getCliente().getTipoServicio().getAsignadorRobot().asignarRobots(pedido, robotsDisponibles);
             this.pedidosValidados.add(pedido);
 
         } catch (PedidoInvalidoException e) {
-            throw new PedidoInvalidoException(e.getMessage());
-        } catch (Exception e) {
-            e.printStackTrace();
+            throw  e;
         }
+
     }
 
     public int cantidadLimpiezaSimple(){
@@ -72,7 +72,7 @@ public class AdministradorPedidos {
         return total;
     }
 
-    public float costoTotal(Cliente cliente){
+    public float costoTotalCliente(Cliente cliente){
         float total=0;
         ArrayList<Pedido> ArrayCliente = this.pedidosValidados.stream().filter(e->e.getCliente().getDni()==cliente.getDni()).collect(Collectors.toCollection(ArrayList::new));
         for(Pedido pedido : ArrayCliente){
@@ -80,5 +80,7 @@ public class AdministradorPedidos {
         }
         return total;
     }
+
+
 }
 
