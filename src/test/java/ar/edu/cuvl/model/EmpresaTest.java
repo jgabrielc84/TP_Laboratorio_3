@@ -6,7 +6,6 @@ import ar.edu.cuvl.interfaces.TipoServicio;
 import ar.edu.cuvl.model.tipoCliente.Classic;
 import ar.edu.cuvl.model.tipoCliente.Economic;
 import ar.edu.cuvl.model.tipoTarea.ComplejaTipo;
-import ar.edu.cuvl.model.type.Servicio;
 import ar.edu.cuvl.validator.ValidadorCliente;
 import ar.edu.cuvl.validator.ValidadorPedido;
 import org.junit.jupiter.api.BeforeEach;
