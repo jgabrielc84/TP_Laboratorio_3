@@ -28,7 +28,7 @@ class AsignadorRobotPlatinumTest {
     Pedido pedido;
     AsignadorRobotPlatinum asignadorRobotPlatinum;
     Cliente cliente;
-
+    LimpiezaOrdenamiento limpiezaOrdenamiento1;
 
     @BeforeEach
     void setUp() {
@@ -81,7 +81,7 @@ class AsignadorRobotPlatinumTest {
 
         List<LimpiezaOrdenamiento> limpiezaOrdenamientos = new ArrayList<>();
         LimpiezaOrdenamiento limpiezaOrdenamiento = new LimpiezaOrdenamiento(tipoSuperficies, TipoResiduo.BARRO, true);
-        LimpiezaOrdenamiento limpiezaOrdenamiento1 = new LimpiezaOrdenamiento(tipoSuperficies1, TipoResiduo.POLVO, false);
+        limpiezaOrdenamiento1 = new LimpiezaOrdenamiento(tipoSuperficies1, TipoResiduo.POLVO, false);
         limpiezaOrdenamientos.add(limpiezaOrdenamiento);
         limpiezaOrdenamientos.add(limpiezaOrdenamiento1);
         pedido = new Pedido(3, cliente, "calle falsa123", 3, new ArrayList<>(), limpiezaOrdenamientos);
@@ -91,12 +91,17 @@ class AsignadorRobotPlatinumTest {
     void asignarRobots() {
 
         asignadorRobotPlatinum.asignarRobots(pedido, robotsDisponibles);
+        assertInstanceOf(P011H.class,limpiezaOrdenamiento1.getRobot().get(0));
         for (LimpiezaOrdenamiento limpiezaOrdenamiento : pedido.getLimpiezaOrdenamientos()) {
-            System.out.println("sdafds");
+            System.out.println("limpieza ordenamiento");
             for (Robot robot : limpiezaOrdenamiento.getRobot()) {
                 System.out.println(robot.getClass());
             }
         }
+
+
+
+
 
     }
 }
