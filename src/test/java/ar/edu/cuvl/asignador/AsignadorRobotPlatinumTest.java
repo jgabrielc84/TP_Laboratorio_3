@@ -58,10 +58,10 @@ class AsignadorRobotPlatinumTest {
         Pedido pedido33 = new Pedido();
 
         List<Pedido> pedidos1 = new ArrayList<>();
-        pedidos.add(pedido11);
-        pedidos.add(pedido22);
-        pedidos.add(pedido3);
-        pedidos.add(pedido33);
+        pedidos1.add(pedido11);
+        pedidos1.add(pedido22);
+        pedidos1.add(pedido3);
+        pedidos1.add(pedido33);
 
         List<Pedido> pedidos2 = new ArrayList<>();
         pedidos2.add(pedido1);
@@ -82,8 +82,8 @@ class AsignadorRobotPlatinumTest {
         List<LimpiezaOrdenamiento> limpiezaOrdenamientos = new ArrayList<>();
         LimpiezaOrdenamiento limpiezaOrdenamiento = new LimpiezaOrdenamiento(tipoSuperficies, TipoResiduo.BARRO, true);
         LimpiezaOrdenamiento limpiezaOrdenamiento1 = new LimpiezaOrdenamiento(tipoSuperficies1, TipoResiduo.POLVO, false);
-        limpiezaOrdenamientos.add(limpiezaOrdenamiento1);
         limpiezaOrdenamientos.add(limpiezaOrdenamiento);
+        limpiezaOrdenamientos.add(limpiezaOrdenamiento1);
         pedido = new Pedido(3, cliente, "calle falsa123", 3, new ArrayList<>(), limpiezaOrdenamientos);
     }
 

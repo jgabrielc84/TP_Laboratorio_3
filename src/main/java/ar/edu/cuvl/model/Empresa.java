@@ -5,6 +5,7 @@ import ar.edu.cuvl.exception.pedidoException.PedidoInvalidoException;
 import ar.edu.cuvl.interfaces.Robot;
 import ar.edu.cuvl.validator.ValidadorPedido;
 
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 
@@ -15,6 +16,9 @@ public class Empresa {
 
     private HashSet<Cliente> clientes;
     private HashSet<Robot> robotsDisponibles;
+
+    private HashSet<Empleado> empleados;
+
     private String mensaje;
 
 
@@ -26,7 +30,7 @@ public class Empresa {
     public void ingresarPedido(Pedido pedido) throws PedidoInvalidoException {
 
         try {
-            this.administradorPedidos.ingresarPedido(pedido,robotsDisponibles);
+            this.administradorPedidos.ingresarPedido(pedido,robotsDisponibles, empleados);
         } catch (PedidoInvalidoException e) {
            throw e;
         }

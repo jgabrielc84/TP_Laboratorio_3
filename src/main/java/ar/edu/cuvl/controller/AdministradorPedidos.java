@@ -1,9 +1,11 @@
 package ar.edu.cuvl.controller;
 
 import ar.edu.cuvl.asignador.AsignadorComplejidad;
+import ar.edu.cuvl.asignador.AsignadorEmpleados;
 import ar.edu.cuvl.exception.pedidoException.PedidoInvalidoException;
 import ar.edu.cuvl.interfaces.Robot;
 import ar.edu.cuvl.model.Cliente;
+import ar.edu.cuvl.model.Empleado;
 import ar.edu.cuvl.model.Pedido;
 import ar.edu.cuvl.model.tipoTarea.LimpiezaCompleja;
 import ar.edu.cuvl.model.tipoTarea.LimpiezaSimple;
@@ -32,14 +34,16 @@ public class AdministradorPedidos {
         this.validadorPedido = validadorPedido;
     }
 
-    public void ingresarPedido(Pedido pedido, HashSet<Robot> robotsDisponibles) throws PedidoInvalidoException {
+    public void ingresarPedido(Pedido pedido, HashSet<Robot> robotsDisponibles, HashSet<Empleado> empleadosDisponibles) throws PedidoInvalidoException {
         AsignadorComplejidad asignadorComplejidad = new AsignadorComplejidad();
+        AsignadorEmpleados asignadorEmpleados = new AsignadorEmpleados();
 
         try {
 
-           this.validadorPedido.validarPedido(pedido);
+            this.validadorPedido.validarPedido(pedido);
             asignadorComplejidad.asignarComplejidad(pedido);
             pedido.getCliente().getTipoServicio().getAsignadorRobot().asignarRobots(pedido, robotsDisponibles);
+            asignadorEmpleados.asignarEmpleado(pedido, empleadosDisponibles);
             this.pedidosValidados.add(pedido);
 
         } catch (PedidoInvalidoException e) {

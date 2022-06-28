@@ -52,8 +52,7 @@ public class ServicioReparacion implements Calculable {
      float costoReparacion=servicioReparacion.getTipoReparacion().costoSegunComplejidad(servicioReparacion.complejidad);
      float complejidad=servicioReparacion.complejidad;
      float horas = empleado.getSueldoBase()/160;
-     float precioTotal=costoReparacion+horas*complejidad;
-     return precioTotal ;
+     return costoReparacion+horas*complejidad;
     }
 
 }
