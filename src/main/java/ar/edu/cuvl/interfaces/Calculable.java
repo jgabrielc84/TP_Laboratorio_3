@@ -5,5 +5,5 @@ import ar.edu.cuvl.model.ServicioReparacion;
 
 public interface Calculable {
 
-    public float calcularPrecioFinal(Empleado empleado, ServicioReparacion servicioReparacion);
+    public float calcularPrecioFinal();
 }

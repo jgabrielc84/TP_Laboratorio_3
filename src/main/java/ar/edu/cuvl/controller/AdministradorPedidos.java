@@ -4,15 +4,13 @@ import ar.edu.cuvl.asignador.AsignadorComplejidad;
 import ar.edu.cuvl.asignador.AsignadorEmpleados;
 import ar.edu.cuvl.exception.pedidoException.PedidoInvalidoException;
 import ar.edu.cuvl.interfaces.Robot;
-import ar.edu.cuvl.model.Cliente;
-import ar.edu.cuvl.model.Empleado;
-import ar.edu.cuvl.model.Pedido;
+import ar.edu.cuvl.model.*;
 import ar.edu.cuvl.model.tipoTarea.LimpiezaCompleja;
 import ar.edu.cuvl.model.tipoTarea.LimpiezaSimple;
-import ar.edu.cuvl.model.LimpiezaOrdenamiento;
 import ar.edu.cuvl.validator.ValidadorPedido;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.stream.Collectors;
 
@@ -85,14 +83,13 @@ public class AdministradorPedidos {
         return total;
     }
 
-    public float solicitarPrecioFinalServicioReparacion(int pedido){
-        float resultado;
+    public HashMap<Integer, Float> solicitarPrecioFinalServicioReparacion(int pedido){
+        HashMap<Integer, Float> listaPrecioReparaciones = new HashMap<Integer, Float>();
 
-        resultado =
+        Pedido pedidoResultado = this.pedidosValidados.get(pedido);
 
-        return resultado;
+        return pedidoResultado.solicitarPrecioFinalServicioReparacion();
     }
-
 
 }
 

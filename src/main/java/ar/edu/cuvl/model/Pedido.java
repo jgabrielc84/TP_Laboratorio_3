@@ -1,6 +1,6 @@
 package ar.edu.cuvl.model;
 
-import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 public class Pedido {
@@ -10,14 +10,14 @@ public class Pedido {
     private String direccion;
     private int cantidadMascotas;
     private List<LimpiezaOrdenamiento> limpiezaOrdenamientos;
-    private List<ServicioReparacion> servicioReparacions;
+    private List<ServicioReparacion> servicioReparaciones;
 
-    public Pedido(int numeroPedido, Cliente cliente, String direccion, int cantidadMascotas, List<ServicioReparacion> servicioReparacions, List<LimpiezaOrdenamiento> limpiezaOrdenamientos) {
+    public Pedido(int numeroPedido, Cliente cliente, String direccion, int cantidadMascotas, List<ServicioReparacion> servicioReparaciones, List<LimpiezaOrdenamiento> limpiezaOrdenamientos) {
         this.numeroPedido = numeroPedido;
         this.cliente = cliente;
         this.direccion = direccion;
         this.cantidadMascotas = cantidadMascotas;
-        this.servicioReparacions = servicioReparacions;
+        this.servicioReparaciones = servicioReparaciones;
         this.limpiezaOrdenamientos = limpiezaOrdenamientos;
     }
 
@@ -25,8 +25,8 @@ public class Pedido {
 
     }
 
-    public void setCantidadMascotas(int cantidadMascotas) {
-        this.cantidadMascotas = cantidadMascotas;
+    public int getNumeroPedido() {
+        return numeroPedido;
     }
 
     public void setNumeroPedido(int numeroPedido) {
@@ -53,6 +53,10 @@ public class Pedido {
         return cantidadMascotas;
     }
 
+    public void setCantidadMascotas(int cantidadMascotas) {
+        this.cantidadMascotas = cantidadMascotas;
+    }
+
     public List<LimpiezaOrdenamiento> getLimpiezaOrdenamientos() {
         return limpiezaOrdenamientos;
     }
@@ -62,15 +66,15 @@ public class Pedido {
     }
 
     public List<ServicioReparacion> getServicioReparaciones() {
-        return servicioReparacions;
+        return servicioReparaciones;
     }
 
-    public void setServicioReparacions(List<ServicioReparacion> servicioReparacions) {
-        this.servicioReparacions = servicioReparacions;
+    public void setServicioReparaciones(List<ServicioReparacion> servicioReparaciones) {
+        this.servicioReparaciones = servicioReparaciones;
     }
 
     public float costoTotal() {
-        return sumarServicioReparacion(this.servicioReparacions) + sumarLimpiezaOrdenamientos(this.limpiezaOrdenamientos);
+        return sumarServicioReparacion(this.servicioReparaciones) + sumarLimpiezaOrdenamientos(this.limpiezaOrdenamientos);
     }
 
     private float sumarServicioReparacion(List<ServicioReparacion> servicioReparacion) {
@@ -87,6 +91,17 @@ public class Pedido {
             total = total + tarea.getTipoComplejidadLimpieza().calcularCostoRobots(tarea.getRobot(),tarea);
         }
         return total;
+    }
+
+    public HashMap<Integer, Float> solicitarPrecioFinalServicioReparacion() {
+        HashMap<Integer, Float> listaPrecioReparaciones = new HashMap<Integer, Float>();
+
+        for (ServicioReparacion servicioReparacion : this.getServicioReparaciones()) {
+
+            listaPrecioReparaciones.put(servicioReparacion.getId(), servicioReparacion.calcularPrecioFinal());
+        }
+
+        return listaPrecioReparaciones;
     }
 
 }
