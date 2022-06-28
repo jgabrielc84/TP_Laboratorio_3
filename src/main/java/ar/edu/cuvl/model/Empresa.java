@@ -24,7 +24,6 @@ public class Empresa {
         return administradorPedidos;
     }
 
-
     public HashSet<Cliente> getClientes() {
         return clientes;
     }
@@ -58,8 +57,6 @@ public class Empresa {
         }
 
     }
-
-
 
     public HashMap<Integer, Float> solicitarPrecioFinalServicioReparacion(int numeroPedido) {
         return this.administradorPedidos.solicitarPrecioFinalServicioReparacion(numeroPedido);
