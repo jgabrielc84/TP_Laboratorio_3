@@ -10,7 +10,6 @@ import java.util.*;
 public class Empresa {
 
     private AdministradorPedidos administradorPedidos;
-    private ValidadorPedido validadorPedido;
 
     private HashSet<Cliente> clientes;
     private HashSet<Robot> robotsDisponibles;
@@ -19,16 +18,12 @@ public class Empresa {
 
     public Empresa() {
         this.administradorPedidos = new AdministradorPedidos();
-        this.validadorPedido = new ValidadorPedido();
     }
 
     public AdministradorPedidos getAdministradorPedidos() {
         return administradorPedidos;
     }
 
-    public ValidadorPedido getValidadorPedido() {
-        return validadorPedido;
-    }
 
     public HashSet<Cliente> getClientes() {
         return clientes;
@@ -66,18 +61,22 @@ public class Empresa {
 
 
 
-    public HashMap<Integer, Float> solicitarPrecioFinalServicioReparacion(int pedido) {
-        return this.administradorPedidos.solicitarPrecioFinalServicioReparacion(pedido);
+    public HashMap<Integer, Float> solicitarPrecioFinalServicioReparacion(int numeroPedido) {
+        return this.administradorPedidos.solicitarPrecioFinalServicioReparacion(numeroPedido);
     }
 
     public void mostrarCostoReparacion(HashMap<Integer, Float> costosReparaciones) {
 
+        float totalReparaciones = 0;
+
         for(Map.Entry<Integer, Float> entry : costosReparaciones.entrySet()) {
             Integer numeroReparacion = entry.getKey();
             Float costoReparacion = entry.getValue();
+            totalReparaciones += costoReparacion;
 
             System.out.println("Reparacion numero: " + numeroReparacion);
-            System.out.println("costo Reparacion: " + costoReparacion);
+            System.out.println("costo Reparacion = $" + costoReparacion + "\n");
         }
+        System.out.println("Costo total de reparaciones = $" + totalReparaciones);
     }
 }

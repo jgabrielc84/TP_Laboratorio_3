@@ -42,7 +42,7 @@ class ValidadorComplejidadTest {
 
     @Test
     void tareaEsSimple() {
-        servicioReparacion=new ServicioReparacion(new Electricidad(),8);
+        servicioReparacion=new ServicioReparacion(1, new Electricidad(),8);
 
        assertEquals(false,validadorComplejidad.tareaEsSimple(servicioReparacion));
     }

@@ -9,9 +9,11 @@ import ar.edu.cuvl.model.LimpiezaOrdenamiento;
 
 public class ValidadorPedido {
 
-    private String mensaje;
     private ValidadorCliente validadorCliente;
 
+    public ValidadorPedido() {
+        this.validadorCliente = new ValidadorCliente();
+    }
 
     public void validarPedido(Pedido pedido) throws PedidoInvalidoException {
         try{
@@ -22,9 +24,12 @@ public class ValidadorPedido {
                 }
                 pedido.getCliente().getTipoServicio().puedeLimpiar(pedido);
             }
-        } catch (NoPuedeOrdenarException | NoPuedeLimpiarException | ClienteMorosoException e) {
-            mensaje=e.getMessage();
-            throw new PedidoInvalidoException(mensaje+": pedido invalido");
+        } catch ( NoPuedeOrdenarException e ) {
+            throw new PedidoInvalidoException("El Cliente no puede Ordenar");
+        } catch ( NoPuedeLimpiarException e ){
+            throw new PedidoInvalidoException("El Cliente no puede limpiar");
+        } catch ( ClienteMorosoException e ){
+            throw new PedidoInvalidoException("El Cliente es moroso");
         }
 
     }

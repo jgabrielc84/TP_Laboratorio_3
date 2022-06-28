@@ -51,13 +51,9 @@ public class PedidosPrueba {
         LimpiezaOrdenamiento limpieza3 = new LimpiezaOrdenamiento(superficies2, TipoResiduo.BARRO, false);
         LimpiezaOrdenamiento limpieza1 = new LimpiezaOrdenamiento(superficies3, TipoResiduo.POLVO, true);
 
-        TipoReparacion tipoRepa1 = new Gas();
-        TipoReparacion tipoRepa2 = new Electricidad();
-        TipoReparacion tipoRepa3 = new Gas();
-
-        ServicioReparacion reparacion1 = new ServicioReparacion(tipoRepa1, 1);
-        ServicioReparacion reparacion2 = new ServicioReparacion(tipoRepa2, 5);
-        ServicioReparacion reparacion3 = new ServicioReparacion(tipoRepa3, 8);
+        ServicioReparacion reparacion1 = new ServicioReparacion(1, new Gas(), 1);
+        ServicioReparacion reparacion2 = new ServicioReparacion(2, new Electricidad(), 5);
+        ServicioReparacion reparacion3 = new ServicioReparacion(3, new Gas(), 8);
 
         List<LimpiezaOrdenamiento> limpiezas1 = Arrays.asList(limpieza1, limpieza2, limpieza3);
         List<LimpiezaOrdenamiento> limpiezas2 = Arrays.asList(limpieza2, limpieza3);

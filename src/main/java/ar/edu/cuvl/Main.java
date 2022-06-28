@@ -1,13 +1,13 @@
 package ar.edu.cuvl;
 
+import ar.edu.cuvl.asignador.AsignadorRobotPlatinum;
 import ar.edu.cuvl.exception.pedidoException.PedidoInvalidoException;
 import ar.edu.cuvl.interfaces.Robot;
 import ar.edu.cuvl.interfaces.TipoReparacion;
 import ar.edu.cuvl.interfaces.TipoServicio;
 import ar.edu.cuvl.model.TipoSuperficie;
 import ar.edu.cuvl.model.*;
-import ar.edu.cuvl.model.robot.K311YFU;
-import ar.edu.cuvl.model.robot.P011H;
+import ar.edu.cuvl.model.robot.*;
 import ar.edu.cuvl.model.tipoCliente.Classic;
 import ar.edu.cuvl.model.tipoCliente.Economic;
 import ar.edu.cuvl.model.tipoCliente.Platinum;
@@ -68,20 +68,17 @@ public class Main {
         LimpiezaOrdenamiento limpieza3 = new LimpiezaOrdenamiento(superficies2, TipoResiduo.BARRO, false);
         LimpiezaOrdenamiento limpieza1 = new LimpiezaOrdenamiento(superficies3, TipoResiduo.POLVO, true);
 
-        TipoReparacion tipoRepa1 = new Gas();
-        TipoReparacion tipoRepa2 = new Electricidad();
-        TipoReparacion tipoRepa3 = new Gas();
-
-        ServicioReparacion reparacion1 = new ServicioReparacion(tipoRepa1, 1);
-        ServicioReparacion reparacion2 = new ServicioReparacion(tipoRepa2, 5);
-        ServicioReparacion reparacion3 = new ServicioReparacion(tipoRepa3, 8);
-
         List<LimpiezaOrdenamiento> limpiezas1 = Arrays.asList(limpieza1, limpieza2, limpieza3);
         List<LimpiezaOrdenamiento> limpiezas2 = Arrays.asList(limpieza2, limpieza3);
         List<LimpiezaOrdenamiento> limpiezas3 = Arrays.asList();
+
+        ServicioReparacion reparacion1 = new ServicioReparacion(1, new Gas(), 1);
+        ServicioReparacion reparacion2 = new ServicioReparacion(2, new Electricidad(), 5);
+        ServicioReparacion reparacion3 = new ServicioReparacion(3, new Gas(), 8);
+
         List<ServicioReparacion> reparaciones1 = Arrays.asList(reparacion1, reparacion2, reparacion3);
         List<ServicioReparacion> reparaciones2 = Arrays.asList();
-        List<ServicioReparacion> reparaciones3 = Arrays.asList(reparacion3);
+        List<ServicioReparacion> reparaciones3 = Arrays.asList(reparacion1, reparacion2, reparacion3);
 
         Cliente cliente1 = new Cliente(11111111, new Economic(), LocalDateTime.of(2022, 1, 1, 6,6,30,1000), 1, 1 );
         Cliente cliente2 = new Cliente(22222222, new Classic(), LocalDateTime.of(2022, 3, 10, 6,6,30,1000), 5, 5 );
@@ -96,17 +93,33 @@ public class Main {
         clientes.add(cliente2);
         clientes.add(cliente3);
 
+        Robot k311YA = new K311YA();
+        Robot k311YFL = new K311YFL();
+        Robot k311YFU = new K311YFU();
+        Robot s031RTY = new S031RTY();
+        Robot p011H = new P011H();
+
+        HashSet<Robot> robotsDisponibles = new HashSet<>();
+        robotsDisponibles.add(p011H);
+        robotsDisponibles.add(k311YA);
+        robotsDisponibles.add(k311YFL);
+        robotsDisponibles.add(s031RTY);
+        robotsDisponibles.add(k311YFU);
+
+        Empleado empleado1 = new Empleado(50000);
+
+        HashSet<Empleado> empleados = new HashSet<>();
+        empleados.add(empleado1);
+
         empresa.setClientes(clientes);
-
-
-
-
+        empresa.setRobotsDisponibles(robotsDisponibles);
+        empresa.setEmpleados(empleados);
 
         try{
-            empresa.ingresarPedido(pedido1);
-            empresa.mostrarCostoReparacion(empresa.solicitarPrecioFinalServicioReparacion(pedido1.getNumeroPedido()));
+            empresa.ingresarPedido(pedido3);
+            empresa.mostrarCostoReparacion(empresa.solicitarPrecioFinalServicioReparacion(pedido3.getNumeroPedido()));
         } catch (PedidoInvalidoException e){
-            System.out.println("JE JE" + e.getMessage());
+            System.out.println("JE JE " + e.getMessage());
         }
 
     }

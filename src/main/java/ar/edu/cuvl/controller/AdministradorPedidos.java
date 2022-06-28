@@ -18,7 +18,12 @@ public class AdministradorPedidos {
 
     private ArrayList<Pedido> pedidosValidados;
     private ValidadorPedido validadorPedido;
-    private String message;
+
+
+    public AdministradorPedidos() {
+        this.validadorPedido = new ValidadorPedido();
+        this.pedidosValidados = new ArrayList<>();
+    }
 
     public void setPedidosValidados(ArrayList<Pedido> pedidosValidados) {
         this.pedidosValidados = pedidosValidados;
@@ -83,12 +88,26 @@ public class AdministradorPedidos {
         return total;
     }
 
-    public HashMap<Integer, Float> solicitarPrecioFinalServicioReparacion(int pedido){
+    public HashMap<Integer, Float> solicitarPrecioFinalServicioReparacion(int numeroPedido){
         HashMap<Integer, Float> listaPrecioReparaciones = new HashMap<Integer, Float>();
 
-        Pedido pedidoResultado = this.pedidosValidados.get(pedido);
+        Pedido pedidoResultado = buscarPedido(numeroPedido);
 
         return pedidoResultado.solicitarPrecioFinalServicioReparacion();
+    }
+
+
+
+    private Pedido buscarPedido(int numeroPedido){
+        Pedido pedidoResultado = new Pedido();
+
+        for ( Pedido pedido : this.pedidosValidados ){
+            if(pedido.getNumeroPedido() == numeroPedido){
+                pedidoResultado = pedido;
+            }
+        }
+
+        return pedidoResultado;
     }
 
 }

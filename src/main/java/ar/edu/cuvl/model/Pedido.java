@@ -98,7 +98,7 @@ public class Pedido {
 
         for (ServicioReparacion servicioReparacion : this.getServicioReparaciones()) {
 
-            listaPrecioReparaciones.put(servicioReparacion.getId(), servicioReparacion.calcularPrecioFinal());
+            listaPrecioReparaciones.put(servicioReparacion.getIdReparacion(), servicioReparacion.calcularPrecioFinal());
         }
 
         return listaPrecioReparaciones;
