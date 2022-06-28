@@ -11,6 +11,16 @@ public class ServicioReparacion implements Calculable {
     private TipoComplejidadReparacion tipoComplejidadReparacion;
     private Empleado empleado;
 
+    private int id;
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
     public ServicioReparacion(TipoReparacion tipoReparacion, int complejidad) {
         this.tipoReparacion = tipoReparacion;
         this.complejidad = complejidad;
