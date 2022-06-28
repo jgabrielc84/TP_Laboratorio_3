@@ -6,12 +6,17 @@ import ar.edu.cuvl.interfaces.TipoComplejidadReparacion;
 
 public class ServicioReparacion implements Calculable {
 
+    private int id;
     private TipoReparacion tipoReparacion;
     private int complejidad;
     private TipoComplejidadReparacion tipoComplejidadReparacion;
     private Empleado empleado;
 
-    private int id;
+
+    public ServicioReparacion(TipoReparacion tipoReparacion, int complejidad) {
+        this.tipoReparacion = tipoReparacion;
+        this.complejidad = complejidad;
+    }
 
     public int getId() {
         return id;
@@ -19,11 +24,6 @@ public class ServicioReparacion implements Calculable {
 
     public void setId(int id) {
         this.id = id;
-    }
-
-    public ServicioReparacion(TipoReparacion tipoReparacion, int complejidad) {
-        this.tipoReparacion = tipoReparacion;
-        this.complejidad = complejidad;
     }
 
     public TipoReparacion getTipoReparacion() {
@@ -58,10 +58,10 @@ public class ServicioReparacion implements Calculable {
     }
 
     @Override
-    public float calcularPrecioFinal(Empleado empleado,ServicioReparacion servicioReparacion) {
-     float costoReparacion=servicioReparacion.getTipoReparacion().costoSegunComplejidad(servicioReparacion.complejidad);
-     float complejidad=servicioReparacion.complejidad;
-     float horas = empleado.getSueldoBase()/160;
+    public float calcularPrecioFinal() {
+     float costoReparacion=this.getTipoReparacion().costoSegunComplejidad(this.complejidad);
+     float complejidad=this.complejidad;
+     float horas = this.getEmpleado().getSueldoBase()/160;
      return costoReparacion+horas*complejidad;
     }
 
