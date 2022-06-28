@@ -19,9 +19,7 @@ public class AsignadorRobotPlatinum implements AsignadorRobot {
             List<Robot> robots = filtrarRobotsQueCumplenConLaTarea(limpiezaOrdenamiento, robotsDisponibles);
 
             limpiezaOrdenamiento.setRobot(robots);
-
         }
-
     }
 
     private List<Robot> filtrarRobotsQueCumplenConLaTarea(LimpiezaOrdenamiento limpiezaOrdenamiento, HashSet<Robot> robotsDisponibles){
@@ -38,21 +36,24 @@ public class AsignadorRobotPlatinum implements AsignadorRobot {
     }
 
     private  Robot robotSuperficie( HashSet<Robot> robotsDisponibles, Superficie superficie){
-       Robot robot;
+        HashSet<Robot> robots=new HashSet<>();
+       for (Robot robot:robotsDisponibles){
+           for (TipoSuperficie tipoSuperficie: robot.getSuperficies()){
+               if (tipoSuperficie.getTipo()==superficie){
+                   robots.add(robot);
+               }
+           }
+       }
 
-        List<Robot> robots= robotsDisponibles.stream().filter(x->x.getSuperficies().contains(superficie)).collect(Collectors.toList());
-        robot=robots.stream().min(Comparator.comparing(Robot::pedidosPendientes)).get();
+        Robot robot=robots.stream().min(Comparator.comparing(Robot::pedidosPendientes)).get();
 
         return robot;
     }
 
     private Robot robotOrdena( HashSet<Robot> robotsDisponibles,boolean ordena){
-        List<Robot> robots=new ArrayList<>();
-
-        robots= robotsDisponibles.stream().filter(x->x.isOrdena()==ordena).collect(Collectors.toList());
+        List<Robot> robots= robotsDisponibles.stream().filter(x->x.isOrdena()==ordena).collect(Collectors.toList());
         Robot robot=robots.stream().min(Comparator.comparing(Robot::pedidosPendientes)).get();
         return robot;
-
     }
 
 }

@@ -1,5 +1,6 @@
 package ar.edu.cuvl.model;
 
+import ar.edu.cuvl.exception.pedidoException.NoPuedeOrdenarException;
 import ar.edu.cuvl.exception.pedidoException.PedidoInvalidoException;
 import ar.edu.cuvl.interfaces.TipoServicio;
 import ar.edu.cuvl.model.tipoCliente.Classic;
@@ -32,15 +33,15 @@ class EmpresaTest {
     void setUp(){
         empresa = new Empresa();
         TipoServicio tipoServicio = new Economic();
-        cliente = new Cliente(12345678,tipoServicio, 200F, LocalDate.now().minusDays(2));
+        cliente = new Cliente(567777,new Classic(),LocalDateTime.now(),2,1);
         ComplejaTipo limpiezaCompleja=new ComplejaTipo();
         ArrayList<TipoSuperficie> tipoSuperficies=new ArrayList<>();
-//        pedido=new Pedido(5,6655,"asas",limpiezaCompleja,true,tipoSuperficies);
+     pedido=new Pedido(5,new Cliente(),"calle falsa 123",2,new ArrayList<>(),new ArrayList<>());
         validadorPedido=new ValidadorPedido();
     }
     @Test
     void economicNoPuedeOrdenar() {
-        assertThrows(PedidoInvalidoException.class , ()->this.validadorPedido.validarPedido(pedido));
+        assertThrows(NoPuedeOrdenarException.class , ()->this.validadorPedido.validarPedido(pedido));
     }
 
 

@@ -14,6 +14,9 @@ public class Cliente {
     private int cantidadOrdenamientos;
     private int cantidadLimpiezas;
 
+    public Cliente() {
+
+    }
 
     public Cliente(int dni, TipoServicio tipoServicio, LocalDateTime fechaUltimaLimpieza, int cantidadOrdenamientos, int cantidadLimpiezas) {
         this.dni = dni;

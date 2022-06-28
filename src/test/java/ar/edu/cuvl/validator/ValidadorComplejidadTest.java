@@ -1,5 +1,6 @@
 package ar.edu.cuvl.validator;
 
+import ar.edu.cuvl.model.Pedido;
 import ar.edu.cuvl.model.type.TipoResiduo;
 import ar.edu.cuvl.model.ServicioReparacion;
 import ar.edu.cuvl.model.tipoReparacion.Electricidad;
@@ -18,21 +19,24 @@ class ValidadorComplejidadTest {
     LimpiezaOrdenamiento limpiezaOrdenamiento;
     ValidadorComplejidad validadorComplejidad;
     ServicioReparacion servicioReparacion;
+    Pedido pedido;
 
 
     @BeforeEach
     void setUp(){
         limpiezaOrdenamiento=new LimpiezaOrdenamiento();
         validadorComplejidad=new ValidadorComplejidad();
+        pedido=new Pedido();
     }
 
     @Test
     void esLimpiezaSimple() {
         limpiezaOrdenamiento.setOrdenamiento(true);
-        limpiezaOrdenamiento.setCantidadMascotas(3);
-        limpiezaOrdenamiento.setTipoResiduo(TipoResiduo.BARRO);
 
-        assertEquals(true,true);
+        limpiezaOrdenamiento.setTipoResiduo(TipoResiduo.BARRO);
+        pedido.setCantidadMascotas(3);
+
+        assertEquals(false,validadorComplejidad.esLimpiezaSimple(limpiezaOrdenamiento,pedido));
 
     }
 
@@ -40,15 +44,7 @@ class ValidadorComplejidadTest {
     void tareaEsSimple() {
         servicioReparacion=new ServicioReparacion(new Electricidad(),8);
 
-       assertEquals(true,true);
+       assertEquals(false,validadorComplejidad.tareaEsSimple(servicioReparacion));
     }
 
-    @Test
-    void verificarFecha() {
-        LocalDateTime fecha = LocalDateTime.now().minusDays(10);
-        LocalDateTime fechaComparar = LocalDateTime.now();
-        System.out.println(fecha);
-        System.out.println(fechaComparar);
-        System.out.println(DAYS.between(fecha,fechaComparar));
-    }
 }

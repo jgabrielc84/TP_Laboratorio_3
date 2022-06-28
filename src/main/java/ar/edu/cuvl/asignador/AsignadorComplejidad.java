@@ -14,13 +14,10 @@ import java.util.List;
 
 public class AsignadorComplejidad {
 
-    ValidadorComplejidad validadorComplejidad;
+    ValidadorComplejidad validadorComplejidad=new ValidadorComplejidad();
 
 
-    public void asignarComplejidad(Pedido pedido){
-        asignarComplejidadLimpieza(pedido);
-        asignarComplejidadTarea(pedido.getServicioReparaciones());
-    }
+
 
 
     public void asignarComplejidadLimpieza(Pedido pedido){
@@ -48,5 +45,10 @@ public class AsignadorComplejidad {
                 s.setTipoComplejidadReparacion(new ComplejaTipo());
             }
         }
+    }
+
+    public void asignarComplejidad(Pedido pedido){
+        asignarComplejidadLimpieza(pedido);
+        asignarComplejidadTarea(pedido.getServicioReparaciones());
     }
 }

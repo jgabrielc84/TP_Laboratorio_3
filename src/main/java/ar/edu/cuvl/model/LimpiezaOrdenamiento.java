@@ -25,6 +25,9 @@ private int horasTarea;
         this.ordenamiento = ordenamiento;
     }
 
+    public LimpiezaOrdenamiento() {
+    }
+
     public List<TipoSuperficie> getTipoSuperficies() {
         return tipoSuperficies;
     }
