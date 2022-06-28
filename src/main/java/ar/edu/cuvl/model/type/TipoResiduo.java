@@ -1,4 +1,4 @@
-package ar.edu.cuvl.interfaces;
+package ar.edu.cuvl.model.type;
 
 public  enum TipoResiduo {
 

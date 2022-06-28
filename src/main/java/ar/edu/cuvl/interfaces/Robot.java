@@ -1,10 +1,11 @@
 package ar.edu.cuvl.interfaces;
 
 import ar.edu.cuvl.model.Pedido;
-import ar.edu.cuvl.model.type.LimpiezaOrdenamiento;
+import ar.edu.cuvl.model.LimpiezaOrdenamiento;
+import ar.edu.cuvl.model.TipoSuperficie;
+import ar.edu.cuvl.model.type.Superficie;
 
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
 
 public abstract class Robot {
@@ -16,7 +17,15 @@ public abstract class Robot {
     private List<TipoSuperficie> superficies;
     private List<Pedido> pedidos;
 
-
+    public Robot( float costoHora, boolean ordena, boolean lustra, List<TipoSuperficie> superficies, List<Pedido> pedidos) {
+        this.costoHora = costoHora;
+        this.ordena = ordena;
+        this.lustra = lustra;
+        this.superficies = superficies;
+        this.pedidos = pedidos;
+    }
+    public Robot(){
+    }
 
     public boolean isLustra() {
         return lustra;
@@ -66,13 +75,13 @@ public abstract class Robot {
         this.superficies = superficies;
     }
 
-    public int pedidosPendientes(){
+    public int pedidosPendientes() {
         return this.pedidos.size();
     }
 
-    public void procesarPedido(Pedido pedido){
-        for(LimpiezaOrdenamiento tarea : pedido.getLimpiezaOrdenamientos()){
-            if(tarea.getRobot().equals(this)){
+    public void procesarPedido(Pedido pedido) {
+        for (LimpiezaOrdenamiento tarea : pedido.getLimpiezaOrdenamientos()) {
+            if (tarea.getRobot().equals(this)) {
                 pedido.getLimpiezaOrdenamientos().remove(tarea);
                 System.out.println("TAREA TERMINADA");
             }
@@ -80,12 +89,11 @@ public abstract class Robot {
         }
     }
 
-    private void finalizarPedido(Pedido pedido){
-        if(pedido.getLimpiezaOrdenamientos().isEmpty()){
+    private void finalizarPedido(Pedido pedido) {
+        if (pedido.getLimpiezaOrdenamientos().isEmpty()) {
             System.out.println("PEDIDO COMPLETO");
         }
     }
-
 
 
 }

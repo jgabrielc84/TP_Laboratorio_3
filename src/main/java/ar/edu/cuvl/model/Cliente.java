@@ -4,40 +4,26 @@ import ar.edu.cuvl.exception.clienteException.ClienteMorosoException;
 import ar.edu.cuvl.interfaces.TipoServicio;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 public class Cliente {
 
     private int dni;
     private TipoServicio tipoServicio;
-    private float saldo;
-    private LocalDate fechaUltimaLimpieza;
+    private LocalDateTime fechaUltimaLimpieza;
     private int cantidadOrdenamientos;
     private int cantidadLimpiezas;
 
-    public float getSaldo() {
-        return saldo;
-    }
-
-    public void setSaldo(float saldo) {
-        this.saldo = saldo;
-    }
-
-    public LocalDate getFechaUltimaLimpieza() {
-        return fechaUltimaLimpieza;
-    }
-
-    public void setFechaUltimaLimpieza(LocalDate fechaUltimaLimpieza) {
-        this.fechaUltimaLimpieza = fechaUltimaLimpieza;
-    }
-
     public Cliente() {
+
     }
 
-    public Cliente(int dni, TipoServicio tipoServicio, float saldo, LocalDate fechaUltimaLimpieza) {
+    public Cliente(int dni, TipoServicio tipoServicio, LocalDateTime fechaUltimaLimpieza, int cantidadOrdenamientos, int cantidadLimpiezas) {
         this.dni = dni;
         this.tipoServicio = tipoServicio;
-        this.saldo = saldo;
         this.fechaUltimaLimpieza = fechaUltimaLimpieza;
+        this.cantidadOrdenamientos = cantidadOrdenamientos;
+        this.cantidadLimpiezas = cantidadLimpiezas;
     }
 
     public int getDni() {
@@ -54,6 +40,30 @@ public class Cliente {
 
     public void setTipoServicio(TipoServicio tipoServicio) {
         this.tipoServicio = tipoServicio;
+    }
+
+    public LocalDateTime getFechaUltimaLimpieza() {
+        return fechaUltimaLimpieza;
+    }
+
+    public void setFechaUltimaLimpieza(LocalDateTime fechaUltimaLimpieza) {
+        this.fechaUltimaLimpieza = fechaUltimaLimpieza;
+    }
+
+    public int getCantidadOrdenamientos() {
+        return cantidadOrdenamientos;
+    }
+
+    public void setCantidadOrdenamientos(int cantidadOrdenamientos) {
+        this.cantidadOrdenamientos = cantidadOrdenamientos;
+    }
+
+    public int getCantidadLimpiezas() {
+        return cantidadLimpiezas;
+    }
+
+    public void setCantidadLimpiezas(int cantidadLimpiezas) {
+        this.cantidadLimpiezas = cantidadLimpiezas;
     }
 
     @Override
@@ -73,19 +83,4 @@ public class Cliente {
         return this.dni;
     }
 
-    public int getCantidadOrdenamientos() {
-        return cantidadOrdenamientos;
-    }
-
-    public void setCantidadOrdenamientos(int cantidadOrdenamientos) {
-        this.cantidadOrdenamientos = cantidadOrdenamientos;
-    }
-
-    public int getCantidadLimpiezas() {
-        return cantidadLimpiezas;
-    }
-
-    public void setCantidadLimpiezas(int cantidadLimpiezas) {
-        this.cantidadLimpiezas = cantidadLimpiezas;
-    }
 }

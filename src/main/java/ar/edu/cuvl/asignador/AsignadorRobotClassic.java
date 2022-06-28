@@ -2,9 +2,9 @@ package ar.edu.cuvl.asignador;
 
 import ar.edu.cuvl.interfaces.AsignadorRobot;
 import ar.edu.cuvl.interfaces.Robot;
-import ar.edu.cuvl.interfaces.TipoSuperficie;
+import ar.edu.cuvl.model.TipoSuperficie;
 import ar.edu.cuvl.model.Pedido;
-import ar.edu.cuvl.model.type.LimpiezaOrdenamiento;
+import ar.edu.cuvl.model.LimpiezaOrdenamiento;
 import ar.edu.cuvl.model.type.Superficie;
 
 import java.util.ArrayList;
@@ -17,14 +17,11 @@ public class AsignadorRobotClassic implements AsignadorRobot {
 
     public void asignarRobots(Pedido pedido, HashSet<Robot> robotsDisponibles){
 
-        //TODO: filtrar de la lista de pedidos las tareas de limpiezaOrdenamiento
         for (LimpiezaOrdenamiento limpiezaOrdenamiento : pedido.getLimpiezaOrdenamientos() ) {
-            //TODO: por cada tarea limpiezaOrdenamiento voy a armar una lista de robots que cumple con la tarea
-            List<Robot> robots = new ArrayList<>();
-            robots=filtrarRobotsQueCumplenConLaTarea(limpiezaOrdenamiento, robotsDisponibles);
-            //TODO: Segun tipo asigna los robots correspondientes a limpiezaOrdenamiento
-            limpiezaOrdenamiento.setRobot(robots);
 
+            List<Robot> robots = filtrarRobotsQueCumplenConLaTarea(limpiezaOrdenamiento, robotsDisponibles);
+
+            limpiezaOrdenamiento.setRobot(robots);
         }
 
     }

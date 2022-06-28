@@ -1,16 +1,15 @@
 package ar.edu.cuvl.model.tipoCliente;
 
 import ar.edu.cuvl.asignador.AsignadorRobotPlatinum;
-import ar.edu.cuvl.interfaces.AsignadorRobot;
 import ar.edu.cuvl.interfaces.TipoServicio;
 import ar.edu.cuvl.model.Pedido;
-import ar.edu.cuvl.model.type.Servicio;
 
 public class Platinum extends TipoServicio {
-    private AsignadorRobot asignadorRobot ;
+
+
     public Platinum( ) {
 
-        super(Servicio.PLATINUM, 20000,  new AsignadorRobotPlatinum());
+        super(20000,  new AsignadorRobotPlatinum());
     }
 
 
@@ -24,8 +23,4 @@ public class Platinum extends TipoServicio {
 
     }
 
-    @Override
-    public AsignadorRobot getAsignadorRobot() {
-        return asignadorRobot;
-    }
 }

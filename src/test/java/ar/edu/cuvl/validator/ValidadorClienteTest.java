@@ -1,5 +1,6 @@
 package ar.edu.cuvl.validator;
 
+import ar.edu.cuvl.asignador.AsignadorRobotEconomic;
 import ar.edu.cuvl.exception.clienteException.ClienteMorosoException;
 import ar.edu.cuvl.model.Cliente;
 import ar.edu.cuvl.model.tipoCliente.Economic;
@@ -18,7 +19,8 @@ class ValidadorClienteTest {
 
     @BeforeEach
     void setUp() {
-        cliente=new Cliente(39999,new Economic(),600, LocalDate.now());
+        //TODO: revisar
+        //cliente=new Cliente(39999,new Economic(),600, LocalDate.now());
         validadorCliente=new ValidadorCliente();
     }
 
