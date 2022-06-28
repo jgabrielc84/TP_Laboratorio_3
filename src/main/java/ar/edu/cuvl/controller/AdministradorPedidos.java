@@ -85,6 +85,14 @@ public class AdministradorPedidos {
         return total;
     }
 
+    public float solicitarPrecioFinalServicioReparacion(int pedido){
+        float resultado;
+
+        resultado =
+
+        return resultado;
+    }
+
 
 }
 
