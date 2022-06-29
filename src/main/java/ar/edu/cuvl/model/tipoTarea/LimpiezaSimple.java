@@ -4,15 +4,14 @@ import ar.edu.cuvl.interfaces.Robot;
 import ar.edu.cuvl.interfaces.TipoComplejidadLimpieza;
 import ar.edu.cuvl.model.LimpiezaOrdenamiento;
 
-import java.util.List;
-
-public class LimpiezaSimple extends TipoComplejidadLimpieza {
+public class LimpiezaSimple implements TipoComplejidadLimpieza {
 
     @Override
-    public int calcularCostoRobots(List<Robot> robots, LimpiezaOrdenamiento tarea){
-        int suma=0;
-        for (Robot robot: robots){
-            suma+=robot.getCostoHora()*tarea.getHorasTarea();
+    public float calcularCostoRobots(LimpiezaOrdenamiento limpiezaOrdenamiento){
+        float suma=0;
+
+        for (Robot robot: limpiezaOrdenamiento.getRobots()){
+            suma += robot.getCostoHora()*limpiezaOrdenamiento.getHorasLimpiezaOrdenamiento();
         }
 
         return suma;

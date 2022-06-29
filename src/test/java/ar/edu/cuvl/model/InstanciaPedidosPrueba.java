@@ -1,37 +1,33 @@
-package ar.edu.cuvl;
+package ar.edu.cuvl.model;
 
-import ar.edu.cuvl.interfaces.TipoComplejidadLimpieza;
-import ar.edu.cuvl.interfaces.TipoReparacion;
-import ar.edu.cuvl.model.*;
 import ar.edu.cuvl.model.tipoCliente.Classic;
 import ar.edu.cuvl.model.tipoCliente.Economic;
 import ar.edu.cuvl.model.tipoCliente.Platinum;
 import ar.edu.cuvl.model.tipoReparacion.Electricidad;
 import ar.edu.cuvl.model.tipoReparacion.Gas;
-import ar.edu.cuvl.model.type.Superficie;
 import ar.edu.cuvl.model.type.TipoResiduo;
+import ar.edu.cuvl.model.type.TipoSuperficie;
 
 import java.time.LocalDateTime;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class PedidosPrueba {
+public class InstanciaPedidosPrueba {
 
-    private static PedidosPrueba pedidosPrueba;
+    private static InstanciaPedidosPrueba instanciaPedidosPrueba;
     private static List<Pedido> pedidos;
 
-    public PedidosPrueba() {
+    public InstanciaPedidosPrueba() {
         crearPedidos();
     }
 
-    public static PedidosPrueba getInstance() {
+    public static InstanciaPedidosPrueba getInstance() {
 
-        if(pedidosPrueba == null) {
-            pedidosPrueba = new PedidosPrueba();
+        if(instanciaPedidosPrueba == null) {
+            instanciaPedidosPrueba = new InstanciaPedidosPrueba();
         }
 
-        return pedidosPrueba;
+        return instanciaPedidosPrueba;
     }
 
     public static List<Pedido> getPedidos() {
@@ -40,8 +36,8 @@ public class PedidosPrueba {
 
     private void crearPedidos(){
 
-        TipoSuperficie tipoSuperficiePiso = new TipoSuperficie(Superficie.PISO);
-        TipoSuperficie tipoSuperficieMueble = new TipoSuperficie(Superficie.MUEBLE);
+        TipoSuperficie tipoSuperficiePiso = TipoSuperficie.PISO;
+        TipoSuperficie tipoSuperficieMueble = TipoSuperficie.MUEBLE;
 
         List<TipoSuperficie> superficies1 = Arrays.asList(tipoSuperficieMueble, tipoSuperficiePiso);
         List<TipoSuperficie> superficies2 = Arrays.asList(tipoSuperficiePiso);
@@ -58,6 +54,7 @@ public class PedidosPrueba {
         List<LimpiezaOrdenamiento> limpiezas1 = Arrays.asList(limpieza1, limpieza2, limpieza3);
         List<LimpiezaOrdenamiento> limpiezas2 = Arrays.asList(limpieza2, limpieza3);
         List<LimpiezaOrdenamiento> limpiezas3 = Arrays.asList();
+
         List<ServicioReparacion> reparaciones1 = Arrays.asList(reparacion1, reparacion2, reparacion3);
         List<ServicioReparacion> reparaciones2 = Arrays.asList();
         List<ServicioReparacion> reparaciones3 = Arrays.asList(reparacion3);
@@ -70,8 +67,8 @@ public class PedidosPrueba {
         Pedido pedido2 = new Pedido(2, cliente2, "Brasil 220", 0, reparaciones2, limpiezas2);
         Pedido pedido3 = new Pedido(3, cliente3, "Uruguay 1111", 5, reparaciones3, limpiezas3);
 
-        PedidosPrueba.pedidos.add(pedido1);
-        PedidosPrueba.pedidos.add(pedido2);
-        PedidosPrueba.pedidos.add(pedido3);
+        InstanciaPedidosPrueba.pedidos.add(pedido1);
+        InstanciaPedidosPrueba.pedidos.add(pedido2);
+        InstanciaPedidosPrueba.pedidos.add(pedido3);
     }
 }

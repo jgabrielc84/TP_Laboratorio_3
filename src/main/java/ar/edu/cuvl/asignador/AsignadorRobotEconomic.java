@@ -2,10 +2,9 @@ package ar.edu.cuvl.asignador;
 
 import ar.edu.cuvl.interfaces.AsignadorRobot;
 import ar.edu.cuvl.interfaces.Robot;
-import ar.edu.cuvl.model.TipoSuperficie;
+import ar.edu.cuvl.model.type.TipoSuperficie;
 import ar.edu.cuvl.model.Pedido;
 import ar.edu.cuvl.model.LimpiezaOrdenamiento;
-import ar.edu.cuvl.model.type.Superficie;
 
 import java.util.ArrayList;
 import java.util.Comparator;
@@ -21,41 +20,46 @@ public class AsignadorRobotEconomic implements AsignadorRobot {
 
             List<Robot> robots = filtrarRobotsQueCumplenConLaTarea(limpiezaOrdenamiento, robotsDisponibles);
 
-            limpiezaOrdenamiento.setRobot(robots);
-
+            limpiezaOrdenamiento.setRobots(robots);
         }
-
     }
 
     private List<Robot> filtrarRobotsQueCumplenConLaTarea(LimpiezaOrdenamiento limpiezaOrdenamiento, HashSet<Robot> robotsDisponibles){
         List<Robot> listaRobotsQueCumplenConLaTarea = new ArrayList<>();
+
         for (TipoSuperficie tipoSuperficie : limpiezaOrdenamiento.getTipoSuperficies()){
-            listaRobotsQueCumplenConLaTarea.add(robotSuperficie(robotsDisponibles,tipoSuperficie.getTipo()));
+            listaRobotsQueCumplenConLaTarea.add( obtenerRobotSegunSuperficie( robotsDisponibles, tipoSuperficie ) );
 
         }
+
         if (limpiezaOrdenamiento.isOrdenamiento()){
-            listaRobotsQueCumplenConLaTarea.add(robotOrdena(robotsDisponibles,limpiezaOrdenamiento.isOrdenamiento()));
+            listaRobotsQueCumplenConLaTarea.add(obtenerRobotSegunOrdena(robotsDisponibles,limpiezaOrdenamiento.isOrdenamiento()));
         }
 
         return listaRobotsQueCumplenConLaTarea;
     }
 
-    private  Robot robotSuperficie( HashSet<Robot> robotsDisponibles, Superficie superficie){
-        Robot robot;
+    private Robot obtenerRobotSegunSuperficie( HashSet<Robot> robotsDisponibles, TipoSuperficie superficie) {
+        HashSet<Robot> robots = new HashSet<>();
 
-        List<Robot> robots= robotsDisponibles.stream().filter(x->x.getSuperficies().contains(superficie)).collect(Collectors.toList());
-        robot=robots.stream().min(Comparator.comparing(Robot::pedidosPendientes)).get();
+        for (Robot robot : robotsDisponibles) {
+            for (TipoSuperficie tipoSuperficie : robot.getSuperficies()) {
+                if (tipoSuperficie == superficie) {
+                    robots.add(robot);
+                }
+            }
+        }
+        Robot robot = robots.stream().min(Comparator.comparing(Robot::pedidosPendientes)).get();
 
         return robot;
     }
 
-    private Robot robotOrdena( HashSet<Robot> robotsDisponibles,boolean ordena){
-        List<Robot> robots=new ArrayList<>();
+    private Robot obtenerRobotSegunOrdena( HashSet<Robot> robotsDisponibles, boolean ordena){
+        List<Robot> robots = robotsDisponibles.stream().filter(x->x.isOrdena()==ordena).collect(Collectors.toList());
 
-        robots= robotsDisponibles.stream().filter(x->x.isOrdena()==ordena).collect(Collectors.toList());
-        Robot robot=robots.stream().min(Comparator.comparing(Robot::getCostoHora)).get();
+        Robot robot = robots.stream().min( Comparator.comparing( Robot :: getCostoHora ) ).get();
+
         return robot;
-
     }
 
 }

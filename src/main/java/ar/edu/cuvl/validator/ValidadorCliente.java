@@ -5,12 +5,10 @@ import ar.edu.cuvl.model.Cliente;
 import ar.edu.cuvl.model.ModuloPago;
 
 public class ValidadorCliente {
-    private String mensaje;
 
     public void esMoroso(Cliente cliente) throws ClienteMorosoException {
-        if(ModuloPago.deuda(cliente) >= cliente.getTipoServicio().getDeudaMaxima()){
-            this.mensaje = "Cliente moroso";
-            throw new ClienteMorosoException(mensaje);
+        if(ModuloPago.deuda(cliente) > cliente.getTipoServicio().getDeudaMaxima()){
+            throw new ClienteMorosoException("Cliente moroso");
         }
     }
 

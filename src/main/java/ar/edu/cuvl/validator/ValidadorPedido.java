@@ -24,12 +24,8 @@ public class ValidadorPedido {
                 }
                 pedido.getCliente().getTipoServicio().puedeLimpiar(pedido);
             }
-        } catch ( NoPuedeOrdenarException e ) {
-            throw new PedidoInvalidoException("El Cliente no puede Ordenar");
-        } catch ( NoPuedeLimpiarException e ){
-            throw new PedidoInvalidoException("El Cliente no puede limpiar");
-        } catch ( ClienteMorosoException e ){
-            throw new PedidoInvalidoException("El Cliente es moroso");
+        } catch ( NoPuedeOrdenarException | NoPuedeLimpiarException | ClienteMorosoException e) {
+            throw new PedidoInvalidoException("Pedido invalido: " + e.getMessage());
         }
 
     }
