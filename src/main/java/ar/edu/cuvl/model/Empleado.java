@@ -1,18 +1,19 @@
 package ar.edu.cuvl.model;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 
 public class Empleado {
 
     private float sueldoBase;
+    private HashSet<Pedido> pedidos;
 
-    private ArrayList<Pedido> pedidos;
 
     public Empleado(float sueldoBase) {
         this.sueldoBase = sueldoBase;
     }
 
-    public Empleado(float sueldoBase, ArrayList<Pedido> pedidos) {
+    public Empleado(float sueldoBase, HashSet<Pedido> pedidos) {
         this.sueldoBase = sueldoBase;
         this.pedidos = pedidos;
     }
@@ -25,17 +26,12 @@ public class Empleado {
         this.sueldoBase = sueldoBase;
     }
 
-    public ArrayList<Pedido> getPedidos() {
+    public HashSet<Pedido> getPedidos() {
         return pedidos;
     }
 
-    public void setPedidos(ArrayList<Pedido> pedidos) {
+    public void setPedidos(HashSet<Pedido> pedidos) {
         this.pedidos = pedidos;
     }
-
-    public void procesarPedido(Pedido pedido){
-
-    }
-
 
 }
