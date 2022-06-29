@@ -12,6 +12,11 @@ public class Pedido {
     private List<LimpiezaOrdenamiento> limpiezaOrdenamientos;
     private List<ServicioReparacion> servicioReparaciones;
 
+
+    public Pedido() {
+
+    }
+
     public Pedido(int numeroPedido, Cliente cliente, String direccion, int cantidadMascotas, List<ServicioReparacion> servicioReparaciones, List<LimpiezaOrdenamiento> limpiezaOrdenamientos) {
         this.numeroPedido = numeroPedido;
         this.cliente = cliente;
@@ -19,10 +24,6 @@ public class Pedido {
         this.cantidadMascotas = cantidadMascotas;
         this.servicioReparaciones = servicioReparaciones;
         this.limpiezaOrdenamientos = limpiezaOrdenamientos;
-    }
-
-    public Pedido() {
-
     }
 
     public int getNumeroPedido() {
@@ -77,19 +78,23 @@ public class Pedido {
         return sumarServicioReparacion(this.servicioReparaciones) + sumarLimpiezaOrdenamientos(this.limpiezaOrdenamientos);
     }
 
-    private float sumarServicioReparacion(List<ServicioReparacion> servicioReparacion) {
+    private float sumarServicioReparacion(List<ServicioReparacion> servicioReparaciones) {
         float total = 0;
-        for (ServicioReparacion tarea : servicioReparacion) {
-            total = total + tarea.getTipoComplejidadReparacion().calcularCostoEmpleados(tarea.getEmpleado(),tarea.getComplejidad());
+
+        for (ServicioReparacion servicioReparacion : servicioReparaciones) {
+            total = total + servicioReparacion.obtenerCostoEmpleado();
         }
+
         return total;
     }
 
     private float sumarLimpiezaOrdenamientos(List<LimpiezaOrdenamiento> limpiezaOrdenamientos){
         float total = 0;
-        for(LimpiezaOrdenamiento tarea : limpiezaOrdenamientos){
-            total = total + tarea.getTipoComplejidadLimpieza().calcularCostoRobots(tarea.getRobot(),tarea);
+
+        for(LimpiezaOrdenamiento limpiezaOrdenamiento : limpiezaOrdenamientos){
+            total = total + limpiezaOrdenamiento.obtenerCostoRobots();
         }
+
         return total;
     }
 

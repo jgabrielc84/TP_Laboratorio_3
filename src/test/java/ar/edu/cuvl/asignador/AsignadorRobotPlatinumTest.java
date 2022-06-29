@@ -4,9 +4,8 @@ import ar.edu.cuvl.interfaces.Robot;
 import ar.edu.cuvl.model.Cliente;
 import ar.edu.cuvl.model.LimpiezaOrdenamiento;
 import ar.edu.cuvl.model.Pedido;
-import ar.edu.cuvl.model.TipoSuperficie;
+import ar.edu.cuvl.model.type.TipoSuperficie;
 import ar.edu.cuvl.model.robot.*;
-import ar.edu.cuvl.model.type.Superficie;
 import ar.edu.cuvl.model.type.TipoResiduo;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -14,8 +13,6 @@ import org.junit.jupiter.api.Test;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 class AsignadorRobotPlatinumTest {
 
@@ -74,10 +71,10 @@ class AsignadorRobotPlatinumTest {
 
         asignadorRobotPlatinum = new AsignadorRobotPlatinum();
         List<TipoSuperficie> tipoSuperficies = new ArrayList<>();
-        tipoSuperficies.add(new TipoSuperficie(Superficie.MUEBLE));
-        tipoSuperficies.add(new TipoSuperficie(Superficie.PISO));
+        tipoSuperficies.add(TipoSuperficie.MUEBLE);
+        tipoSuperficies.add(TipoSuperficie.PISO);
         List<TipoSuperficie> tipoSuperficies1 = new ArrayList<>();
-        tipoSuperficies1.add(new TipoSuperficie(Superficie.PISO));
+        tipoSuperficies1.add(TipoSuperficie.PISO);
 
         List<LimpiezaOrdenamiento> limpiezaOrdenamientos = new ArrayList<>();
         LimpiezaOrdenamiento limpiezaOrdenamiento = new LimpiezaOrdenamiento(tipoSuperficies, TipoResiduo.BARRO, true);
@@ -93,7 +90,7 @@ class AsignadorRobotPlatinumTest {
         asignadorRobotPlatinum.asignarRobots(pedido, robotsDisponibles);
         for (LimpiezaOrdenamiento limpiezaOrdenamiento : pedido.getLimpiezaOrdenamientos()) {
             System.out.println("sdafds");
-            for (Robot robot : limpiezaOrdenamiento.getRobot()) {
+            for (Robot robot : limpiezaOrdenamiento.getRobots()) {
                 System.out.println(robot.getClass());
             }
         }

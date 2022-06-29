@@ -4,9 +4,6 @@ import ar.edu.cuvl.interfaces.TipoReparacion;
 
 public class Electricidad implements TipoReparacion {
 
-
-
-
     @Override
     public float costoSegunComplejidad(int complejidad) {
         float precio=0;

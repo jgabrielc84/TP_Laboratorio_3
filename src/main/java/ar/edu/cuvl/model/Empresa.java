@@ -3,14 +3,12 @@ package ar.edu.cuvl.model;
 import ar.edu.cuvl.controller.AdministradorPedidos;
 import ar.edu.cuvl.exception.pedidoException.PedidoInvalidoException;
 import ar.edu.cuvl.interfaces.Robot;
-import ar.edu.cuvl.validator.ValidadorPedido;
 
 import java.util.*;
 
 public class Empresa {
 
     private AdministradorPedidos administradorPedidos;
-
     private HashSet<Cliente> clientes;
     private HashSet<Robot> robotsDisponibles;
     private HashSet<Empleado> empleados;
@@ -62,7 +60,7 @@ public class Empresa {
         return this.administradorPedidos.solicitarPrecioFinalServicioReparacion(numeroPedido);
     }
 
-    public void mostrarCostoReparacion(HashMap<Integer, Float> costosReparaciones) {
+    public void mostrarCostoReparaciones(HashMap<Integer, Float> costosReparaciones) {
 
         float totalReparaciones = 0;
 
