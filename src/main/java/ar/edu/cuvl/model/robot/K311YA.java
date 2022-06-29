@@ -6,6 +6,7 @@ import ar.edu.cuvl.model.type.TipoSuperficie;
 import java.util.ArrayList;
 
 public class K311YA extends Robot {
+
     public K311YA() {
         super(5000, true, true, new ArrayList<>(), new ArrayList<>());
         this.getSuperficies().add(TipoSuperficie.PISO);

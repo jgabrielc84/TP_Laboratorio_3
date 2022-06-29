@@ -109,4 +109,20 @@ public class Pedido {
         return listaPrecioReparaciones;
     }
 
+    @Override
+    public boolean equals(Object obj) {
+        // hay que asegurar que obj es de la clase Cliente
+        if (obj != null && obj instanceof Pedido) {
+            // se comparan los números de identificación
+            Pedido another = (Pedido) obj;
+            return this.numeroPedido == another.numeroPedido;
+        } else {
+            return false;
+        }
+    }
+
+    @Override
+    public int hashCode() {
+        return this.numeroPedido;
+    }
 }
