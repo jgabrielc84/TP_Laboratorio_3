@@ -29,7 +29,7 @@ public class ValidadorComplejidad {
 
     private boolean verificarFecha(LocalDateTime fecha){
         LocalDateTime fechaComparar = LocalDateTime.now();
-        return DAYS.between(fecha, fechaComparar) < 15;
+        return DAYS.between(fecha, fechaComparar) <= 15;
     }
 
 

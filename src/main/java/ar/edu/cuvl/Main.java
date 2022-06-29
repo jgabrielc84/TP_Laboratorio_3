@@ -1,11 +1,8 @@
 package ar.edu.cuvl;
 
-import ar.edu.cuvl.asignador.AsignadorRobotPlatinum;
 import ar.edu.cuvl.exception.pedidoException.PedidoInvalidoException;
 import ar.edu.cuvl.interfaces.Robot;
-import ar.edu.cuvl.interfaces.TipoReparacion;
-import ar.edu.cuvl.interfaces.TipoServicio;
-import ar.edu.cuvl.model.TipoSuperficie;
+import ar.edu.cuvl.model.type.TipoSuperficie;
 import ar.edu.cuvl.model.*;
 import ar.edu.cuvl.model.robot.*;
 import ar.edu.cuvl.model.tipoCliente.Classic;
@@ -13,7 +10,6 @@ import ar.edu.cuvl.model.tipoCliente.Economic;
 import ar.edu.cuvl.model.tipoCliente.Platinum;
 import ar.edu.cuvl.model.tipoReparacion.Electricidad;
 import ar.edu.cuvl.model.tipoReparacion.Gas;
-import ar.edu.cuvl.model.type.Superficie;
 import ar.edu.cuvl.model.type.TipoResiduo;
 
 
@@ -57,18 +53,19 @@ public class Main {
 //            e.printStackTrace();
 //        }
 
-        TipoSuperficie tipoSuperficiePiso = new TipoSuperficie(Superficie.PISO);
-        TipoSuperficie tipoSuperficieMueble = new TipoSuperficie(Superficie.MUEBLE);
+        TipoSuperficie tipoSuperficiePiso = TipoSuperficie.PISO;
+        TipoSuperficie tipoSuperficieMueble = TipoSuperficie.MUEBLE;
 
         List<TipoSuperficie> superficies1 = Arrays.asList(tipoSuperficieMueble, tipoSuperficiePiso);
         List<TipoSuperficie> superficies2 = Arrays.asList(tipoSuperficiePiso);
         List<TipoSuperficie> superficies3 = Arrays.asList();
 
+        LimpiezaOrdenamiento limpieza1 = new LimpiezaOrdenamiento(superficies3, TipoResiduo.POLVO, false);
         LimpiezaOrdenamiento limpieza2 = new LimpiezaOrdenamiento(superficies1, TipoResiduo.BARRO, true);
         LimpiezaOrdenamiento limpieza3 = new LimpiezaOrdenamiento(superficies2, TipoResiduo.BARRO, false);
-        LimpiezaOrdenamiento limpieza1 = new LimpiezaOrdenamiento(superficies3, TipoResiduo.POLVO, true);
 
-        List<LimpiezaOrdenamiento> limpiezas1 = Arrays.asList(limpieza1, limpieza2, limpieza3);
+
+        List<LimpiezaOrdenamiento> limpiezas1 = Arrays.asList(limpieza1, limpieza3);
         List<LimpiezaOrdenamiento> limpiezas2 = Arrays.asList(limpieza2, limpieza3);
         List<LimpiezaOrdenamiento> limpiezas3 = Arrays.asList();
 
@@ -76,7 +73,7 @@ public class Main {
         ServicioReparacion reparacion2 = new ServicioReparacion(2, new Electricidad(), 5);
         ServicioReparacion reparacion3 = new ServicioReparacion(3, new Gas(), 8);
 
-        List<ServicioReparacion> reparaciones1 = Arrays.asList(reparacion1, reparacion2, reparacion3);
+        List<ServicioReparacion> reparaciones1 = Arrays.asList(reparacion1, reparacion2);
         List<ServicioReparacion> reparaciones2 = Arrays.asList();
         List<ServicioReparacion> reparaciones3 = Arrays.asList(reparacion1, reparacion2, reparacion3);
 
@@ -115,12 +112,16 @@ public class Main {
         empresa.setRobotsDisponibles(robotsDisponibles);
         empresa.setEmpleados(empleados);
 
+        Pedido pedido = pedido1;
+
         try{
-            empresa.ingresarPedido(pedido3);
-            empresa.mostrarCostoReparacion(empresa.solicitarPrecioFinalServicioReparacion(pedido3.getNumeroPedido()));
+            empresa.ingresarPedido(pedido);
+            System.out.println("Pedido: " + pedido.getNumeroPedido() + "\n");
+            empresa.mostrarCostoReparaciones(empresa.solicitarPrecioFinalServicioReparacion(pedido.getNumeroPedido()));
         } catch (PedidoInvalidoException e){
             System.out.println("JE JE " + e.getMessage());
         }
+
 
     }
 

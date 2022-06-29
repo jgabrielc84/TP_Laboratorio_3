@@ -41,6 +41,7 @@ public class ServicioReparacion  {
     public void setComplejidad(int complejidad) {
         this.complejidad = complejidad;
     }
+
     public TipoComplejidadReparacion getTipoComplejidadReparacion() {
         return tipoComplejidadReparacion;
     }
@@ -58,10 +59,16 @@ public class ServicioReparacion  {
     }
 
     public float calcularPrecioFinal() {
-     float costoReparacion=this.getTipoReparacion().costoSegunComplejidad(this.complejidad);
-     float complejidad=this.complejidad;
-     float horas = this.getEmpleado().getSueldoBase()/160;
-     return costoReparacion+horas*complejidad;
+
+     float costoReparacion = this.getTipoReparacion().costoSegunComplejidad(this.complejidad);
+     float complejidad = this.complejidad;
+     float horas = this.getEmpleado().getSueldoBase() / 160;
+
+     return costoReparacion + horas * complejidad;
     }
 
+    public float obtenerCostoEmpleado() {
+
+        return tipoComplejidadReparacion.calcularCostoEmpleado(this);
+    }
 }

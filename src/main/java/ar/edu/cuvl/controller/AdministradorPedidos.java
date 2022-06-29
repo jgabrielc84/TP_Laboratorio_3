@@ -59,7 +59,7 @@ public class AdministradorPedidos {
         int total = 0;
         for(Pedido pedido : pedidosValidados){
             for(LimpiezaOrdenamiento limpiezaOrdenamiento : pedido.getLimpiezaOrdenamientos()){
-                if(limpiezaOrdenamiento.getTipoComplejidadLimpieza() instanceof LimpiezaSimple){
+                if(limpiezaOrdenamiento.esSimple()){
                     total ++;
                 }
             }
@@ -71,7 +71,7 @@ public class AdministradorPedidos {
         int total = 0;
         for(Pedido pedido : pedidosValidados){
             for (LimpiezaOrdenamiento limpiezaOrdenamiento : pedido.getLimpiezaOrdenamientos()){
-                if(limpiezaOrdenamiento.getTipoComplejidadLimpieza() instanceof LimpiezaCompleja){
+                if(!limpiezaOrdenamiento.esSimple()){
                     total ++;
                 }
             }
@@ -79,24 +79,22 @@ public class AdministradorPedidos {
         return total;
     }
 
-    public float costoTotalCliente(Cliente cliente){
-        float total=0;
-        ArrayList<Pedido> ArrayCliente = this.pedidosValidados.stream().filter(e->e.getCliente().getDni()==cliente.getDni()).collect(Collectors.toCollection(ArrayList::new));
-        for(Pedido pedido : ArrayCliente){
+    public float costoTotalPedidosCliente(Cliente cliente){
+        float total = 0;
+
+        ArrayList<Pedido> ArrayPedido = this.pedidosValidados.stream().filter(e->e.getCliente().getDni()==cliente.getDni()).collect(Collectors.toCollection(ArrayList::new));
+
+        for(Pedido pedido : ArrayPedido){
             total += pedido.costoTotal();
         }
         return total;
     }
 
     public HashMap<Integer, Float> solicitarPrecioFinalServicioReparacion(int numeroPedido){
-        HashMap<Integer, Float> listaPrecioReparaciones = new HashMap<Integer, Float>();
-
         Pedido pedidoResultado = buscarPedido(numeroPedido);
 
         return pedidoResultado.solicitarPrecioFinalServicioReparacion();
     }
-
-
 
     private Pedido buscarPedido(int numeroPedido){
         Pedido pedidoResultado = new Pedido();
@@ -108,6 +106,12 @@ public class AdministradorPedidos {
         }
 
         return pedidoResultado;
+    }
+
+    public float obtenerCostoPedido(Pedido pedido){
+        Pedido pedidoResultado = buscarPedido(pedido.getNumeroPedido());
+
+        return pedidoResultado.costoTotal();
     }
 
 }
