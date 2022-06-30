@@ -7,7 +7,8 @@ import ar.edu.cuvl.model.ModuloPago;
 public class ValidadorCliente {
 
     public void esMoroso(Cliente cliente) throws ClienteMorosoException {
-        if(ModuloPago.deuda(cliente) > cliente.getTipoServicio().getDeudaMaxima()){
+        ModuloPago moduloPago=new ModuloPago();
+        if(moduloPago.deuda(cliente) > cliente.getTipoServicio().getDeudaMaxima()){
             throw new ClienteMorosoException("Cliente moroso");
         }
     }

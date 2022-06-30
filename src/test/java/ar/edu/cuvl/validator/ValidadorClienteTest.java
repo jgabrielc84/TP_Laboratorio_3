@@ -3,6 +3,7 @@ package ar.edu.cuvl.validator;
 import ar.edu.cuvl.asignador.AsignadorRobotEconomic;
 import ar.edu.cuvl.exception.clienteException.ClienteMorosoException;
 import ar.edu.cuvl.model.Cliente;
+import ar.edu.cuvl.model.ModuloPago;
 import ar.edu.cuvl.model.tipoCliente.Classic;
 import ar.edu.cuvl.model.tipoCliente.Economic;
 import org.junit.jupiter.api.BeforeEach;
