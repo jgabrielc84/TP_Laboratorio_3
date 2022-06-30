@@ -12,11 +12,11 @@ public class AsignadorEmpleados {
 
     public void asignarEmpleado(Pedido pedido, HashSet<Empleado> empleados){
         Random r = new Random();
-        int random = 0;
+        int random;
         Empleado[] arrayEmpleados = empleados.toArray(new Empleado[empleados.size()]);
 
         for(ServicioReparacion reparacion : pedido.getServicioReparaciones()){
-            random = r.nextInt(empleados.size() - 0) + 0;
+            random = r.nextInt(empleados.size());
             reparacion.setEmpleado(arrayEmpleados[random]);
             arrayEmpleados[random].getPedidos().add(pedido);
         }
