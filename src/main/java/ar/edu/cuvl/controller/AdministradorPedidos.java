@@ -50,45 +50,45 @@ public class AdministradorPedidos {
             this.pedidosValidados.add(pedido);
 
         } catch (PedidoInvalidoException e) {
-            throw  e;
+            throw e;
         }
 
     }
 
-    public int cantidadLimpiezaSimple(){
+    public int cantidadLimpiezaSimple() {
         int total = 0;
-        for(Pedido pedido : pedidosValidados){
-            for(LimpiezaOrdenamiento limpiezaOrdenamiento : pedido.getLimpiezaOrdenamientos()){
-                if(limpiezaOrdenamiento.getTipoComplejidadLimpieza() instanceof LimpiezaSimple){
-                    total ++;
+        for (Pedido pedido : pedidosValidados) {
+            for (LimpiezaOrdenamiento limpiezaOrdenamiento : pedido.getLimpiezaOrdenamientos()) {
+                if (limpiezaOrdenamiento.getTipoComplejidadLimpieza() instanceof LimpiezaSimple) {
+                    total++;
                 }
             }
         }
         return total;
     }
 
-    public int cantidadLimpiezaCompleja(){
+    public int cantidadLimpiezaCompleja() {
         int total = 0;
-        for(Pedido pedido : pedidosValidados){
-            for (LimpiezaOrdenamiento limpiezaOrdenamiento : pedido.getLimpiezaOrdenamientos()){
-                if(limpiezaOrdenamiento.getTipoComplejidadLimpieza() instanceof LimpiezaCompleja){
-                    total ++;
+        for (Pedido pedido : pedidosValidados) {
+            for (LimpiezaOrdenamiento limpiezaOrdenamiento : pedido.getLimpiezaOrdenamientos()) {
+                if (limpiezaOrdenamiento.getTipoComplejidadLimpieza() instanceof LimpiezaCompleja) {
+                    total++;
                 }
             }
         }
         return total;
     }
 
-    public float costoTotalCliente(Cliente cliente){
-        float total=0;
-        ArrayList<Pedido> ArrayCliente = this.pedidosValidados.stream().filter(e->e.getCliente().getDni()==cliente.getDni()).collect(Collectors.toCollection(ArrayList::new));
-        for(Pedido pedido : ArrayCliente){
+    public float costoTotalCliente(Cliente cliente) {
+        float total = 0;
+        ArrayList<Pedido> ArrayCliente = this.pedidosValidados.stream().filter(e -> e.getCliente().getDni() == cliente.getDni()).collect(Collectors.toCollection(ArrayList::new));
+        for (Pedido pedido : ArrayCliente) {
             total += pedido.costoTotal();
         }
         return total;
     }
 
-    public HashMap<Integer, Float> solicitarPrecioFinalServicioReparacion(int numeroPedido){
+    public HashMap<Integer, Float> solicitarPrecioFinalServicioReparacion(int numeroPedido) {
         HashMap<Integer, Float> listaPrecioReparaciones = new HashMap<Integer, Float>();
 
         Pedido pedidoResultado = buscarPedido(numeroPedido);
@@ -97,12 +97,11 @@ public class AdministradorPedidos {
     }
 
 
-
-    private Pedido buscarPedido(int numeroPedido){
+    private Pedido buscarPedido(int numeroPedido) {
         Pedido pedidoResultado = new Pedido();
 
-        for ( Pedido pedido : this.pedidosValidados ){
-            if(pedido.getNumeroPedido() == numeroPedido){
+        for (Pedido pedido : this.pedidosValidados) {
+            if (pedido.getNumeroPedido() == numeroPedido) {
                 pedidoResultado = pedido;
             }
         }
