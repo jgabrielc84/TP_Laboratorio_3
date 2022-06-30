@@ -19,6 +19,7 @@ public class Pedido {
         this.servicioReparaciones = new ArrayList<>();
     }
 
+
     public Pedido(int numeroPedido, Cliente cliente, String direccion, int cantidadMascotas, List<ServicioReparacion> servicioReparaciones, List<LimpiezaOrdenamiento> limpiezaOrdenamientos) {
         this.numeroPedido = numeroPedido;
         this.cliente = cliente;

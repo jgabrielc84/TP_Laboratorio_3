@@ -11,13 +11,17 @@ public class Empleado {
 
     public Empleado(float sueldoBase) {
         this.sueldoBase = sueldoBase;
+        pedidos=new HashSet<>();
     }
 
     public Empleado(float sueldoBase, HashSet<Pedido> pedidos) {
         this.sueldoBase = sueldoBase;
-        this.pedidos = pedidos;
+        pedidos=new HashSet<>();
     }
 
+    public Empleado() {
+        pedidos=new HashSet<>();
+    }
     public float getSueldoBase() {
         return sueldoBase;
     }

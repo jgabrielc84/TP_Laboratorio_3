@@ -16,6 +16,7 @@ public class AsignadorEmpleados {
         Empleado[] arrayEmpleados = empleados.toArray(new Empleado[empleados.size()]);
 
         for(ServicioReparacion reparacion : pedido.getServicioReparaciones()){
+            System.out.println(reparacion.getComplejidad());
             random = r.nextInt(empleados.size() - 0) + 0;
             reparacion.setEmpleado(arrayEmpleados[random]);
             arrayEmpleados[random].getPedidos().add(pedido);

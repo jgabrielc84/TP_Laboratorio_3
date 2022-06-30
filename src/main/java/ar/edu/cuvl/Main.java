@@ -112,7 +112,9 @@ public class Main {
         empresa.setRobotsDisponibles(robotsDisponibles);
         empresa.setEmpleados(empleados);
 
+
         Pedido pedido = pedido1;
+
 
         try{
             empresa.ingresarPedido(pedido);
