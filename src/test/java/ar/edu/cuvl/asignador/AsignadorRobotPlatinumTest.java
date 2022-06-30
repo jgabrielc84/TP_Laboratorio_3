@@ -4,6 +4,7 @@ import ar.edu.cuvl.interfaces.Robot;
 import ar.edu.cuvl.model.Cliente;
 import ar.edu.cuvl.model.LimpiezaOrdenamiento;
 import ar.edu.cuvl.model.Pedido;
+import ar.edu.cuvl.model.tipoTarea.LimpiezaCompleja;
 import ar.edu.cuvl.model.type.TipoSuperficie;
 import ar.edu.cuvl.model.robot.*;
 import ar.edu.cuvl.model.type.TipoResiduo;
@@ -13,6 +14,8 @@ import org.junit.jupiter.api.Test;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
+
+import static org.junit.jupiter.api.Assertions.assertInstanceOf;
 
 class AsignadorRobotPlatinumTest {
 
@@ -89,11 +92,11 @@ class AsignadorRobotPlatinumTest {
 
         asignadorRobotPlatinum.asignarRobots(pedido, robotsDisponibles);
         for (LimpiezaOrdenamiento limpiezaOrdenamiento : pedido.getLimpiezaOrdenamientos()) {
-            System.out.println("sdafds");
             for (Robot robot : limpiezaOrdenamiento.getRobots()) {
                 System.out.println(robot.getClass());
             }
         }
+        assertInstanceOf(P011H.class,pedido.getLimpiezaOrdenamientos().get(0).getRobots().get(1));
 
     }
 }

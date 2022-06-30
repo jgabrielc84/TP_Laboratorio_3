@@ -6,6 +6,7 @@ import ar.edu.cuvl.model.type.TipoResiduo;
 import ar.edu.cuvl.model.type.TipoSuperficie;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 
 public class LimpiezaOrdenamiento {
@@ -20,7 +21,13 @@ public class LimpiezaOrdenamiento {
     private boolean esSimple;
 
 
+    public boolean isEsSimple() {
+        return esSimple;
+    }
+
+
     public LimpiezaOrdenamiento() {
+        this.robots = new ArrayList<>();
     }
 
     public LimpiezaOrdenamiento(List<TipoSuperficie> tipoSuperficies, TipoResiduo tipoResiduo, boolean ordenamiento) {

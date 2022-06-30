@@ -4,6 +4,7 @@ import ar.edu.cuvl.controller.AdministradorPedidos;
 import ar.edu.cuvl.exception.pedidoException.PedidoInvalidoException;
 import ar.edu.cuvl.interfaces.Robot;
 
+import java.lang.reflect.Array;
 import java.util.*;
 
 public class Empresa {
@@ -75,5 +76,18 @@ public class Empresa {
         System.out.println("Costo total de reparaciones = $" + totalReparaciones);
     }
 
+    public void mostrarEstadisticaLimpiezas(){
+
+        System.out.println("Limpiezas Simples: " + administradorPedidos.cantidadLimpiezaSimple());
+        System.out.println("Limpiezas Complejas: " + administradorPedidos.cantidadLimpiezaCompleja());
+
+    }
+    public void mostrarCostoCliente(Cliente cliente){
+        System.out.println("Costo total del cliente " + cliente.getDni() + " : " + administradorPedidos.costoTotalPedidosCliente(cliente));
+    }
+
+    public void mostrarCostoPedido(Pedido pedido){
+        System.out.println("Costo total del pedido " + pedido.getNumeroPedido() + " : " +administradorPedidos.obtenerCostoPedido(pedido));
+    }
 
 }

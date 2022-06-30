@@ -25,6 +25,10 @@ public class AdministradorPedidos {
         this.pedidosValidados = new ArrayList<>();
     }
 
+    public ArrayList<Pedido> getPedidosValidados() {
+        return pedidosValidados;
+    }
+
     public void setPedidosValidados(ArrayList<Pedido> pedidosValidados) {
         this.pedidosValidados = pedidosValidados;
     }
@@ -46,6 +50,7 @@ public class AdministradorPedidos {
             this.validadorPedido.validarPedido(pedido);
             asignadorComplejidad.asignarComplejidad(pedido);
             pedido.getCliente().getTipoServicio().getAsignadorRobot().asignarRobots(pedido, robotsDisponibles);
+            pedido.getCliente().actualizarLimpiezasOrdenamientos(pedido);
             asignadorEmpleados.asignarEmpleado(pedido, empleadosDisponibles);
             this.pedidosValidados.add(pedido);
 
