@@ -4,9 +4,9 @@ import ar.edu.cuvl.interfaces.Robot;
 import ar.edu.cuvl.model.Cliente;
 import ar.edu.cuvl.model.LimpiezaOrdenamiento;
 import ar.edu.cuvl.model.Pedido;
-import ar.edu.cuvl.model.TipoSuperficie;
+import ar.edu.cuvl.model.tipoTarea.LimpiezaCompleja;
+import ar.edu.cuvl.model.type.TipoSuperficie;
 import ar.edu.cuvl.model.robot.*;
-import ar.edu.cuvl.model.type.Superficie;
 import ar.edu.cuvl.model.type.TipoResiduo;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -15,7 +15,7 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertInstanceOf;
 
 class AsignadorRobotPlatinumTest {
 
@@ -28,7 +28,7 @@ class AsignadorRobotPlatinumTest {
     Pedido pedido;
     AsignadorRobotPlatinum asignadorRobotPlatinum;
     Cliente cliente;
-    LimpiezaOrdenamiento limpiezaOrdenamiento1;
+
 
     @BeforeEach
     void setUp() {
@@ -74,14 +74,14 @@ class AsignadorRobotPlatinumTest {
 
         asignadorRobotPlatinum = new AsignadorRobotPlatinum();
         List<TipoSuperficie> tipoSuperficies = new ArrayList<>();
-        tipoSuperficies.add(new TipoSuperficie(Superficie.MUEBLE));
-        tipoSuperficies.add(new TipoSuperficie(Superficie.PISO));
+        tipoSuperficies.add(TipoSuperficie.MUEBLE);
+        tipoSuperficies.add(TipoSuperficie.PISO);
         List<TipoSuperficie> tipoSuperficies1 = new ArrayList<>();
-        tipoSuperficies1.add(new TipoSuperficie(Superficie.PISO));
+        tipoSuperficies1.add(TipoSuperficie.PISO);
 
         List<LimpiezaOrdenamiento> limpiezaOrdenamientos = new ArrayList<>();
         LimpiezaOrdenamiento limpiezaOrdenamiento = new LimpiezaOrdenamiento(tipoSuperficies, TipoResiduo.BARRO, true);
-        limpiezaOrdenamiento1 = new LimpiezaOrdenamiento(tipoSuperficies1, TipoResiduo.POLVO, false);
+        LimpiezaOrdenamiento limpiezaOrdenamiento1 = new LimpiezaOrdenamiento(tipoSuperficies1, TipoResiduo.POLVO, false);
         limpiezaOrdenamientos.add(limpiezaOrdenamiento);
         limpiezaOrdenamientos.add(limpiezaOrdenamiento1);
         pedido = new Pedido(3, cliente, "calle falsa123", 3, new ArrayList<>(), limpiezaOrdenamientos);
@@ -91,17 +91,12 @@ class AsignadorRobotPlatinumTest {
     void asignarRobots() {
 
         asignadorRobotPlatinum.asignarRobots(pedido, robotsDisponibles);
-        assertInstanceOf(P011H.class,limpiezaOrdenamiento1.getRobot().get(0));
         for (LimpiezaOrdenamiento limpiezaOrdenamiento : pedido.getLimpiezaOrdenamientos()) {
-            System.out.println("limpieza ordenamiento");
-            for (Robot robot : limpiezaOrdenamiento.getRobot()) {
+            for (Robot robot : limpiezaOrdenamiento.getRobots()) {
                 System.out.println(robot.getClass());
             }
         }
-
-
-
-
+        assertInstanceOf(P011H.class,pedido.getLimpiezaOrdenamientos().get(0).getRobots().get(1));
 
     }
 }
