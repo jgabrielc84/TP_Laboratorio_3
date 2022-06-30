@@ -1,5 +1,6 @@
 package ar.edu.cuvl.model;
 
+import ar.edu.cuvl.model.tipoTarea.LimpiezaSimple;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -40,6 +41,7 @@ class EstadisticasTest {
 
         limpieza1 = new LimpiezaOrdenamiento();
         limpieza1.setEsSimple(true);
+        limpieza1.setTipoComplejidadLimpieza(new LimpiezaSimple());
         pedido1.getLimpiezaOrdenamientos().add(limpieza1);
         limpieza2 = new LimpiezaOrdenamiento();
         limpieza2.setEsSimple(true);
