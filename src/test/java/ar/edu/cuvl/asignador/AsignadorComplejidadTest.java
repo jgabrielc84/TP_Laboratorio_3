@@ -3,10 +3,10 @@ package ar.edu.cuvl.asignador;
 import ar.edu.cuvl.model.*;
 import ar.edu.cuvl.model.tipoReparacion.Electricidad;
 import ar.edu.cuvl.model.tipoReparacion.Gas;
-import ar.edu.cuvl.model.tipoTarea.ComplejaTipo;
+import ar.edu.cuvl.model.tipoTarea.ReparacionCompleja;
 import ar.edu.cuvl.model.tipoTarea.LimpiezaCompleja;
-import ar.edu.cuvl.model.type.Superficie;
 import ar.edu.cuvl.model.type.TipoResiduo;
+import ar.edu.cuvl.model.type.TipoSuperficie;
 import ar.edu.cuvl.validator.ValidadorComplejidad;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -42,8 +42,8 @@ class AsignadorComplejidadTest {
         limpiezaOrdenamiento2=new LimpiezaOrdenamiento(superficies,TipoResiduo.POLVO,false);
         pedido=new Pedido();
         superficies=new ArrayList<>();
-        superficies.add(new TipoSuperficie(Superficie.PISO));
-        superficies.add(new TipoSuperficie(Superficie.MUEBLE));
+        superficies.add(TipoSuperficie.PISO);
+        superficies.add(TipoSuperficie.MUEBLE);
         asignadorComplejidad=new AsignadorComplejidad();
         servicioReparaciones.add(servicioReparacion1);
         servicioReparaciones.add(servicioReparacion2);
@@ -59,7 +59,7 @@ class AsignadorComplejidadTest {
     @Test
     void asignarComplejidadTarea() {
         asignadorComplejidad.asignarComplejidadTarea(servicioReparaciones);
-        assertInstanceOf(ComplejaTipo.class, servicioReparacion1.getTipoComplejidadReparacion());
+        assertInstanceOf(ReparacionCompleja.class, servicioReparacion1.getTipoComplejidadReparacion());
 
     }
 

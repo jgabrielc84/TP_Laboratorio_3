@@ -2,10 +2,8 @@ package ar.edu.cuvl.interfaces;
 
 import ar.edu.cuvl.model.Pedido;
 import ar.edu.cuvl.model.LimpiezaOrdenamiento;
-import ar.edu.cuvl.model.TipoSuperficie;
-import ar.edu.cuvl.model.type.Superficie;
+import ar.edu.cuvl.model.type.TipoSuperficie;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public abstract class Robot {
@@ -17,29 +15,16 @@ public abstract class Robot {
     private List<TipoSuperficie> superficies;
     private List<Pedido> pedidos;
 
+
+    public Robot(){
+
+    }
+
     public Robot( float costoHora, boolean ordena, boolean lustra, List<TipoSuperficie> superficies, List<Pedido> pedidos) {
         this.costoHora = costoHora;
         this.ordena = ordena;
         this.lustra = lustra;
         this.superficies = superficies;
-        this.pedidos = pedidos;
-    }
-    public Robot(){
-    }
-
-    public boolean isLustra() {
-        return lustra;
-    }
-
-    public void setLustra(boolean lustra) {
-        this.lustra = lustra;
-    }
-
-    public List<Pedido> getPedidos() {
-        return pedidos;
-    }
-
-    public void setPedidos(List<Pedido> pedidos) {
         this.pedidos = pedidos;
     }
 
@@ -67,6 +52,14 @@ public abstract class Robot {
         this.ordena = ordena;
     }
 
+    public boolean isLustra() {
+        return lustra;
+    }
+
+    public void setLustra(boolean lustra) {
+        this.lustra = lustra;
+    }
+
     public List<TipoSuperficie> getSuperficies() {
         return superficies;
     }
@@ -75,25 +68,44 @@ public abstract class Robot {
         this.superficies = superficies;
     }
 
+    public List<Pedido> getPedidos() {
+        return pedidos;
+    }
+
+    public void setPedidos(List<Pedido> pedidos) {
+        this.pedidos = pedidos;
+    }
+
     public int pedidosPendientes() {
         return this.pedidos.size();
     }
 
-    public void procesarPedido(Pedido pedido) {
+    public void procesarPedido(int numeroPedido) {
+        Pedido pedido = buscarPedido(numeroPedido);
+
         for (LimpiezaOrdenamiento tarea : pedido.getLimpiezaOrdenamientos()) {
-            if (tarea.getRobot().equals(this)) {
+            if (tarea.getRobots().contains(this)) {
+
                 pedido.getLimpiezaOrdenamientos().remove(tarea);
+
                 System.out.println("TAREA TERMINADA");
             }
-            finalizarPedido(pedido);
         }
+
+        this.pedidos.remove(pedido);
+
     }
 
-    private void finalizarPedido(Pedido pedido) {
-        if (pedido.getLimpiezaOrdenamientos().isEmpty()) {
-            System.out.println("PEDIDO COMPLETO");
-        }
-    }
+   private Pedido buscarPedido(int numeroPedido){
+        Pedido pedidoResultado = new Pedido();
 
+        for ( Pedido pedido : this.pedidos ){
+            if(pedido.getNumeroPedido() == numeroPedido){
+                pedidoResultado = pedido;
+            }
+        }
+
+        return pedidoResultado;
+    }
 
 }

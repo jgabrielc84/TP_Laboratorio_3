@@ -1,8 +1,6 @@
 package ar.edu.cuvl.model.robot;
 
 import ar.edu.cuvl.interfaces.Robot;
-import ar.edu.cuvl.model.TipoSuperficie;
-import ar.edu.cuvl.model.type.Superficie;
 
 import java.util.ArrayList;
 
