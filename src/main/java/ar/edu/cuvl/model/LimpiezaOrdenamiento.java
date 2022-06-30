@@ -21,11 +21,6 @@ public class LimpiezaOrdenamiento {
     private boolean esSimple;
 
 
-    public boolean isEsSimple() {
-        return esSimple;
-    }
-
-
     public LimpiezaOrdenamiento() {
         this.robots = new ArrayList<>();
     }

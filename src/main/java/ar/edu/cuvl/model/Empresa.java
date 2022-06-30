@@ -78,12 +78,12 @@ public class Empresa {
 
     public void mostrarEstadisticaLimpiezas(){
 
-        System.out.println("Limpiezas Simples: " + administradorPedidos.cantidadLimpiezaSimple());
-        System.out.println("Limpiezas Complejas: " + administradorPedidos.cantidadLimpiezaCompleja());
+        System.out.println("Cantidad de Limpiezas Simples: " + administradorPedidos.cantidadLimpiezaSimple());
+        System.out.println("Cantidad de Limpiezas Complejas: " + administradorPedidos.cantidadLimpiezaCompleja());
 
     }
     public void mostrarCostoCliente(Cliente cliente){
-        System.out.println("Costo total del cliente " + cliente.getDni() + " : " + administradorPedidos.costoTotalPedidosCliente(cliente));
+        System.out.println("Costo total del cliente con DNI " + cliente.getDni() + ": " + administradorPedidos.costoTotalPedidosCliente(cliente));
     }
 
     public void mostrarCostoPedido(Pedido pedido){

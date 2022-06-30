@@ -1,17 +1,21 @@
 package ar.edu.cuvl.model;
 
 public final class ModuloPago {
-    private float montoDeuda;
+    private static float montoDeuda;
 
+    public ModuloPago() {
 
-    public float getMontoDeuda() {
+    }
+
+    public static float getMontoDeuda() {
         return montoDeuda;
     }
 
-    public void setMontoDeuda(float montoDeuda) {
-        this.montoDeuda = montoDeuda;
+    public static void setMontoDeuda(float montoDeuda) {
+        ModuloPago.montoDeuda = montoDeuda;
     }
-    public float deuda(Cliente cliente){
-        return this.getMontoDeuda();
+
+    public static float deuda(Cliente cliente){
+        return ModuloPago.getMontoDeuda();
     }
 }

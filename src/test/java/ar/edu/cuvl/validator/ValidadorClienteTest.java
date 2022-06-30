@@ -22,13 +22,13 @@ class ValidadorClienteTest {
 
     @BeforeEach
     void setUp() {
-
         cliente=new Cliente(23232,new Classic(), LocalDateTime.now(),0,1);
         validadorCliente=new ValidadorCliente();
     }
 
     @Test
     void esMoroso() {
+        ModuloPago.setMontoDeuda(3000);
         assertThrows(ClienteMorosoException.class,()->this.validadorCliente.esMoroso(cliente));
     }
 }

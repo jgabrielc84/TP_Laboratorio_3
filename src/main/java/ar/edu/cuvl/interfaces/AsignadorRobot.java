@@ -5,6 +5,6 @@ import java.util.HashSet;
 
 public interface AsignadorRobot {
 
-    public void asignarRobots(Pedido pedido, HashSet<Robot> robotsDisponibles);
+    void asignarRobots(Pedido pedido, HashSet<Robot> robotsDisponibles);
 
 }

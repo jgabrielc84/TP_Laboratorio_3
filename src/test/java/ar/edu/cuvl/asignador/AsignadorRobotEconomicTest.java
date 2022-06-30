@@ -87,7 +87,7 @@ class AsignadorRobotEconomicTest {
     }
 
     @Test
-    void asignarRobots() {
+    void asignarRobotsEconomic() {
 
         asignadorRobotEconomic.asignarRobots(pedido, robotsDisponibles);
         for (LimpiezaOrdenamiento limpiezaOrdenamiento : pedido.getLimpiezaOrdenamientos()) {

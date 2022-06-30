@@ -27,7 +27,6 @@ class EstadisticasTest {
     LimpiezaOrdenamiento limpieza3;
     LimpiezaOrdenamiento limpieza4;
 
-
     Cliente cliente1;
 
     Empresa empresa;
