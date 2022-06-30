@@ -19,7 +19,8 @@ class ValidadorClienteTest {
 
     @BeforeEach
     void setUp() {
-        cliente=new Cliente();
+        //TODO: revisar
+        //cliente=new Cliente(39999,new Economic(),600, LocalDate.now());
         validadorCliente=new ValidadorCliente();
     }
 

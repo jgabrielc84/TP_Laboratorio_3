@@ -1,5 +1,6 @@
 package ar.edu.cuvl.model;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
@@ -14,7 +15,8 @@ public class Pedido {
 
 
     public Pedido() {
-
+        this.limpiezaOrdenamientos = new ArrayList<>();
+        this.servicioReparaciones = new ArrayList<>();
     }
 
     public Pedido(int numeroPedido, Cliente cliente, String direccion, int cantidadMascotas, List<ServicioReparacion> servicioReparaciones, List<LimpiezaOrdenamiento> limpiezaOrdenamientos) {

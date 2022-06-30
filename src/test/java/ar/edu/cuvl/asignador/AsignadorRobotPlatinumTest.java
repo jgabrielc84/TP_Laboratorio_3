@@ -28,8 +28,6 @@ class AsignadorRobotPlatinumTest {
     Pedido pedido;
     AsignadorRobotPlatinum asignadorRobotPlatinum;
     Cliente cliente;
-    LimpiezaOrdenamiento limpiezaOrdenamiento;
-    LimpiezaOrdenamiento limpiezaOrdenamiento1;
 
 
     @BeforeEach
@@ -93,12 +91,12 @@ class AsignadorRobotPlatinumTest {
     void asignarRobots() {
 
         asignadorRobotPlatinum.asignarRobots(pedido, robotsDisponibles);
-        System.out.println("e");
         for (LimpiezaOrdenamiento limpiezaOrdenamiento : pedido.getLimpiezaOrdenamientos()) {
             for (Robot robot : limpiezaOrdenamiento.getRobots()) {
                 System.out.println(robot.getClass());
             }
         }
+        assertInstanceOf(P011H.class,pedido.getLimpiezaOrdenamientos().get(0).getRobots().get(1));
 
     }
 }

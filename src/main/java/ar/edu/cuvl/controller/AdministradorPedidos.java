@@ -12,6 +12,7 @@ import ar.edu.cuvl.validator.ValidadorPedido;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.List;
 import java.util.stream.Collectors;
 
 public class AdministradorPedidos {
@@ -23,6 +24,10 @@ public class AdministradorPedidos {
     public AdministradorPedidos() {
         this.validadorPedido = new ValidadorPedido();
         this.pedidosValidados = new ArrayList<>();
+    }
+
+    public ArrayList<Pedido> getPedidosValidados() {
+        return pedidosValidados;
     }
 
     public void setPedidosValidados(ArrayList<Pedido> pedidosValidados) {
@@ -46,73 +51,75 @@ public class AdministradorPedidos {
             this.validadorPedido.validarPedido(pedido);
             asignadorComplejidad.asignarComplejidad(pedido);
             pedido.getCliente().getTipoServicio().getAsignadorRobot().asignarRobots(pedido, robotsDisponibles);
+            pedido.getCliente().actualizarLimpiezasOrdenamientos(pedido);
             asignadorEmpleados.asignarEmpleado(pedido, empleadosDisponibles);
             this.pedidosValidados.add(pedido);
 
         } catch (PedidoInvalidoException e) {
-            throw  e;
+            throw e;
         }
 
     }
 
-    public int cantidadLimpiezaSimple(){
+    public int cantidadLimpiezaSimple() {
         int total = 0;
-        for(Pedido pedido : pedidosValidados){
-            for(LimpiezaOrdenamiento limpiezaOrdenamiento : pedido.getLimpiezaOrdenamientos()){
-                if(limpiezaOrdenamiento.esSimple()){
-                    total ++;
+        for (Pedido pedido : pedidosValidados) {
+            for (LimpiezaOrdenamiento limpiezaOrdenamiento : pedido.getLimpiezaOrdenamientos()) {
+                if (limpiezaOrdenamiento.esSimple()) {
+                    total++;
                 }
             }
         }
         return total;
     }
 
-    public int cantidadLimpiezaCompleja(){
+    public int cantidadLimpiezaCompleja() {
         int total = 0;
-        for(Pedido pedido : pedidosValidados){
-            for (LimpiezaOrdenamiento limpiezaOrdenamiento : pedido.getLimpiezaOrdenamientos()){
-                if(!limpiezaOrdenamiento.esSimple()){
-                    total ++;
+        for (Pedido pedido : pedidosValidados) {
+            for (LimpiezaOrdenamiento limpiezaOrdenamiento : pedido.getLimpiezaOrdenamientos()) {
+                if (!limpiezaOrdenamiento.esSimple()) {
+                    total++;
                 }
             }
         }
         return total;
     }
 
-    public float costoTotalPedidosCliente(Cliente cliente){
+    public float costoTotalPedidosCliente(Cliente cliente) {
         float total = 0;
 
-        ArrayList<Pedido> ArrayPedido = this.pedidosValidados.stream().filter(e->e.getCliente().getDni()==cliente.getDni()).collect(Collectors.toCollection(ArrayList::new));
-
-        for(Pedido pedido : ArrayPedido){
-            total += pedido.costoTotal();
+//        List<Pedido> ArrayPedido = this.pedidosValidados.stream().filter(e -> e.getCliente().getDni() == cliente.getDni()).collect(Collectors.toList());
+        for (Pedido pedido : pedidosValidados) {
+            if (pedido.getCliente().getDni() == cliente.getDni()) {
+                System.out.println(total += pedido.costoTotal());
+            }
         }
         return total;
     }
 
-    public HashMap<Integer, Float> solicitarPrecioFinalServicioReparacion(int numeroPedido){
-        Pedido pedidoResultado = buscarPedido(numeroPedido);
+        public HashMap<Integer, Float> solicitarPrecioFinalServicioReparacion ( int numeroPedido){
+            Pedido pedidoResultado = buscarPedido(numeroPedido);
 
-        return pedidoResultado.solicitarPrecioFinalServicioReparacion();
-    }
-
-    private Pedido buscarPedido(int numeroPedido){
-        Pedido pedidoResultado = new Pedido();
-
-        for ( Pedido pedido : this.pedidosValidados ){
-            if(pedido.getNumeroPedido() == numeroPedido){
-                pedidoResultado = pedido;
-            }
+            return pedidoResultado.solicitarPrecioFinalServicioReparacion();
         }
 
-        return pedidoResultado;
+        private Pedido buscarPedido ( int numeroPedido){
+            Pedido pedidoResultado = new Pedido();
+
+            for (Pedido pedido : this.pedidosValidados) {
+                if (pedido.getNumeroPedido() == numeroPedido) {
+                    pedidoResultado = pedido;
+                }
+            }
+
+            return pedidoResultado;
+        }
+
+        public float obtenerCostoPedido (Pedido pedido){
+            Pedido pedidoResultado = buscarPedido(pedido.getNumeroPedido());
+
+            return pedidoResultado.costoTotal();
+        }
+
     }
-
-    public float obtenerCostoPedido(Pedido pedido){
-        Pedido pedidoResultado = buscarPedido(pedido.getNumeroPedido());
-
-        return pedidoResultado.costoTotal();
-    }
-
-}
 
