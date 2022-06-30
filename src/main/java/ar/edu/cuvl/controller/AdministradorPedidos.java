@@ -88,8 +88,9 @@ public class AdministradorPedidos {
     public float costoTotalPedidosCliente(Cliente cliente) {
         float total = 0;
 
-//        List<Pedido> ArrayPedido = this.pedidosValidados.stream().filter(e -> e.getCliente().getDni() == cliente.getDni()).collect(Collectors.toList());
+
         for (Pedido pedido : pedidosValidados) {
+            System.out.println(pedido.getNumeroPedido());
             if (pedido.getCliente().getDni() == cliente.getDni()) {
                 System.out.println(total += pedido.costoTotal());
             }

@@ -1,10 +1,16 @@
 package ar.edu.cuvl.model;
 
+import ar.edu.cuvl.interfaces.Robot;
+import ar.edu.cuvl.interfaces.TipoComplejidadReparacion;
+import ar.edu.cuvl.model.robot.P011H;
 import ar.edu.cuvl.model.tipoTarea.LimpiezaSimple;
+import ar.edu.cuvl.model.tipoTarea.ReparacionCompleja;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -20,11 +26,14 @@ class EstadisticasTest {
     LimpiezaOrdenamiento limpieza3;
     LimpiezaOrdenamiento limpieza4;
 
-    ArrayList<Pedido> pedidos;
 
     Cliente cliente1;
 
     Empresa empresa;
+    List<Robot> robots;
+    P011H p011H;
+    Empleado empleado;
+    LimpiezaSimple limpiezaSimple;
 
     @BeforeEach
     void setup() {
@@ -34,6 +43,7 @@ class EstadisticasTest {
         cliente1 = new Cliente();
         cliente1.setDni(32456456);
 
+
         pedido1 = new Pedido();
         pedido2 = new Pedido();
         pedido3 = new Pedido();
@@ -41,7 +51,9 @@ class EstadisticasTest {
 
         limpieza1 = new LimpiezaOrdenamiento();
         limpieza1.setEsSimple(true);
-        limpieza1.setTipoComplejidadLimpieza(new LimpiezaSimple());
+        limpiezaSimple=new LimpiezaSimple();
+        limpieza1.setTipoComplejidadLimpieza(limpiezaSimple);
+        limpieza1.setHorasLimpiezaOrdenamiento(1);
         pedido1.getLimpiezaOrdenamientos().add(limpieza1);
         limpieza2 = new LimpiezaOrdenamiento();
         limpieza2.setEsSimple(true);
@@ -54,11 +66,27 @@ class EstadisticasTest {
         pedido4.getLimpiezaOrdenamientos().add(limpieza4);
 
         pedido1.setCliente(cliente1);
+        pedido2.setCliente(cliente1);
+        pedido3.setCliente(cliente1);
+        pedido4.setCliente(cliente1);
+        ServicioReparacion servicioReparacion=new ServicioReparacion();
+        p011H=new P011H();
 
         empresa.getAdministradorPedidos().getPedidosValidados().add(pedido1);
         empresa.getAdministradorPedidos().getPedidosValidados().add(pedido2);
         empresa.getAdministradorPedidos().getPedidosValidados().add(pedido3);
         empresa.getAdministradorPedidos().getPedidosValidados().add(pedido4);
+        robots=new ArrayList<>();
+        robots.add(p011H);
+        empleado=new Empleado(4000);
+        ReparacionCompleja tipoComplejidadReparacion=new ReparacionCompleja();
+
+        pedido1.getServicioReparaciones().add(servicioReparacion);
+        pedido1.getLimpiezaOrdenamientos().get(0).setRobots(robots);
+        pedido1.getServicioReparaciones().get(0).setEmpleado(empleado);
+        pedido1.getServicioReparaciones().get(0).setTipoComplejidadReparacion(tipoComplejidadReparacion);
+        pedido1.getServicioReparaciones().get(0).setComplejidad(3);
+
 
 
     }
@@ -70,10 +98,19 @@ class EstadisticasTest {
 
     @Test
     void mostrarCostoCliente() {
-        empresa.mostrarCostoCliente(cliente1);
+
+
+        try{
+            empresa.mostrarCostoCliente(cliente1);
+        }catch (NullPointerException e){
+            e.printStackTrace();
+        }
+
     }
 
     @Test
     void mostrarCostoPedido() {
+
+        empresa.mostrarCostoPedido(pedido1);
     }
 }

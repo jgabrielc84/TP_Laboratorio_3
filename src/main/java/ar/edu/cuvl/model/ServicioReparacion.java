@@ -11,6 +11,9 @@ public class ServicioReparacion  {
     private TipoComplejidadReparacion tipoComplejidadReparacion;
     private Empleado empleado;
 
+    public ServicioReparacion() {
+
+    }
 
     public ServicioReparacion(int idReparacion, TipoReparacion tipoReparacion, int complejidad) {
         this.idReparacion = idReparacion;

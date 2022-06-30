@@ -102,7 +102,13 @@ public class LimpiezaOrdenamiento {
 
     public float obtenerCostoRobots() {
 
-        return tipoComplejidadLimpieza.calcularCostoRobots(this);
+        if(tipoComplejidadLimpieza!=null){
+            System.out.println("hola");
+        }else {
+            System.out.println( "chau");
+        }
+
+        return this.tipoComplejidadLimpieza.calcularCostoRobots(this);
 
     }
 }
