@@ -76,15 +76,15 @@ public class Pedido {
         this.servicioReparaciones = servicioReparaciones;
     }
 
-    public float costoTotal() {
-        return sumarServicioReparacion(this.servicioReparaciones) + sumarLimpiezaOrdenamientos(this.limpiezaOrdenamientos);
+    public float costoTotal(Pedido pedido) {
+        return sumarServicioReparacion(pedido.getServicioReparaciones()) + sumarLimpiezaOrdenamientos(pedido.getLimpiezaOrdenamientos());
     }
 
     private float sumarServicioReparacion(List<ServicioReparacion> servicioReparaciones) {
-        float total = 0;
+        float total =0;
 
         for (ServicioReparacion servicioReparacion : servicioReparaciones) {
-            total = total + servicioReparacion.obtenerCostoEmpleado();
+            total = total + servicioReparacion.obtenerCostoEmpleado(servicioReparacion);
         }
 
         return total;
@@ -94,7 +94,7 @@ public class Pedido {
         float total = 0;
 
         for(LimpiezaOrdenamiento limpiezaOrdenamiento : limpiezaOrdenamientos){
-            total = total + limpiezaOrdenamiento.obtenerCostoRobots();
+            total = total + limpiezaOrdenamiento.obtenerCostoRobots(limpiezaOrdenamiento);
         }
 
         return total;

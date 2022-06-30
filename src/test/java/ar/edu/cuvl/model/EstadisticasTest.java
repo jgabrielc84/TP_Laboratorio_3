@@ -3,6 +3,7 @@ package ar.edu.cuvl.model;
 import ar.edu.cuvl.interfaces.Robot;
 import ar.edu.cuvl.interfaces.TipoComplejidadReparacion;
 import ar.edu.cuvl.model.robot.P011H;
+import ar.edu.cuvl.model.tipoTarea.LimpiezaCompleja;
 import ar.edu.cuvl.model.tipoTarea.LimpiezaSimple;
 import ar.edu.cuvl.model.tipoTarea.ReparacionCompleja;
 import org.junit.jupiter.api.BeforeEach;
@@ -55,13 +56,17 @@ class EstadisticasTest {
         limpieza1.setTipoComplejidadLimpieza(limpiezaSimple);
         limpieza1.setHorasLimpiezaOrdenamiento(1);
         pedido1.getLimpiezaOrdenamientos().add(limpieza1);
+
         limpieza2 = new LimpiezaOrdenamiento();
+        limpieza2.setTipoComplejidadLimpieza(new LimpiezaCompleja());
         limpieza2.setEsSimple(true);
         pedido2.getLimpiezaOrdenamientos().add(limpieza2);
         limpieza3 = new LimpiezaOrdenamiento();
+        limpieza3.setTipoComplejidadLimpieza(new LimpiezaCompleja());
         limpieza3.setEsSimple(false);
         pedido3.getLimpiezaOrdenamientos().add(limpieza3);
         limpieza4 = new LimpiezaOrdenamiento();
+        limpieza4.setTipoComplejidadLimpieza(new LimpiezaSimple());
         limpieza4.setEsSimple(true);
         pedido4.getLimpiezaOrdenamientos().add(limpieza4);
 
@@ -99,12 +104,7 @@ class EstadisticasTest {
     @Test
     void mostrarCostoCliente() {
 
-
-        try{
             empresa.mostrarCostoCliente(cliente1);
-        }catch (NullPointerException e){
-            e.printStackTrace();
-        }
 
     }
 

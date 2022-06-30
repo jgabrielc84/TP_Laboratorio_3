@@ -87,12 +87,9 @@ public class AdministradorPedidos {
 
     public float costoTotalPedidosCliente(Cliente cliente) {
         float total = 0;
-
-
         for (Pedido pedido : pedidosValidados) {
-            System.out.println(pedido.getNumeroPedido());
             if (pedido.getCliente().getDni() == cliente.getDni()) {
-                System.out.println(total += pedido.costoTotal());
+                total += pedido.costoTotal(pedido);
             }
         }
         return total;
@@ -119,7 +116,7 @@ public class AdministradorPedidos {
         public float obtenerCostoPedido (Pedido pedido){
             Pedido pedidoResultado = buscarPedido(pedido.getNumeroPedido());
 
-            return pedidoResultado.costoTotal();
+            return pedidoResultado.costoTotal(pedido);
         }
 
     }

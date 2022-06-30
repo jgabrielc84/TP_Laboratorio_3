@@ -70,8 +70,8 @@ public class ServicioReparacion  {
      return costoReparacion + horas * complejidad;
     }
 
-    public float obtenerCostoEmpleado() {
+    public float obtenerCostoEmpleado(ServicioReparacion servicioReparacion) {
 
-        return tipoComplejidadReparacion.calcularCostoEmpleado(this);
+        return servicioReparacion.getTipoComplejidadReparacion().calcularCostoEmpleado(this);
     }
 }
