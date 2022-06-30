@@ -4,13 +4,15 @@ import ar.edu.cuvl.asignador.AsignadorComplejidad;
 import ar.edu.cuvl.asignador.AsignadorEmpleados;
 import ar.edu.cuvl.exception.pedidoException.PedidoInvalidoException;
 import ar.edu.cuvl.interfaces.Robot;
-import ar.edu.cuvl.model.*;
+import ar.edu.cuvl.model.Cliente;
+import ar.edu.cuvl.model.Empleado;
+import ar.edu.cuvl.model.Pedido;
 import ar.edu.cuvl.model.tipoTarea.LimpiezaCompleja;
 import ar.edu.cuvl.model.tipoTarea.LimpiezaSimple;
+import ar.edu.cuvl.model.LimpiezaOrdenamiento;
 import ar.edu.cuvl.validator.ValidadorPedido;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.HashSet;
 import java.util.stream.Collectors;
 
@@ -18,12 +20,7 @@ public class AdministradorPedidos {
 
     private ArrayList<Pedido> pedidosValidados;
     private ValidadorPedido validadorPedido;
-
-
-    public AdministradorPedidos() {
-        this.validadorPedido = new ValidadorPedido();
-        this.pedidosValidados = new ArrayList<>();
-    }
+    private String message;
 
     public void setPedidosValidados(ArrayList<Pedido> pedidosValidados) {
         this.pedidosValidados = pedidosValidados;
@@ -59,7 +56,7 @@ public class AdministradorPedidos {
         int total = 0;
         for(Pedido pedido : pedidosValidados){
             for(LimpiezaOrdenamiento limpiezaOrdenamiento : pedido.getLimpiezaOrdenamientos()){
-                if(limpiezaOrdenamiento.esSimple()){
+                if(limpiezaOrdenamiento.getTipoComplejidadLimpieza() instanceof LimpiezaSimple){
                     total ++;
                 }
             }
@@ -71,7 +68,7 @@ public class AdministradorPedidos {
         int total = 0;
         for(Pedido pedido : pedidosValidados){
             for (LimpiezaOrdenamiento limpiezaOrdenamiento : pedido.getLimpiezaOrdenamientos()){
-                if(!limpiezaOrdenamiento.esSimple()){
+                if(limpiezaOrdenamiento.getTipoComplejidadLimpieza() instanceof LimpiezaCompleja){
                     total ++;
                 }
             }
@@ -79,40 +76,15 @@ public class AdministradorPedidos {
         return total;
     }
 
-    public float costoTotalPedidosCliente(Cliente cliente){
-        float total = 0;
-
-        ArrayList<Pedido> ArrayPedido = this.pedidosValidados.stream().filter(e->e.getCliente().getDni()==cliente.getDni()).collect(Collectors.toCollection(ArrayList::new));
-
-        for(Pedido pedido : ArrayPedido){
+    public float costoTotalCliente(Cliente cliente){
+        float total=0;
+        ArrayList<Pedido> ArrayCliente = this.pedidosValidados.stream().filter(e->e.getCliente().getDni()==cliente.getDni()).collect(Collectors.toCollection(ArrayList::new));
+        for(Pedido pedido : ArrayCliente){
             total += pedido.costoTotal();
         }
         return total;
     }
 
-    public HashMap<Integer, Float> solicitarPrecioFinalServicioReparacion(int numeroPedido){
-        Pedido pedidoResultado = buscarPedido(numeroPedido);
-
-        return pedidoResultado.solicitarPrecioFinalServicioReparacion();
-    }
-
-    private Pedido buscarPedido(int numeroPedido){
-        Pedido pedidoResultado = new Pedido();
-
-        for ( Pedido pedido : this.pedidosValidados ){
-            if(pedido.getNumeroPedido() == numeroPedido){
-                pedidoResultado = pedido;
-            }
-        }
-
-        return pedidoResultado;
-    }
-
-    public float obtenerCostoPedido(Pedido pedido){
-        Pedido pedidoResultado = buscarPedido(pedido.getNumeroPedido());
-
-        return pedidoResultado.costoTotal();
-    }
 
 }
 

@@ -83,4 +83,19 @@ public class Cliente {
         return this.dni;
     }
 
+    public void actualizarLimpiezasOrdenamientos(Pedido pedido){
+        int limpiezas = 0;
+        int ordenamientos = 0;
+
+        for(LimpiezaOrdenamiento tarea : pedido.getLimpiezaOrdenamientos()){
+            if(tarea.isOrdenamiento()){
+                ordenamientos += 1;
+            }
+            limpiezas += 1;
+        }
+
+        this.cantidadLimpiezas += limpiezas;
+        this.cantidadOrdenamientos += ordenamientos;
+    }
+
 }
