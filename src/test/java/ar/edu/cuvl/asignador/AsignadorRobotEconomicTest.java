@@ -90,11 +90,6 @@ class AsignadorRobotEconomicTest {
     void asignarRobotsEconomic() {
 
         asignadorRobotEconomic.asignarRobots(pedido, robotsDisponibles);
-        for (LimpiezaOrdenamiento limpiezaOrdenamiento : pedido.getLimpiezaOrdenamientos()) {
-            for (Robot robot : limpiezaOrdenamiento.getRobots()) {
-                System.out.println(robot.getClass());
-            }
-        }
         assertInstanceOf(P011H.class,pedido.getLimpiezaOrdenamientos().get(0).getRobots().get(1));
 
     }
