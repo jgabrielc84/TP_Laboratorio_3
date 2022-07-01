@@ -1,7 +1,7 @@
-package ar.edu.cuvl.model;
+package ar.edu.cuvl.controller;
 
 import ar.edu.cuvl.interfaces.Robot;
-import ar.edu.cuvl.interfaces.TipoComplejidadReparacion;
+import ar.edu.cuvl.model.*;
 import ar.edu.cuvl.model.robot.P011H;
 import ar.edu.cuvl.model.tipoTarea.LimpiezaCompleja;
 import ar.edu.cuvl.model.tipoTarea.LimpiezaSimple;
@@ -10,12 +10,11 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class EstadisticasTest {
+class AdministradorPedidosTest {
 
     Pedido pedido1;
     Pedido pedido2;
@@ -29,7 +28,7 @@ class EstadisticasTest {
 
     Cliente cliente1;
 
-    Empresa empresa;
+        AdministradorPedidos administradorPedidos;
     List<Robot> robots;
     P011H p011H;
     Empleado empleado;
@@ -37,8 +36,7 @@ class EstadisticasTest {
 
     @BeforeEach
     void setup() {
-
-        empresa = new Empresa();
+        administradorPedidos=new AdministradorPedidos();
 
         cliente1 = new Cliente();
         cliente1.setDni(32456456);
@@ -76,10 +74,10 @@ class EstadisticasTest {
         ServicioReparacion servicioReparacion=new ServicioReparacion();
         p011H=new P011H();
 
-        empresa.getAdministradorPedidos().getPedidosValidados().add(pedido1);
-        empresa.getAdministradorPedidos().getPedidosValidados().add(pedido2);
-        empresa.getAdministradorPedidos().getPedidosValidados().add(pedido3);
-        empresa.getAdministradorPedidos().getPedidosValidados().add(pedido4);
+        administradorPedidos.getPedidosValidados().add(pedido1);
+        administradorPedidos.getPedidosValidados().add(pedido2);
+        administradorPedidos.getPedidosValidados().add(pedido3);
+        administradorPedidos.getPedidosValidados().add(pedido4);
         robots=new ArrayList<>();
         robots.add(p011H);
         empleado=new Empleado(4000);
@@ -96,20 +94,18 @@ class EstadisticasTest {
     }
 
     @Test
-    void mostrarEstadisticaLimpiezas() {
-        empresa.mostrarEstadisticaLimpiezas();
+    void limpiezasSimplesVersusComplejas() {
+       assertEquals(3,administradorPedidos.cantidadLimpiezaSimple());
+        assertEquals(1,administradorPedidos.cantidadLimpiezaCompleja());
     }
 
     @Test
-    void mostrarCostoCliente() {
-
-            empresa.mostrarCostoCliente(cliente1);
-
+    void obtenerCostoDelCliente() {
+        assertEquals(1575.0,administradorPedidos.costoTotalPedidosCliente(cliente1));
     }
 
     @Test
-    void mostrarCostoPedido() {
-
-        empresa.mostrarCostoPedido(pedido1);
+    void obtenerCostoDeUnPedido() {
+        assertEquals(1575.0,administradorPedidos.obtenerCostoPedido(pedido1));
     }
 }
