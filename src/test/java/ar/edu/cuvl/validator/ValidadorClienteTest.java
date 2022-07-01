@@ -31,4 +31,10 @@ class ValidadorClienteTest {
         ModuloPago.setMontoDeuda(3000);
         assertThrows(ClienteMorosoException.class,()->this.validadorCliente.esMoroso(cliente));
     }
+
+    @Test
+    void noEsMoroso() {
+        ModuloPago.setMontoDeuda(0);
+        assertDoesNotThrow(()->this.validadorCliente.esMoroso(cliente));
+    }
 }
