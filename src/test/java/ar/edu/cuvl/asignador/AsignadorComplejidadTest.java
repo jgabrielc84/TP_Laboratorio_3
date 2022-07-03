@@ -3,8 +3,10 @@ package ar.edu.cuvl.asignador;
 import ar.edu.cuvl.model.*;
 import ar.edu.cuvl.model.tipoReparacion.Electricidad;
 import ar.edu.cuvl.model.tipoReparacion.Gas;
+import ar.edu.cuvl.model.tipoTarea.LimpiezaSimple;
 import ar.edu.cuvl.model.tipoTarea.ReparacionCompleja;
 import ar.edu.cuvl.model.tipoTarea.LimpiezaCompleja;
+import ar.edu.cuvl.model.tipoTarea.ReparacionSimple;
 import ar.edu.cuvl.model.type.TipoResiduo;
 import ar.edu.cuvl.model.type.TipoSuperficie;
 import ar.edu.cuvl.validator.ValidadorComplejidad;
@@ -57,16 +59,30 @@ class AsignadorComplejidadTest {
     }
 
     @Test
-    void asignarComplejidadTarea() {
+    void asignarTareaCompleja() {
         asignadorComplejidad.asignarComplejidadTarea(servicioReparaciones);
         assertInstanceOf(ReparacionCompleja.class, servicioReparacion1.getTipoComplejidadReparacion());
 
     }
 
     @Test
-    void asignarComplejidadLimpieza() {
+    void asignarTareaSimple() {
+        asignadorComplejidad.asignarComplejidadTarea(servicioReparaciones);
+        assertInstanceOf(ReparacionSimple.class, servicioReparacion2.getTipoComplejidadReparacion());
+
+    }
+
+
+    @Test
+    void asignarLimpiezaCompleja() {
         asignadorComplejidad.asignarComplejidadLimpieza(pedido);
         assertInstanceOf(LimpiezaCompleja.class,limpiezaOrdenamiento1.getTipoComplejidadLimpieza());
+    }
+
+    @Test
+    void asignarLimpiezaSimple() {
+        asignadorComplejidad.asignarComplejidadLimpieza(pedido);
+        assertInstanceOf(LimpiezaSimple.class,limpiezaOrdenamiento2.getTipoComplejidadLimpieza());
 
     }
 

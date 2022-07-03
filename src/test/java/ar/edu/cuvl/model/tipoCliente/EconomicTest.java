@@ -1,5 +1,6 @@
 package ar.edu.cuvl.model.tipoCliente;
 
+import ar.edu.cuvl.exception.pedidoException.NoPuedeLimpiarException;
 import ar.edu.cuvl.exception.pedidoException.NoPuedeOrdenarException;
 import ar.edu.cuvl.model.Cliente;
 import ar.edu.cuvl.model.LimpiezaOrdenamiento;
@@ -20,6 +21,8 @@ class EconomicTest {
     Pedido pedido;
     List<LimpiezaOrdenamiento> limpiezaOrdenamientos;
     LimpiezaOrdenamiento limpiezaOrdenamiento;
+    Cliente cliente1;
+    Pedido pedido1;
 
     @BeforeEach
     void setUp() {
@@ -30,6 +33,9 @@ class EconomicTest {
         limpiezaOrdenamiento=new LimpiezaOrdenamiento(new ArrayList<>(), TipoResiduo.POLVO,true);
         limpiezaOrdenamientos=new ArrayList<>();
         limpiezaOrdenamientos.add(limpiezaOrdenamiento);
+        cliente1=new Cliente();
+        cliente1.setCantidadLimpiezas(3);
+        pedido1=new Pedido(3,cliente1,"ñañañ",1,new ArrayList<>(),new ArrayList<>());
     }
 
     @Test
@@ -38,7 +44,13 @@ class EconomicTest {
     }
 
     @Test
-    void puedeOrdenar() {
+    void noPuedeOrdenar() {
         assertThrows(NoPuedeOrdenarException.class,()->this.economic.puedeOrdenar(pedido));
     }
+
+    @Test
+    void noPuedeLimpiar() {
+
+    assertThrows(NoPuedeLimpiarException.class,()->this.economic.puedeLimpiar(pedido1));
+}
 }

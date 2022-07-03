@@ -17,7 +17,7 @@ public class Economic extends TipoServicio {
 
     @Override
     public void puedeLimpiar(Pedido pedido) throws NoPuedeLimpiarException {
-                if(pedido.getCliente().getCantidadLimpiezas()>3){
+                if(pedido.getCliente().getCantidadLimpiezas()>=3){
                     throw new NoPuedeLimpiarException("No hay mas limpiezas este mes");
                 }
     }
